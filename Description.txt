@@ -1,0 +1,11 @@
+Project Scope - Cello
+
+Our project is to make a web application for buying and selling used course books for
+chalmers students. Our aim is thus to create a centralized, streamlined experience for any
+chalmers student looking to buy or sell a course book. Buyers will be able to search for books
+via name, course code among other things and chat with the sellers.
+
+Our hope is to work with Chalmers to create login via CID and possibly their bookstores to be
+able to compare new and used book prices.
+
+This will help reduce ecological waste while also being economical for the students.
