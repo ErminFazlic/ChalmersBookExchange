@@ -24,6 +24,8 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include=".git" />
+      <Folder Include="bin" />
       <Folder Include="Migrations" />
     </ItemGroup>
 
