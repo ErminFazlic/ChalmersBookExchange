@@ -1,0 +1,33 @@
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using ChalmersBookExchange.Data;
+using ChalmersBookExchange.Domain;
+using Microsoft.EntityFrameworkCore;
+
+namespace ChalmersBookExchange.Controllers
+{
+    public class UserController : IUserController
+    {
+        private readonly MyDbContext _context;
+
+        public UserController(MyDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<bool> CreateUserAsync(User user)
+        {
+            
+            _context.User.Add(user);
+            var created = await _context.SaveChangesAsync();
+            return created > 0;
+        }
+
+        public string RetrieveName(string email)
+        {
+            var user = _context.User.FirstOrDefault(x => x.Email == email);
+            return user.Name;
+        }
+    }
+}
