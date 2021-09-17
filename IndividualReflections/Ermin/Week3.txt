@@ -1,0 +1,15 @@
+For this week we wanted to do some user stories and epics.
+
+I contributed towards reaching this goal by acting as Scrum leader, helping the team set up
+the trello board and also leading the effort poker for the different user stories we came up
+with. In addition to this I also came up with some of the user stories and ranked the
+priority for them.
+
+For the next week we want to setup the page and connect a database to it, a "skeleton package"
+or something like that. Since I have the most experience in this I will do it while walking
+through the steps with my team to help them understand the process.
+
+For my learning objective next week is to learn more about the role of Scrum leader since I
+felt a little bit lost on what to do and how to lead the meeting. This will further help to
+deliver our goals for each sprint since a better structure and more clear instructions should
+lead to better teamwork.

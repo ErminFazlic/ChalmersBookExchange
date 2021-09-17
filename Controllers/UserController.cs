@@ -16,6 +16,7 @@ namespace ChalmersBookExchange.Controllers
             _context = context;
         }
 
+
         public async Task<bool> CreateUserAsync(User user)
         {
             var exists = _context.User.FirstOrDefault(x => x.Email == user.Email);

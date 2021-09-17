@@ -23,7 +23,7 @@ namespace ChalmersBookExchange.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Favorites()
         {
             return View();
         }
