@@ -86,7 +86,7 @@ namespace ChalmersBookExchange.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 var ourUser = new User {ID = System.Guid.NewGuid(), Name = Input.Name, Email = Input.Email, Contacts = null, Favorites = null};
                 var ourResult = await _userController.CreateUserAsync(ourUser);
-                if (result.Succeeded && ourResult)
+                if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
 
