@@ -1,5 +1,8 @@
 ﻿@page
-@model ChalmersBookExchange.Views.Home.PostsModel
+@using ChalmersBookExchange.Views.Home
+@using ChalmersBookExchange.Controllers
+@model ChalmersBookExchange.Views.Home.CreatePostModel
+@inject IPostController PostController
 
 <h1>@ViewBag.Title</h1>
 <div>
@@ -14,15 +17,20 @@
                 <th>Meetup</th>
             </tr>
         </thead>
-    <tbody>
-        @foreach (var post in Model)
+        <tbody>
+        
+        @foreach (var post in PostController.GetAllPosts())
         {
             <tr>
-                <td>I@role.d</td>
-                <td>@role.Name</td>
+                <td>@post.BookName</td>
+                <td>@post.CourseCode</td>
+                <td>@post.Price</td>
+                <td>@post.Location</td>
+                <td>@post.Shippable</td>
+                <td>@post.Meetup</td>
             </tr>
         }
-    </tbody>
+        </tbody>
 </table>
 
 </div>

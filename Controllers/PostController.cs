@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using ChalmersBookExchange.Data;
@@ -52,10 +53,24 @@ namespace ChalmersBookExchange.Controllers
             return false;
         }
 
-        public async Task<Post[]> GetAllPostsAsync()
+        public Post[] GetAllPosts()
         {
-            var posts = await _context.Post.ToArrayAsync();
+            var posts = _context.Post.ToArray();
+            posts = ReversePosts(posts);
             return posts;
+        }
+
+        private Post[] ReversePosts(Post[] posts)
+        {
+            Post[] reversedPosts = new Post[posts.Length];
+            var j = 0;
+            for (var i = posts.Length - 1; i > -1; i--)
+            {
+                reversedPosts[i] = posts[j];
+                j++;
+            }
+
+            return reversedPosts;
         }
     }
 }

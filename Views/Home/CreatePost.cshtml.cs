@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,7 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using ChalmersBookExchange.Controllers;
 using ChalmersBookExchange.Domain;
+using ChalmersBookExchange.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -107,5 +109,7 @@ namespace ChalmersBookExchange.Views.Home
             // If we got this far, something failed, redisplay form
             return Page();
         }
+
+        
     }
 }

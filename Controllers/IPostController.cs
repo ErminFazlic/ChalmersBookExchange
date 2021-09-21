@@ -6,7 +6,7 @@ namespace ChalmersBookExchange.Controllers
     public interface IPostController
     {
         Task<bool> CreatePostAsync(Post post);
-        Task<Post[]> GetAllPostsAsync();
+        Post[] GetAllPosts();
         bool CreatePost(Post post);
     }
 }
