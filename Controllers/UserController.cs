@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ChalmersBookExchange.Controllers
 {
-    public class UserController : IUserController
+    public class UserController : IUserController //mm
     {
         private readonly MyDbContext _context;
 
