@@ -34,7 +34,8 @@ namespace ChalmersBookExchange
                 ServiceLifetime.Singleton);
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<IUserController, UserController>();
-            services.AddSingleton<IPostController, PostController>();
+            services.AddTransient<IPostController, PostController>();
+            
             services.AddTransient<MyDbContext>();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

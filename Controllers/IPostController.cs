@@ -7,5 +7,6 @@ namespace ChalmersBookExchange.Controllers
     {
         Task<bool> CreatePostAsync(Post post);
         Task<Post[]> GetAllPostsAsync();
+        bool CreatePost(Post post);
     }
 }

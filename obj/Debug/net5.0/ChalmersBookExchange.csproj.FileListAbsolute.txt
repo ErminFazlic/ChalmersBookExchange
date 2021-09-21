@@ -695,3 +695,5 @@ C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\ChalmersBookE
 C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\ref\ChalmersBookExchange.dll
 C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\ChalmersBookExchange.pdb
 C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\ChalmersBookExchange.genruntimeconfig.cache
+C:\Users\Dator\RiderProjects\ChalmersBookExchange\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\Posts.cshtml.g.cs
+C:\Users\Dator\RiderProjects\ChalmersBookExchange\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\OnePost.cshtml.g.cs
