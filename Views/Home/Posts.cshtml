@@ -1,0 +1,33 @@
+﻿@page
+@model ChalmersBookExchange.Views.Home.PostsModel
+
+<h1>@ViewBag.Title</h1>
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Book Name</th>
+                <th>Course Code</th>
+                <th>Price</th>
+                <th>Location</th>
+                <th>Shippable</th>
+                <th>Meetup</th>
+            </tr>
+        </thead>
+    <tbody>
+        @foreach (var post in Model)
+        {
+            <tr>
+                <td>I@role.d</td>
+                <td>@role.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

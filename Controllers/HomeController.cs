@@ -40,7 +40,12 @@ namespace ChalmersBookExchange.Controllers
             var model = new CreatePostModel(_postController);
             return View(model);
         }
-
+        public IActionResult Posts()
+        {
+            ViewBag.Title = "Browse Posts";
+            
+            return View();
+        }
         public IActionResult Favorites()
         {
             return View();
