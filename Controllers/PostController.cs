@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ChalmersBookExchange.Controllers
 {
-    public class PostController
+    public class PostController : IPostController
     {
         private readonly MyDbContext _context;
 
