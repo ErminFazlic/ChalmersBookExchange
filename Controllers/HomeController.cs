@@ -36,7 +36,7 @@ namespace ChalmersBookExchange.Controllers
         }
         public IActionResult CreatePost()
         {
-            ViewBag.Title = "Posts";
+            ViewBag.Title = "Create a new post";
             var model = new CreatePostModel(_postController);
             return View(model);
         }
