@@ -680,7 +680,6 @@ C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Areas\I
 C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\Favorites.cshtml.g.cs
 C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\Posts.cshtml.g.cs
 C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
@@ -697,3 +696,5 @@ C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\ChalmersBookE
 C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\ChalmersBookExchange.genruntimeconfig.cache
 C:\Users\Dator\RiderProjects\ChalmersBookExchange\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\Posts.cshtml.g.cs
 C:\Users\Dator\RiderProjects\ChalmersBookExchange\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\OnePost.cshtml.g.cs
+C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\OnePost.cshtml.g.cs
+C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\CreatePost.cshtml.g.cs

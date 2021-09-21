@@ -18,11 +18,11 @@ using Microsoft.Extensions.Logging;
 namespace ChalmersBookExchange.Views.Home
 {
     [AllowAnonymous]
-    public class PostsModel : PageModel
+    public class CreatePostModel : PageModel
     {
         private readonly IPostController _postController;
 
-        public PostsModel(IPostController postController)
+        public CreatePostModel(IPostController postController)
         {
             _postController = postController;
         }
