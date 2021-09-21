@@ -1,0 +1,47 @@
+﻿@page
+@model ChalmersBookExchange.Views.Home.CreatePostModel
+
+<h1>@ViewBag.Title</h1>
+<p>Create a new post</p>
+<form action="CreatePostForm" method="post">
+    <table>
+        <tr>
+            <td>Book Name: </td>
+            <td><input type="text" name="BookName" /></td>
+        </tr>
+        <tr>
+            <td>Course code: </td>
+            <td><input type="text" name="CourseCode" /></td>
+        </tr>
+        <tr>
+            <td>Description: <textarea name="Description"></textarea></td>
+            
+
+        </tr>
+        <tr>
+            <td>Price: </td>
+            <td><input type="number" name="Price" /></td>
+        </tr>
+        <tr>
+            <td>Location: </td>
+            <td><input type="text" name="Location" /></td>
+        </tr>
+        <tr>
+            <td>Can you ship this book? </td>
+            <td><input type="checkbox" name="Shippable" /></td>
+        </tr>
+        <tr>
+            <td>Can you meet up to sell this book? </td>
+            <td><input type="checkbox" name="Meetup" /></td>
+        </tr>
+        
+
+        <tr>
+            <td colspan="2"><input type="submit" value="Create post" /></td>
+        </tr>
+    </table>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

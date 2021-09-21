@@ -20,7 +20,7 @@ namespace ChalmersBookExchange.Controllers
         public async Task<bool> CreateUserAsync(User user)
         {
             var exists = _context.User.FirstOrDefault(x => x.Email == user.Email);
-            if (exists == null)
+            if (exists is null)
             {
                 _context.User.Add(user);
                 var created = await _context.SaveChangesAsync(); 
@@ -34,6 +34,12 @@ namespace ChalmersBookExchange.Controllers
         {
             var user = _context.User.FirstOrDefault(x => x.Email == email);
             return user.Name;
+        }
+
+        public Guid RetrieveID(string email)
+        {
+            var user = _context.User.FirstOrDefault(x => x.Email == email);
+            return user.ID;
         }
     }
 }

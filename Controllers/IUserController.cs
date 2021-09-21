@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using ChalmersBookExchange.Domain;
 
@@ -7,5 +8,6 @@ namespace ChalmersBookExchange.Controllers
     {
         Task<bool> CreateUserAsync(User user);
         string RetrieveName(string email);
+        Guid RetrieveID(string email);
     }
 }

@@ -34,11 +34,14 @@ namespace ChalmersBookExchange
                 ServiceLifetime.Singleton);
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<IUserController, UserController>();
+            services.AddTransient<IPostController, PostController>();
+            
             services.AddTransient<MyDbContext>();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

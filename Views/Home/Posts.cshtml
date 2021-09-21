@@ -1,0 +1,41 @@
+﻿@page
+@using ChalmersBookExchange.Views.Home
+@using ChalmersBookExchange.Controllers
+@model ChalmersBookExchange.Views.Home.CreatePostModel
+@inject IPostController PostController
+
+<h1>@ViewBag.Title</h1>
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Book Name</th>
+                <th>Course Code</th>
+                <th>Price</th>
+                <th>Location</th>
+                <th>Shippable</th>
+                <th>Meetup</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+        @foreach (var post in PostController.GetAllPosts())
+        {
+            <tr>
+                <td>@post.BookName</td>
+                <td>@post.CourseCode</td>
+                <td>@post.Price</td>
+                <td>@post.Location</td>
+                <td>@post.Shippable</td>
+                <td>@post.Meetup</td>
+            </tr>
+        }
+        </tbody>
+</table>
+
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
