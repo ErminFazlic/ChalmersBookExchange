@@ -2,7 +2,7 @@
 @using ChalmersBookExchange.Views.Home
 @using ChalmersBookExchange.Controllers
 @model ChalmersBookExchange.Views.Home.CreatePostModel
-@inject IPostController PostController
+@inject IPostController _postController
 
 <h1>@ViewBag.Title</h1>
 <div>
@@ -19,7 +19,7 @@
         </thead>
         <tbody>
         
-        @foreach (var post in PostController.GetAllPosts())
+        @foreach (var post in _postController.GetAllPosts())
         {
             <tr>
                 <td>@post.BookName</td>

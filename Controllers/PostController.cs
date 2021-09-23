@@ -75,6 +75,13 @@ namespace ChalmersBookExchange.Controllers
             return reversedPosts;
         }
 
+        public Post[] GetQueriedPosts(string courseCode, string bookName)
+        {
+            Post[] posts = _context.Post.Where(x => x.CourseCode == courseCode || x.BookName == bookName).ToArray();
+            posts = ReversePosts(posts);
+            return posts;
+        }
+
        /* public Post GetQuieredPost(String courseCode)
         {
             var posts = _context.Post.ToArray();

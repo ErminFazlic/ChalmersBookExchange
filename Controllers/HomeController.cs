@@ -99,18 +99,13 @@ namespace ChalmersBookExchange.Controllers
         [HttpPost]
         public ActionResult QueriedPost(String courseCode, String bookName)
         {
-            if (courseCode is not null)
-            {
-                var searchedListCC = _postController.GetQueriedPostCC(courseCode);
-                return View("QueriedPosts");
-            } 
-            else if (bookName is not null)
-            {
-                var searchedListBN = _postController.GetQueriedPostBN(bookName);
-                return View("QueriedPosts");
-            }
+            
+            var searchedList = _postController.GetQueriedPosts(courseCode, bookName);
+            ViewBag.Message = searchedList;
+            return View("QueriedPosts");
+              
 
-            return View("Error");
+            
             
         }
     }

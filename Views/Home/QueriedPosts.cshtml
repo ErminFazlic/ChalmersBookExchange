@@ -2,7 +2,7 @@
 @using ChalmersBookExchange.Views.Home
 @using ChalmersBookExchange.Controllers
 @using ChalmersBookExchange.Domain
-
+@model ChalmersBookExchange.Views.Home.QueriedPostsModel
 @inject IPostController _postController
 
 <h1>@ViewBag.Title</h1>
@@ -20,7 +20,7 @@
         </thead>
         <tbody>
         
-        @foreach (var post in _postController.GetQueriedPostCC())
+        @foreach (var post in ViewBag.Message)
         {
             <tr>
                 <td>@post.BookName</td>

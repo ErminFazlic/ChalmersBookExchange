@@ -10,7 +10,8 @@ namespace ChalmersBookExchange.Controllers
         Post[] GetAllPosts();
         bool CreatePost(Post post);
 
-        Post[] GetQueriedPostCC(String courseCode);
-        Post[] GetQueriedPostBN(String bookName);
+        Post[] GetQueriedPostCC(string courseCode);
+        Post[] GetQueriedPostBN(string bookName);
+        Post[] GetQueriedPosts(string courseCode, string bookName);
     }
 }
