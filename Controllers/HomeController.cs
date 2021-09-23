@@ -97,16 +97,12 @@ namespace ChalmersBookExchange.Controllers
 
         }
         [HttpPost]
-        public ActionResult QueriedPost(String courseCode, String bookName)
+        public ActionResult SearchPost(String BookName, String CourseCode)
         {
-            
-            var searchedList = _postController.GetQueriedPosts(courseCode, bookName);
+            var searchedList = _postController.GetQueriedPosts(CourseCode, BookName);
             ViewBag.Message = searchedList;
+            ViewBag.Title = "Results";
             return View("QueriedPosts");
-              
-
-            
-            
         }
     }
 }
