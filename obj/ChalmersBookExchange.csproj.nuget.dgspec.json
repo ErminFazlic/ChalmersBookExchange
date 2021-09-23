@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dator\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange\\ChalmersBookExchange.csproj": {}
+    "C:\\Users\\Min dator\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dator\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange\\ChalmersBookExchange.csproj": {
+    "C:\\Users\\Min dator\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dator\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange\\ChalmersBookExchange.csproj",
+        "projectUniqueName": "C:\\Users\\Min dator\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj",
         "projectName": "ChalmersBookExchange",
-        "projectPath": "C:\\Users\\Dator\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange\\ChalmersBookExchange.csproj",
-        "packagesPath": "C:\\Users\\Dator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dator\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange\\obj\\",
+        "projectPath": "C:\\Users\\Min dator\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj",
+        "packagesPath": "C:\\Users\\Min dator\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Min dator\\RiderProjects\\ChalmersBookExchange\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Dator\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Min dator\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
