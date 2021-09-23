@@ -16,6 +16,8 @@ namespace ChalmersBookExchange.Controllers
         private readonly MyDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
+       
+
 
         public PostController(MyDbContext context, UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor)
         {
@@ -72,5 +74,69 @@ namespace ChalmersBookExchange.Controllers
 
             return reversedPosts;
         }
+
+       /* public Post GetQuieredPost(String courseCode)
+        {
+            var posts = _context.Post.ToArray();
+            Post searchPost;
+            //var currentpost = new Post[posts.Length];
+
+            var j = 0;
+            for (var i = posts.Length - 1; i > -1; i--)
+            {
+                if(searchPost.CourseCode == _courseCode)
+                posts.courseCode= courseCode;
+                j++;
+            }
+
+            return reversedPosts;
+        }*/
+        public Post[] GetQueriedPostCC(String coursec)
+        {
+            if (coursec is null)
+            {
+                GetQueriedPostBN(coursec);
+            }
+
+            
+            var posts = _context.Post.ToArray();
+            Post[] resultArray = new Post[posts.Length];
+            int j = 0;
+            for (var i = 0 ; i < posts.Length ; i++)
+            {
+               
+                if (coursec.Equals(posts[i].CourseCode)) 
+                {
+                    resultArray[j] = posts[i];
+                    j++;
+                }
+            }
+            
+            return resultArray;
+        }
+
+        public Post[] GetQueriedPostBN(String bookName)
+        {
+            if (bookName is null)
+            {
+                GetQueriedPostCC(bookName);
+            }
+
+            
+            var posts = _context.Post.ToArray();
+            Post[] resultArray = new Post[posts.Length];
+            int j = 0;
+            for (var i = 0 ; i < posts.Length ; i++)
+            {
+                if (bookName.Equals(posts[i].BookName))
+                {
+                    resultArray[j] = posts[i];
+                    j++;
+                }
+            }
+
+            return resultArray;
+        }
+
     }
 }

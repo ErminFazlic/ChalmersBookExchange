@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Search";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Your search will be displayed here.</p>
+<form action="QueriedPost" method="post">
+   
+    <table>
+        <tr>
+            <td>Book Name: </td>
+            <td><input type="text" name="BookName"/></td>
+        </tr>
+        <tr>
+            <td>Course code: </td>
+            <td><input type="text" name="CourseCode"/></td>
+        </tr>
+    </table>
+        <tr>
+            <td colspan="2"><input type="submit" value="search"/></td>
+        </tr>
+        
+</form>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

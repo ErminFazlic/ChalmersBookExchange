@@ -46,6 +46,12 @@ namespace ChalmersBookExchange.Controllers
             var model = new CreatePostModel(_postController);
             return View(model);
         }
+        public IActionResult Search()
+        {
+            ViewBag.Title = "Search";
+            //var model = new CreatePostModel(_postController);
+            return View();
+        }
         public IActionResult Favorites()
         {
             return View();
@@ -89,6 +95,23 @@ namespace ChalmersBookExchange.Controllers
             var created = _postController.CreatePost(post);
             return View("OnePost");
 
+        }
+        [HttpPost]
+        public ActionResult QueriedPost(String courseCode, String bookName)
+        {
+            if (courseCode is not null)
+            {
+                var searchedListCC = _postController.GetQueriedPostCC(courseCode);
+                return View("QueriedPosts");
+            } 
+            else if (bookName is not null)
+            {
+                var searchedListBN = _postController.GetQueriedPostBN(bookName);
+                return View("QueriedPosts");
+            }
+
+            return View("Error");
+            
         }
     }
 }
