@@ -1,0 +1,6 @@
+﻿Individual Reflections week 2.
+Now for the second week have discussed different topics for what can develop as a team. Since I didn’t have any particular suggestion myself I was very open and curious about what the other team members had come up with. We decided to make a webpage for students to sell their second-hand school literature. 
+As for now I need to learn more about web application and coding in C# since that's what we agreed upon using regarding our project. I will try to search for information, videos regarding the topic in hope to learn more about the tools, so in regards to a technical aspect, won't be an issue or bottleneck further work. I will also have my team members to turn to if there is something that I need help with. If I can get to the point where I have a sustainable workflow, I will try my best to help my fellow members too, not just in technical stuff but also in things that will contribute to our project, might it be planning, structure etc.
+
+
+Since we haven’t really started using Scrum, I have yet not anything that I can contribute to my team.
