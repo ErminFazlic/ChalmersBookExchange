@@ -16,6 +16,8 @@ namespace ChalmersBookExchange.Controllers
         private readonly MyDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
+       
+
 
         public PostController(MyDbContext context, UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor)
         {
@@ -72,5 +74,13 @@ namespace ChalmersBookExchange.Controllers
 
             return reversedPosts;
         }
+
+        public Post[] GetQueriedPosts(string courseCode, string bookName)
+        {
+            Post[] posts = _context.Post.Where(x => x.CourseCode == courseCode || x.BookName == bookName).ToArray();
+            posts = ReversePosts(posts);
+            return posts;
+        }
+
     }
 }
