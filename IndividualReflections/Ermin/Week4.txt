@@ -1,0 +1,16 @@
+For this week we wanted to finisih our user stories that we set up for this sprint and we 
+finished the base for the project.
+
+I contributed towards reaching this goal by, again, acting as the scrum leader. That included 
+leading the scrum meetings and managing the board. I did pair programming with one of the team
+members to finish our assigned user story and helping the other team members with their user
+stories if they got stuck. This meant that I reached the individual KPI of 2+ hours worked per
+week aswell as us as a team reaching our team KPI of finishing 2 user stories per sprint.
+
+For the next week we want to keep doing user stories, moving up to down on our sprint backlog.
+We've decided on doing sorting criterias for the search and the function of deleting and editing
+posts made by a user.
+
+For my learning objective next week is to learn more about the concept of pair programming
+and how to make it more efficient. To do this I will use online resources. This will hopefully
+allow us to work more efficiently since we've worked in pairs for the most part.

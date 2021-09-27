@@ -73,7 +73,6 @@ namespace ChalmersBookExchange.Controllers
             {
                 ship = false;
             }
-
             if (Meetup is null)
             {
                 meet = false;
