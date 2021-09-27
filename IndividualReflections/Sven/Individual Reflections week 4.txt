@@ -1,0 +1,16 @@
+Individual Reflections week 4.
+
+This week we assigned the different user stories among the members. We stared coding on our project and along the
+way we help each other finishing our tasks. It was wondeful to know that we had such a helping approach to each other
+since I am new to alot of things and Im afraid that will be a burden to my team.
+
+We booked some meetings on Zoom where we met up and help each other to finish our tasks and move the
+different cards on our trello board accordingly.
+Next week will continue working on our user stories from the trello board and discuss 
+our experience of our sprint, maybe make some adjusments to our EE as we get better 
+on our agile experience.
+
+As for me, I will try to get more comfortable at coding in c# and html to able to work more
+independently. There will be alot of hours infront youtube tutorials and googling aswell as playing
+aroung in the project. 
+

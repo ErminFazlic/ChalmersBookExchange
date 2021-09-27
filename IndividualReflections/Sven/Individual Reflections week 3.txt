@@ -1,0 +1,20 @@
+﻿Individual Reflections week 3.
+
+So for this week we worked on our Trello board, writing epics and userstories. Everyone came up with good ideas and it was fun 
+discussing what would be a good userstory and suitable tasks for each one. After we had written down our 
+userstories we then made an effort estimation by using planning poker. We seemed to have common view 
+on the estimation for each story so that was good to see. Eventually the EE may be a bit off
+but down the line we will gradually get better at it.
+
+I got a ton of help from my team members to set up and installing everything on my computer, that was needed for the project.
+There a lot of new things learn, for example data bases, html etc. that I need to look into more thorogly. 
+I feel confident that my team members will help me achieve this task by helping me with new things I dont understand.
+
+We will start with the base of our project next week, setting up the webpage and database then start writing code based on our
+userstories. The current roles in our group will help us achieve each task efficiently and we will have a better
+understanding of everyone's tasks.
+
+Since I am new to almost everything, for this and forthcoming weeks I will have to dig into some tutorials on the web for the new coding
+languages aswell as github that haven't used alot. 
+
+

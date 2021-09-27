@@ -1,26 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Dator\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange\\ChalmersBookExchange.csproj": {}
+    "E:\\Program\\JetBrains\\JetBrains Rider 2021.2.1\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Dator\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange\\ChalmersBookExchange.csproj": {
+    "E:\\Program\\JetBrains\\JetBrains Rider 2021.2.1\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Dator\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange\\ChalmersBookExchange.csproj",
+        "projectUniqueName": "E:\\Program\\JetBrains\\JetBrains Rider 2021.2.1\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj",
         "projectName": "ChalmersBookExchange",
-        "projectPath": "C:\\Users\\Dator\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange\\ChalmersBookExchange.csproj",
-        "packagesPath": "C:\\Users\\Dator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Dator\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange\\obj\\",
+        "projectPath": "E:\\Program\\JetBrains\\JetBrains Rider 2021.2.1\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj",
+        "packagesPath": "C:\\Users\\sven9\\.nuget\\packages\\",
+        "outputPath": "E:\\Program\\JetBrains\\JetBrains Rider 2021.2.1\\RiderProjects\\ChalmersBookExchange\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Dator\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\sven9\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.org/": {}
         },
         "frameworks": {
           "net5.0": {
