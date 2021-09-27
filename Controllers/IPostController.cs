@@ -9,9 +9,6 @@ namespace ChalmersBookExchange.Controllers
         Task<bool> CreatePostAsync(Post post);
         Post[] GetAllPosts();
         bool CreatePost(Post post);
-
-        Post[] GetQueriedPostCC(string courseCode);
-        Post[] GetQueriedPostBN(string bookName);
         Post[] GetQueriedPosts(string courseCode, string bookName);
     }
 }
