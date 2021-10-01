@@ -4,7 +4,19 @@
 @model ChalmersBookExchange.Views.Home.CreatePostModel
 @inject IPostController _postController
 
+
 <h1>@ViewBag.Title</h1>
+
+<label for="sort">Sort by:</label>
+<select name="sort" id="sort">
+    <option value="alphabetical">Alphabetical order</option>
+    <option value="priceAsc">Price ascending</option>
+    <option value="priceDesc">Price descending</option>
+    <option value="newest" selected>Newest</option>
+    <option value="oldest">Oldest</option>
+    
+</select>
+
 <div>
     <table class="table table-striped">
         <thead>
