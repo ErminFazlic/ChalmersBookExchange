@@ -60,21 +60,27 @@ namespace ChalmersBookExchange.Controllers
 
         public Post[] GetAllPostsAlphabetical()
         {
-            //TODO Get all posts and sort them alphabetically
-            return GetAllPosts();
+            
+            var posts = _context.Post.OrderBy(p => p.BookName).ToArray();
+            
+            return posts;
         }
 
         public Post[] GetAllPostsPriceAsc()
         {
-            //TODO Get all posts and sort them by price ascending
-            return GetAllPosts();
+            
+            var posts = _context.Post.OrderBy(p => p.Price).ToArray();
+            
+            return posts;
         }
 
         public Post[] GetAllPostsPriceDesc()
         {
-            //TODO Get all posts and sort them by price descending
-            return GetAllPosts();
-        }
+            
+            var posts = _context.Post.OrderByDescending(p => p.Price).ToArray();
+            
+            return posts;
+        } 
         
         public Post[] GetAllPostsOldest()
         {
