@@ -95,9 +95,14 @@ namespace ChalmersBookExchange.Controllers
 
         }
         [HttpPost]
-        public ActionResult SearchPost(String BookName, String CourseCode)
+        public ActionResult SearchPost(string BookName, string CourseCode, int MinPrice, int MaxPrice, string Shippable, string Meetup)
         {
-            var searchedList = _postController.GetQueriedPosts(CourseCode, BookName);
+            var ship = true;
+            var meet = true;
+            if (Shippable is null) ship = false;
+            if (Meetup is null) meet = false;
+            
+            var searchedList = _postController.GetQueriedPosts(CourseCode, BookName, MinPrice, MaxPrice, ship, meet);
             ViewBag.Message = searchedList;
             ViewBag.Title = "Results";
             return View("QueriedPosts");

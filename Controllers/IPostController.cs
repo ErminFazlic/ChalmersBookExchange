@@ -13,6 +13,6 @@ namespace ChalmersBookExchange.Controllers
         Post[] GetAllPostsPriceDesc();
         Post[] GetAllPostsOldest();
         bool CreatePost(Post post);
-        Post[] GetQueriedPosts(string courseCode, string bookName);
+        Post[] GetQueriedPosts(string courseCode, string bookName, int minPrice, int maxPrice, bool shippable, bool meetUp);
     }
 }

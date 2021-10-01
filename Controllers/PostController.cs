@@ -61,7 +61,7 @@ namespace ChalmersBookExchange.Controllers
         public Post[] GetAllPostsAlphabetical()
         {
             //TODO Get all posts and sort them alphabetically
-            return GetQueriedPosts("Math", "Math");
+            return GetAllPosts();
         }
 
         public Post[] GetAllPostsPriceAsc()
@@ -95,11 +95,25 @@ namespace ChalmersBookExchange.Controllers
             return reversedPosts;
         }
 
-        public Post[] GetQueriedPosts(string courseCode, string bookName)
+        public Post[] GetQueriedPosts(string courseCode, string bookName, int minPrice, int maxPrice, bool shippable, bool meetUp)
         {
             bookName ??= "afksnjasndfjasnfjkdankdfj";
             courseCode ??= "fnkasdjnasjkanjkfajk";
-            var posts = _context.Post.Where(x => x.CourseCode.ToUpper().Contains(courseCode.ToUpper())  || x.BookName.ToUpper().Contains(bookName.ToUpper())).ToArray();
+            
+            var MaxPrice = 100000;
+            if (maxPrice > minPrice) MaxPrice = maxPrice;
+
+            var Shippable = true;
+            var MeetUp = true;
+            if (!shippable && meetUp) Shippable = false;
+            if (!meetUp && shippable) MeetUp = true;
+
+            var postsList = _context.Post.Where(x => x.CourseCode.ToUpper().Contains(courseCode.ToUpper()) || x.BookName.ToUpper().Contains(bookName.ToUpper())).ToList();
+            
+            postsList.RemoveAll(x => x.Price < minPrice);
+            postsList.RemoveAll(x => x.Price > MaxPrice);
+            postsList.RemoveAll(x => x.Shippable != Shippable && x.Meetup != MeetUp);
+            var posts = postsList.ToArray();
             posts = ReversePosts(posts);
             return posts;
         }
