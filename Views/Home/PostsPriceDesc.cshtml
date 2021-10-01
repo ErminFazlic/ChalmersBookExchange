@@ -1,4 +1,4 @@
-﻿@page
+@page
 @using ChalmersBookExchange.Views.Home
 @using ChalmersBookExchange.Controllers
 @inject IPostController _postController
@@ -9,28 +9,28 @@
 <label for="sort">Sort by:</label>
 <form action="Sort" method="post">
     <select name="Sort" id="sort" onchange="this.form.submit()">
-        <option value="newest" selected>Newest</option>
+        <option value="newest">Newest</option>
         <option value="oldest">Oldest</option>
         <option value="alphabetical">Alphabetical order</option>
         <option value="priceAsc">Price ascending</option>
-        <option value="priceDesc">Price descending</option>
+        <option value="priceDesc" selected>Price descending</option>
     </select>
 </form>
 
 <div>
     <table class="table table-striped">
         <thead>
-            <tr>
-                <th>Book Name</th>
-                <th>Course Code</th>
-                <th>Price</th>
-                <th>Location</th>
-                <th>Shippable</th>
-                <th>Meetup</th>
-            </tr>
+        <tr>
+            <th>Book Name</th>
+            <th>Course Code</th>
+            <th>Price</th>
+            <th>Location</th>
+            <th>Shippable</th>
+            <th>Meetup</th>
+        </tr>
         </thead>
         <tbody>
-        @foreach (var post in _postController.GetAllPosts())
+        @foreach (var post in _postController.GetAllPostsPriceDesc())
         {
             <tr>
                 <td>@post.BookName</td>
@@ -42,7 +42,7 @@
             </tr>
         }
         </tbody>
-</table>
+    </table>
 
 </div>
 

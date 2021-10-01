@@ -16,18 +16,14 @@ namespace ChalmersBookExchange.Controllers
         private readonly MyDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
-       
-
-
+        
         public PostController(MyDbContext context, UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _userManager = userManager;
             _httpContextAccessor = httpContextAccessor;
         }
-        
-        
-       
+
         public bool CreatePost(Post post)
         {
             var exists =  _context.Post.FirstOrDefault(x => x.ID == post.ID);
@@ -62,6 +58,30 @@ namespace ChalmersBookExchange.Controllers
             return posts;
         }
 
+        public Post[] GetAllPostsAlphabetical()
+        {
+            //TODO Get all posts and sort them alphabetically
+            return GetQueriedPosts("Math", "Math");
+        }
+
+        public Post[] GetAllPostsPriceAsc()
+        {
+            //TODO Get all posts and sort them by price ascending
+            return GetAllPosts();
+        }
+
+        public Post[] GetAllPostsPriceDesc()
+        {
+            //TODO Get all posts and sort them by price descending
+            return GetAllPosts();
+        }
+        
+        public Post[] GetAllPostsOldest()
+        {
+            var posts = _context.Post.ToArray();
+            return posts;
+        }
+
         private Post[] ReversePosts(Post[] posts)
         {
             Post[] reversedPosts = new Post[posts.Length];
@@ -77,7 +97,9 @@ namespace ChalmersBookExchange.Controllers
 
         public Post[] GetQueriedPosts(string courseCode, string bookName)
         {
-            Post[] posts = _context.Post.Where(x => x.CourseCode.ToUpper().Contains(courseCode.ToUpper())  || x.BookName.ToUpper().Contains(bookName.ToUpper())).ToArray();
+            bookName ??= "afksnjasndfjasnfjkdankdfj";
+            courseCode ??= "fnkasdjnasjkanjkfajk";
+            var posts = _context.Post.Where(x => x.CourseCode.ToUpper().Contains(courseCode.ToUpper())  || x.BookName.ToUpper().Contains(bookName.ToUpper())).ToArray();
             posts = ReversePosts(posts);
             return posts;
         }
