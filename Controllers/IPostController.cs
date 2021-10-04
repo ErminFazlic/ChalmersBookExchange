@@ -8,7 +8,11 @@ namespace ChalmersBookExchange.Controllers
     {
         Task<bool> CreatePostAsync(Post post);
         Post[] GetAllPosts();
+        Post[] GetAllPostsAlphabetical();
+        Post[] GetAllPostsPriceAsc();
+        Post[] GetAllPostsPriceDesc();
+        Post[] GetAllPostsOldest();
         bool CreatePost(Post post);
-        Post[] GetQueriedPosts(string courseCode, string bookName);
+        Post[] GetQueriedPosts(string courseCode, string bookName, int minPrice, int maxPrice, bool shippable, bool meetUp);
     }
 }

@@ -43,8 +43,7 @@ namespace ChalmersBookExchange.Controllers
         public IActionResult Posts()
         {
             ViewBag.Title = "Browse Posts";
-            var model = new CreatePostModel(_postController);
-            return View(model);
+            return View("Posts");
         }
         public IActionResult Search()
         {
@@ -69,11 +68,11 @@ namespace ChalmersBookExchange.Controllers
             var ship = true;
             var meet = true;
             byte[] images = null; 
-            if (Shippable is null)
+            if (Shippable is null && Meetup is not null)
             {
                 ship = false;
             }
-            if (Meetup is null)
+            if (Meetup is null && Shippable is not null)
             {
                 meet = false;
             }
@@ -96,12 +95,44 @@ namespace ChalmersBookExchange.Controllers
 
         }
         [HttpPost]
-        public ActionResult SearchPost(String BookName, String CourseCode)
+        public ActionResult SearchPost(string BookName, string CourseCode, int MinPrice, int MaxPrice, string Shippable, string Meetup)
         {
-            var searchedList = _postController.GetQueriedPosts(CourseCode, BookName);
+            var ship = true;
+            var meet = true;
+            if (Shippable is null) ship = false;
+            if (Meetup is null) meet = false;
+            
+            var searchedList = _postController.GetQueriedPosts(CourseCode, BookName, MinPrice, MaxPrice, ship, meet);
             ViewBag.Message = searchedList;
             ViewBag.Title = "Results";
             return View("QueriedPosts");
+        }
+        
+        [HttpPost]
+        public ActionResult Sort(string Sort)
+        {
+            switch (Sort)
+            {
+                case "alphabetical":
+                    ViewBag.Title = "Browse Posts";
+                    return View("PostsAlphabetical"); 
+                case "newest":
+                    ViewBag.Title = "Browse Posts";
+                    return View("Posts");
+                case "priceAsc":
+                    ViewBag.Title = "Browse Posts";
+                    return View("PostsPriceAsc");
+                case "priceDesc":
+                    ViewBag.Title = "Browse Posts";
+                    return View("PostsPriceDesc");
+                case "oldest":
+                    ViewBag.Title = "Browse Posts";
+                    return View("PostsOldest");
+            }
+
+            ViewBag.Title = "Default";
+            ViewBag.Message = _postController.GetAllPosts();
+            return View("Posts");
         }
     }
 }

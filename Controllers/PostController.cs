@@ -16,18 +16,14 @@ namespace ChalmersBookExchange.Controllers
         private readonly MyDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
-       
-
-
+        
         public PostController(MyDbContext context, UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _userManager = userManager;
             _httpContextAccessor = httpContextAccessor;
         }
-        
-        
-       
+
         public bool CreatePost(Post post)
         {
             var exists =  _context.Post.FirstOrDefault(x => x.ID == post.ID);
@@ -62,6 +58,36 @@ namespace ChalmersBookExchange.Controllers
             return posts;
         }
 
+        public Post[] GetAllPostsAlphabetical()
+        {
+            
+            var posts = _context.Post.OrderBy(p => p.BookName).ToArray();
+            
+            return posts;
+        }
+
+        public Post[] GetAllPostsPriceAsc()
+        {
+            
+            var posts = _context.Post.OrderBy(p => p.Price).ToArray();
+            
+            return posts;
+        }
+
+        public Post[] GetAllPostsPriceDesc()
+        {
+            
+            var posts = _context.Post.OrderByDescending(p => p.Price).ToArray();
+            
+            return posts;
+        } 
+        
+        public Post[] GetAllPostsOldest()
+        {
+            var posts = _context.Post.ToArray();
+            return posts;
+        }
+
         private Post[] ReversePosts(Post[] posts)
         {
             Post[] reversedPosts = new Post[posts.Length];
@@ -75,9 +101,25 @@ namespace ChalmersBookExchange.Controllers
             return reversedPosts;
         }
 
-        public Post[] GetQueriedPosts(string courseCode, string bookName)
+        public Post[] GetQueriedPosts(string courseCode, string bookName, int minPrice, int maxPrice, bool shippable, bool meetUp)
         {
-            Post[] posts = _context.Post.Where(x => x.CourseCode == courseCode || x.BookName == bookName).ToArray();
+            bookName ??= "afksnjasndfjasnfjkdankdfj";
+            courseCode ??= "fnkasdjnasjkanjkfajk";
+            
+            var MaxPrice = 100000;
+            if (maxPrice > minPrice) MaxPrice = maxPrice;
+
+            var Shippable = true;
+            var MeetUp = true;
+            if (!shippable && meetUp) Shippable = false;
+            if (!meetUp && shippable) MeetUp = true;
+
+            var postsList = _context.Post.Where(x => x.CourseCode.ToUpper().Contains(courseCode.ToUpper()) || x.BookName.ToUpper().Contains(bookName.ToUpper())).ToList();
+            
+            postsList.RemoveAll(x => x.Price < minPrice);
+            postsList.RemoveAll(x => x.Price > MaxPrice);
+            postsList.RemoveAll(x => x.Shippable != Shippable && x.Meetup != MeetUp);
+            var posts = postsList.ToArray();
             posts = ReversePosts(posts);
             return posts;
         }
