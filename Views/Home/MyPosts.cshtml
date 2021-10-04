@@ -1,0 +1,59 @@
+﻿@page
+@using ChalmersBookExchange.Views.Home
+@using ChalmersBookExchange.Controllers
+@using ChalmersBookExchange.Domain
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Identity
+
+@inject IUserController _userController
+@inject IPostController _postController
+
+@inject UserManager<IdentityUser> UserManager
+
+<h1>@ViewBag.Title</h1>
+<div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Book Name</th>
+            <th>Course Code</th>
+            <th>Price</th>
+            <th>Location</th>
+            <th>Shippable</th>
+            <th>Meetup</th>
+        </tr>
+        </thead>
+        <tbody>
+         
+
+             @foreach (var post in _postController.GetMyPosts(_userController.RetrieveID(@User.Identity.Name)))
+             {
+                 <tr>
+                     <td>@post.BookName</td>
+                     <td>@post.CourseCode</td>
+                     <td>@post.Price:-</td>
+                     <td>@post.Location</td>
+                     <td>@post.Shippable</td>
+                     <td>@post.Meetup</td>
+                     <form action="Delete" method="post">
+                         <td colspan="2"><input type="submit" value="Delete"/></td> </form>
+                     <form action="EditPost" method="post">
+                         <td colspan="2"><input type="submit" value="Edit"/></td> </form>
+
+                 </tr>
+             
+             }  
+      
+        </tbody>
+</table>
+
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+     
+}
+
+
+   

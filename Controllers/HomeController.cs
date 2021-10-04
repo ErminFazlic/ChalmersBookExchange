@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using ChalmersBookExchange.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ChalmersBookExchange.Models;
 using ChalmersBookExchange.Views.Home;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.V4.Pages.Internal.Account;
 
 namespace ChalmersBookExchange.Controllers
 {
@@ -52,6 +56,19 @@ namespace ChalmersBookExchange.Controllers
             //var model = new CreatePostModel(_postController);
             return View();
         }
+        public IActionResult MyPosts()
+        {
+            ViewBag.Title = "MyPosts";
+            //UserPosts();
+            //var model = new MyPostModel(_postController, _userManager, _httpContextAccessor, _userController);
+            return View("MyPosts");
+        }
+        /*public IActionResult EditPost()
+        {
+            ViewBag.Title = "Edit post";
+            //var model = new CreatePostModel(_postController);
+            return View();
+        }*/
         public IActionResult Favorites()
         {
             return View();
@@ -103,5 +120,12 @@ namespace ChalmersBookExchange.Controllers
             ViewBag.Title = "Results";
             return View("QueriedPosts");
         }
+        [HttpPost]
+        public ActionResult Delete(Guid id)
+        {
+            var deletepost = _postController.DeleteConfirmed(id);
+            return View("MyPosts");
+        }
+        
     }
 }
