@@ -116,6 +116,13 @@ namespace ChalmersBookExchange.Controllers
             return View("OnePost");
 
         }
+        /// <summary>
+        /// this is the search action method which activates by search button.
+        /// it calls GetQueriedPosts method to find the desired posts 
+        /// </summary>
+        /// <param name="BookName"></param>
+        /// <param name="CourseCode"></param>
+        /// <returns>the generated view with the desired posts</returns>
         [HttpPost]
         public ActionResult SearchPost(String BookName, String CourseCode)
         {
@@ -125,7 +132,12 @@ namespace ChalmersBookExchange.Controllers
             return View("QueriedPosts");
         }
         
-        
+        /// <summary>
+        /// This method check if the given id is not null in purpose to be able to
+        /// find it in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>the generated view with the specific post</returns>
         public async Task<IActionResult>Delete (Guid? id)
         {
             if (id == null)
@@ -136,7 +148,12 @@ namespace ChalmersBookExchange.Controllers
             
             return View(post);
         }
-
+        /// <summary>
+        /// This is an action delete method which delete a post given it's id.
+        /// It find the post given it's id, removes it and finally saves the changes
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Redirection to My post page</returns>
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             var post = await _context.Post.FindAsync(id);
@@ -145,7 +162,13 @@ namespace ChalmersBookExchange.Controllers
 
             return RedirectToAction("MyPosts");
         }
-
+        /// <summary>
+        /// It's an Http Get request.
+        /// This method check if the given id is not null in purpose to be able to
+        /// find it in the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>the generated view with the specific post</returns>
         [HttpGet]
         public async Task <IActionResult>EditPost(Guid id)
         {
@@ -153,6 +176,14 @@ namespace ChalmersBookExchange.Controllers
            
             return View(post);
         }
+        /// <summary>
+        /// This is an edit action method, which saves the old post's values in a post variable
+        /// to be able to replace the old values with the new ones. 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="post"></param>
+        /// <returns>NotFound if the given id and the post id doesn't match,
+        /// otherwise a redirection to my posts page with the edited post</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditPost(Guid id, Post post)

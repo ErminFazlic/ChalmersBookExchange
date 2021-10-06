@@ -41,5 +41,6 @@ namespace ChalmersBookExchange.Controllers
             var user = _context.User.FirstOrDefault(x => x.Email == email);
             return user.ID;
         }
+        
     }
 }

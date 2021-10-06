@@ -939,3 +939,6 @@ C:\Users\Cynthia\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views
 C:\Users\Cynthia\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\QueriedPosts.cshtml.g.cs
 C:\Users\Dator\RiderProjects\ChalmersBookExchange\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\QueriedPosts.cshtml.g.cs
 C:\Users\Dator\RiderProjects\ChalmersBookExchange\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\Search.cshtml.g.cs
+C:\Users\Cynthia\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\Delete.cshtml.g.cs
+C:\Users\Cynthia\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\EditPost.cshtml.g.cs
+C:\Users\Cynthia\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\MyPosts.cshtml.g.cs

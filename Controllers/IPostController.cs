@@ -12,10 +12,6 @@ namespace ChalmersBookExchange.Controllers
         bool CreatePost(Post post);
         Post[] GetQueriedPosts(string courseCode, string bookName);
         Post[] GetMyPosts(Guid userid);
-       // Task<IActionResult> Delete(Guid postid);
-        Post[] DeleteConfirmed(Guid postid);
-
-        //Post Delete(Guid id);
-        //Post[] EditPost(Guid id);
+       
     }
 }

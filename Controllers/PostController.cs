@@ -87,7 +87,12 @@ namespace ChalmersBookExchange.Controllers
             }
             return reversedPosts;
         }
-
+        /// <summary>
+        /// This method finds all posts which have the same course code or book name as it's applied
+        /// </summary>
+        /// <param name="courseCode"></param>
+        /// <param name="bookName"></param>
+        /// <returns>an array with requested posts</returns>
         public Post[] GetQueriedPosts(string courseCode, string bookName)
         {
             Post[] posts = _context.Post.Where(x => x.CourseCode == courseCode || x.BookName == bookName).ToArray();
@@ -95,7 +100,11 @@ namespace ChalmersBookExchange.Controllers
             return posts;
         }
 
-
+        /// <summary>
+        /// This method finds all posts created by a user with a specific id 
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <returns>posts created by a user with a specific id</returns>
         public Post[] GetMyPosts(Guid userid)
         {
             var posts = _context.Post.Where(x => x.Poster == userid).ToArray();
