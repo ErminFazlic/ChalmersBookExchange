@@ -125,6 +125,7 @@ namespace ChalmersBookExchange.Controllers
             return View("QueriedPosts");
         }
         
+        
         public async Task<IActionResult>Delete (Guid? id)
         {
             if (id == null)
