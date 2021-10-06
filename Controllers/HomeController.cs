@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using ChalmersBookExchange.Data;
 using ChalmersBookExchange.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -14,6 +15,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.V4.Pages.Internal.Account;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChalmersBookExchange.Controllers
 {
@@ -24,14 +26,16 @@ namespace ChalmersBookExchange.Controllers
         private readonly IUserController _userController;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly MyDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger, IPostController postController, UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor, IUserController userController)
+        public HomeController(ILogger<HomeController> logger, IPostController postController, UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor, IUserController userController, MyDbContext context)
         {
             _logger = logger;
             _postController = postController;
             _userManager = userManager;
             _httpContextAccessor = httpContextAccessor;
             _userController = userController;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -120,11 +124,64 @@ namespace ChalmersBookExchange.Controllers
             ViewBag.Title = "Results";
             return View("QueriedPosts");
         }
-        [HttpPost]
-        public ActionResult Delete(Guid id)
+        
+        public async Task<IActionResult>Delete (Guid? id)
         {
-            var deletepost = _postController.DeleteConfirmed(id);
-            return View("MyPosts");
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var post = await _context.Post.FindAsync(id);
+            
+            return View(post);
+        }
+
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        {
+            var post = await _context.Post.FindAsync(id);
+            _context.Post.Remove(post);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("MyPosts");
+        }
+
+        [HttpGet]
+        public async Task <IActionResult>EditPost(Guid id)
+        {
+            var post = await _context.Post.FindAsync(id);
+           
+            return View(post);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditPost(Guid id, Post post)
+        {
+            
+            if (id != post.ID)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                var oldPost = await _context.Post
+                    .FirstOrDefaultAsync(p => p.ID == id);
+
+                oldPost.BookName = post.BookName;
+                oldPost.CourseCode = post.CourseCode;
+                oldPost.Price = post.Price;
+                oldPost.Location = post.Location;
+                oldPost.Shippable = post.Shippable;
+                oldPost.Meetup = post.Meetup;
+               //  _context.Post.Update(oldPost);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("MyPosts");
+            }
+            else
+            {
+                return NotFound();
+            }
+            
         }
         
     }
