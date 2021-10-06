@@ -1,4 +1,5 @@
 ﻿@page
+@model ChalmersBookExchange.Domain.Post
 @using ChalmersBookExchange.Views.Home
 @using ChalmersBookExchange.Controllers
 @using ChalmersBookExchange.Domain
@@ -35,10 +36,8 @@
                      <td>@post.Location</td>
                      <td>@post.Shippable</td>
                      <td>@post.Meetup</td>
-                     <form action="Delete" method="post">
-                         <td colspan="2"><input type="submit" value="Delete"/></td> </form>
-                     <form action="EditPost" method="post">
-                         <td colspan="2"><input type="submit" value="Edit"/></td> </form>
+                     <td> <a asp-action="Delete" asp-route-id="@post.ID">Delete</a></td>
+                      <td> <a asp-action="EditPost" asp-route-id="@post.ID">Edit</a></td>
 
                  </tr>
              
