@@ -138,6 +138,28 @@ namespace ChalmersBookExchange.Controllers
 
             return false;
         }
+        
+        public void AddFavoriteInDb(Post post, User user)
+        {
+            var thisPost = _context.Post.FirstOrDefault(x => x.ID == post.ID);
+            var thisUser = _context.User.SingleOrDefault(u => u.Email == user.Email);
+            
+            if (thisPost is not null && user is not null)
+            {
+                var newGuidArr = new Guid?[thisUser.Favorites.Length + 1];
+                
+                for (int i = 0; i < thisUser.Favorites.Length; i++)
+                {
+                    newGuidArr[i] = thisUser.Favorites[i];
+                }
+                
+                newGuidArr[Index.End] = thisPost.ID;
+                thisUser.Favorites = newGuidArr;
+                _context.SaveChanges();
+                
+            }
+            
+        }
 
     }
 }

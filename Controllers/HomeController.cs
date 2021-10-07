@@ -215,6 +215,12 @@ namespace ChalmersBookExchange.Controllers
             
         }
         
+        public IActionResult AddFavorite(Post post, User user)
+        {
+            _postController.AddFavoriteInDb(post, user);
+
+            return RedirectToAction("Posts");
+        }
         
         
     }

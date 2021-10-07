@@ -15,5 +15,7 @@ namespace ChalmersBookExchange.Controllers
 
         Post[] GetFavorites(string email);
 
+        public void AddFavoriteInDb(Post post, User user);
+
     }
 }
