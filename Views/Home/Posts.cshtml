@@ -5,6 +5,22 @@
 @inject IPostController _postController
 
 <h1>@ViewBag.Title</h1>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .btn {
+      background-color: DodgerBlue;
+      border: none;
+      color: white;
+      padding: 12px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      color: red;
+      }
+</style>
+
 <div>
     <table class="table table-striped">
         <thead>
@@ -28,6 +44,7 @@
                 <td>@post.Location</td>
                 <td>@post.Shippable</td>
                 <td>@post.Meetup</td>
+                <td><a asp-action="Index" asp-route-id="@post.ID"><button class="btn"><i class="fa fa-heart"></i> </button></a></td>
             </tr>
         }
         </tbody>
