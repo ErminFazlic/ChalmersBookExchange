@@ -37,6 +37,12 @@ namespace ChalmersBookExchange.Controllers
 
             return false;
         }
+
+        public Post GetPostById(Guid id)
+        {
+           return _context.Post.FirstOrDefault(x => x.ID == id);
+        }
+
         public async Task<bool> CreatePostAsync(Post post)
         {
             var exists = await _context.Post.FirstOrDefaultAsync(x => x.ID == post.ID);

@@ -1,19 +1,52 @@
 @page
-
+@using ChalmersBookExchange.Views.Home
+@using ChalmersBookExchange.Controllers
+@inject IPostController _postController
 
 @{
-    Layout = null;
+    var post = _postController.GetPostById(new Guid(ViewBag.Message));
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<div>
+<body onload="hide()">
+    <div>
+        <div>
+            <h1>@post.BookName </h1>
+            <h2>@post.CourseCode</h2>
+        </div>
+        
+        <div>
+            <p>Image placeholder</p>
+        </div>
+        <div>
+            <h2>@post.Price.ToString() kr</h2>
+            <p>Description: <br>@post.Description</p>
+        </div>
     
-</div>
+        <div id="isShippable">
+            <p>This book is shippable</p>
+            <script>
+                hide();
+            </script>
+            
+        </div>
+    </div>
+    <div>
+        <p>This book is sold by @post.Poster.ToString()</p>
+        <button type="button">Message</button>
+    </div>
 </body>
-</html>
+
+<script>
+        function hide(){
+            var x = document.getElementById("isShippable")
+            if ((Object)@post.Shippable === true)
+                {
+                    x.style.display = "none"
+                }
+            
+        }
+    
+    </script>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

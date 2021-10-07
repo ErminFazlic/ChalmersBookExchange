@@ -45,6 +45,13 @@ namespace ChalmersBookExchange.Controllers
             ViewBag.Title = "Browse Posts";
             return View("Posts");
         }
+        
+        public IActionResult Post()
+        {
+            ViewBag.Title = "Browse Posts";
+            ViewBag.Message = "fb885ffd-5696-45a7-a913-9b35c1c670cf";
+            return View("Post");
+        }
         public IActionResult Search()
         {
             ViewBag.Title = "Search";
