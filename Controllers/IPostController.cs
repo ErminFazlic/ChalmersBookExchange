@@ -12,6 +12,8 @@ namespace ChalmersBookExchange.Controllers
         bool CreatePost(Post post);
         Post[] GetQueriedPosts(string courseCode, string bookName);
         Post[] GetMyPosts(Guid userid);
-       
+
+        Post[] GetFavorites(string email);
+
     }
 }

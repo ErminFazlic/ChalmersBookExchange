@@ -113,7 +113,32 @@ namespace ChalmersBookExchange.Controllers
             posts = ReversePosts(posts);
             return posts;
         }
-        
+
+        public Post[] GetFavorites(string email)
+        {
+            var user = _context.User.SingleOrDefault(u => u.Email == email);
+            var posts = _context.Post.Where(p => user.Favorites.Contains(p.ID)).ToArray();
+
+            return posts;
+        }
+
+        public bool AddFavorites(Post post, User user)
+        {
+            var thisPost = _context.Post.FirstOrDefault(x => x.ID == post.ID);
+            var thisUser = _context.User.SingleOrDefault(u => u.Email == user.Email);
+            
+            if (thisPost is not null)
+            {
+               
+                    thisUser.Favorites[(thisUser.Favorites.Length) - 1] = thisPost.ID;
+                
+                var created = _context.SaveChanges();
+                return created > 0;
+            }
+
+            return false;
+        }
+
     }
 }
 

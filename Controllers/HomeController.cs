@@ -67,7 +67,9 @@ namespace ChalmersBookExchange.Controllers
         
         public IActionResult Favorites()
         {
-            return View();
+            ViewBag.Title = "Favorites";
+
+          return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -212,6 +214,8 @@ namespace ChalmersBookExchange.Controllers
             }
             
         }
+        
+        
         
     }
 }
