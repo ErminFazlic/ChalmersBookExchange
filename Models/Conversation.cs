@@ -8,6 +8,6 @@ namespace ChalmersBookExchange.Domain
         public Guid Sender { get; set; }
         public Guid Receiver { get; set; }
         public string Message { get; set; }
-        public DateTime TimeStamp { get; set; }
+        public string TimeStamp { get; set; }
     }
 }

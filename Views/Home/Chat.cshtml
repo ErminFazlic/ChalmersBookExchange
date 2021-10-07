@@ -1,0 +1,69 @@
+@page
+@using ChalmersBookExchange.Views.Home
+@using ChalmersBookExchange.Controllers
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
+@inject IPostController _postController
+@inject IUserController _userController
+
+@{
+    var contactList = _userController.GetContacts(@User.Identity.Name);
+}
+
+<div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-md-3">
+              <aside class="main visible-md visible-lg">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="panel panel-default users__bar">
+                      <div class="panel-heading users__heading">
+                        Contacts (@contactList.Length)
+                      </div>
+                      <div class="__no__chat__">
+                        <p>Select a contact to chat with</p>
+                      </div>
+                      <div class="panel-body users__body">
+                        <ul id="contacts" class="list-group">
+
+                          @foreach( var user in contactList ) {
+                            <a class="user__item contact-@user.ID" href="#" data-contact-id="@user.ID" data-contact-name="@user.Name">
+                              <li>
+                                <span>@user.Name</span>
+                                <div class="status-bar"></div>
+                              </li>
+                            </a>
+                          }
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+              </aside>
+                </div>
+<div class="col-xs-12 col-md-9 chat__body">
+              <div class="row">
+                <div class="col-xs-12">
+                  <ul class="list-group chat__main">
+
+                  </ul>
+                </div>
+                <div class="chat__type__body">
+                  <div class="chat__type">
+                    <textarea id="msg_box" placeholder="Type your message"></textarea>
+                    <button class="btn btn-primary" id="sendMessage">Send</button>
+                  </div>
+                </div>
+                <div class="chat__typing">
+                  <span id="typerDisplay"></span>
+                </div>
+              </div>
+            </div>
+            </div>
+        </div>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

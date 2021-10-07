@@ -81,5 +81,13 @@ namespace ChalmersBookExchange.Controllers
             _context.User.Update(otherUser);
             _context.SaveChanges();
         }
+
+        public User[] GetContacts(string email)
+        {
+            var user = _context.User.SingleOrDefault(x => x.Email == email);
+            if (user.Contacts is null) return new User[0];
+            var contactList = user.Contacts.Select(contactId => _context.User.FirstOrDefault(x => x.ID == contactId)).ToArray();
+            return contactList;
+        }
     }
 }
