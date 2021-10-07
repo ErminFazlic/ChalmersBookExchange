@@ -90,6 +90,7 @@ namespace ChalmersBookExchange.Controllers
         /// <summary>
         /// This method finds all posts which have the same course code or book name as it's applied
         /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
         /// <param name="courseCode"></param>
         /// <param name="bookName"></param>
         /// <returns>an array with requested posts</returns>
@@ -103,6 +104,7 @@ namespace ChalmersBookExchange.Controllers
         /// <summary>
         /// This method finds all posts created by a user with a specific id 
         /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
         /// <param name="userid"></param>
         /// <returns>posts created by a user with a specific id</returns>
         public Post[] GetMyPosts(Guid userid)

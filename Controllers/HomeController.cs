@@ -57,22 +57,14 @@ namespace ChalmersBookExchange.Controllers
         public IActionResult Search()
         {
             ViewBag.Title = "Search";
-            //var model = new CreatePostModel(_postController);
             return View();
         }
         public IActionResult MyPosts()
         {
             ViewBag.Title = "MyPosts";
-            //UserPosts();
-            //var model = new MyPostModel(_postController, _userManager, _httpContextAccessor, _userController);
             return View("MyPosts");
         }
-        /*public IActionResult EditPost()
-        {
-            ViewBag.Title = "Edit post";
-            //var model = new CreatePostModel(_postController);
-            return View();
-        }*/
+        
         public IActionResult Favorites()
         {
             return View();
@@ -120,6 +112,7 @@ namespace ChalmersBookExchange.Controllers
         /// this is the search action method which activates by search button.
         /// it calls GetQueriedPosts method to find the desired posts 
         /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
         /// <param name="BookName"></param>
         /// <param name="CourseCode"></param>
         /// <returns>the generated view with the desired posts</returns>
@@ -136,6 +129,7 @@ namespace ChalmersBookExchange.Controllers
         /// This method check if the given id is not null in purpose to be able to
         /// find it in the database
         /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
         /// <param name="id"></param>
         /// <returns>the generated view with the specific post</returns>
         public async Task<IActionResult>Delete (Guid? id)
@@ -152,6 +146,7 @@ namespace ChalmersBookExchange.Controllers
         /// This is an action delete method which delete a post given it's id.
         /// It find the post given it's id, removes it and finally saves the changes
         /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
         /// <param name="id"></param>
         /// <returns>Redirection to My post page</returns>
         public async Task<IActionResult> DeleteConfirmed(Guid id)
@@ -167,6 +162,7 @@ namespace ChalmersBookExchange.Controllers
         /// This method check if the given id is not null in purpose to be able to
         /// find it in the database
         /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
         /// <param name="id"></param>
         /// <returns>the generated view with the specific post</returns>
         [HttpGet]
@@ -180,6 +176,7 @@ namespace ChalmersBookExchange.Controllers
         /// This is an edit action method, which saves the old post's values in a post variable
         /// to be able to replace the old values with the new ones. 
         /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
         /// <param name="id"></param>
         /// <param name="post"></param>
         /// <returns>NotFound if the given id and the post id doesn't match,
