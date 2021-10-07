@@ -49,8 +49,14 @@ namespace ChalmersBookExchange.Controllers
         public IActionResult Post()
         {
             ViewBag.Title = "Browse Posts";
-            ViewBag.Message = "fb885ffd-5696-45a7-a913-9b35c1c670cf";
+            ViewBag.Message = "0485ac66-a33a-4441-bb43-f288ee329951";
             return View("Post");
+        }
+
+        public IActionResult MyPosts()
+        {
+            ViewBag.Title = "My posts";
+            return View("MyPosts");
         }
         public IActionResult Search()
         {
@@ -139,6 +145,25 @@ namespace ChalmersBookExchange.Controllers
 
             ViewBag.Title = "Default";
             ViewBag.Message = _postController.GetAllPosts();
+            return View("Posts");
+        }
+
+        [HttpPost]
+        public IActionResult deleteButton(Guid id)
+        {
+            return View("Index");
+        }
+        
+        [HttpPost]
+        public JsonResult DeletePost(Guid id)
+        {
+            _postController.DeletePost(id);
+            return Json("ok");
+        }
+        
+        public IActionResult AddContact(Guid contactToAdd, Guid loggedInUser)
+        {
+            _userController.CreateContact(loggedInUser, contactToAdd);
             return View("Posts");
         }
     }
