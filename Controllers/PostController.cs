@@ -57,6 +57,13 @@ namespace ChalmersBookExchange.Controllers
             return false;
         }
 
+        public Post[] GetAllPostsByUserId(Guid id)
+        {
+            var posts = _context.Post.Where(x => x.Poster == id).ToArray();
+            posts = ReversePosts(posts);
+            return posts;
+        }
+
         public Post[] GetAllPosts()
         {
             var posts = _context.Post.ToArray();
@@ -129,6 +136,11 @@ namespace ChalmersBookExchange.Controllers
             posts = ReversePosts(posts);
             return posts;
         }
-
+        
+        public void DeletePost(Guid id)
+        {
+            var post = _context.Post.SingleOrDefault(x => x.ID == id);
+            _context.Post.Remove(post);
+        }
     }
 }
