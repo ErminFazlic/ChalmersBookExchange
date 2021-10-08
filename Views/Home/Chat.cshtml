@@ -10,6 +10,8 @@
     var contactList = _userController.GetContacts(@User.Identity.Name);
 }
 
+
+
 <div class="container">
           <div class="row">
             <div class="col-xs-12 col-md-3">
@@ -61,7 +63,78 @@
             </div>
             </div>
         </div>
+<script>
+    let currentContact = null; // Holds current contact
+    let newMessageTpl = 
+    `<div>
+        <div id="msg-{{id}}" class="row __chat__par__">
+          <div class="__chat__">
+            <p>{{body}}</p>
+            <p class="delivery-status">Delivered</p>
+          </div>
+        </div>
+     </div>`;
+    
+    // select contact to chat with
+    $(".users__heading").onclick( function(e) {
+        alert("hhh");
+        e.preventDefault();
 
+        currentContact = {
+            id: $(this).data('contact-id'),
+            name: $(this).data('contact-name'),
+        };
+
+        $('#contacts').find('li').removeClass('active');
+
+        $('#contacts .contact-' + currentContact.id).find('li').addClass('active');
+        getChat(currentContact.id);
+    });
+
+    // get chat data        
+    function getChat( contact_id ) {
+        $.get("/contact/conversations/" + contact_id )
+         .done( function(resp) {         
+            var chat_data = resp.data || [];
+            loadChat( chat_data );         
+         });
+    }
+
+    //load chat data into view
+    function loadChat( chat_data ) {
+
+        chat_data.forEach( function(data) {
+            displayMessage(data);
+        });
+
+        $('.chat__body').show();
+        $('.__no__chat__').hide();
+    }
+
+    function displayMessage( message_obj ) {
+        const msg_id = message_obj.id;
+        const msg_body = message_obj.message;
+
+        let template = $(newMessageTpl).html();
+
+        template = template.replace("{{id}}", msg_id);
+        template = template.replace("{{body}}", msg_body);
+
+        template = $(template);
+
+        if ( message_obj.sender_id == @_userController.RetrieveID(@User.Identity.Name)) {
+            template.find('.__chat__').addClass('from__chat');
+        } else {
+            template.find('.__chat__').addClass('receive__chat');
+        }
+
+        if ( message_obj.status == 1 ) {
+            template.find('.delivery-status').show();
+        }
+
+        $('.chat__main').append(template);
+    }
+</script>
 
 
 @section Scripts {
