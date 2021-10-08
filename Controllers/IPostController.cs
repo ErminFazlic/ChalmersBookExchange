@@ -15,5 +15,7 @@ namespace ChalmersBookExchange.Controllers
         bool CreatePost(Post post);
         Post GetPostById(Guid id);
         Post[] GetQueriedPosts(string courseCode, string bookName, int minPrice, int maxPrice, bool shippable, bool meetUp);
+        Post[] GetAllPostsByUserId(Guid id);
+        void DeletePost(Guid id);
     }
 }
