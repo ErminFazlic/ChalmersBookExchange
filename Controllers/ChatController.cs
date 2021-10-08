@@ -46,8 +46,7 @@ namespace ChalmersBookExchange.Controllers
             
 
             return new JsonResult(
-                new { status = "success", data = conversations }, Json
-                JsonRequestBehavior.AllowGet
+                new { status = "success", data = conversations }
             );
         }
     }
