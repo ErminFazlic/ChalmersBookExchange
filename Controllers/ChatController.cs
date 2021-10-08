@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using ChalmersBookExchange.Data;
 using ChalmersBookExchange.Domain;
@@ -13,7 +15,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace ChalmersBookExchange.Controllers
 {
-    public class ChatController
+    public class ChatController : IChatController
     {
         private readonly MyDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
@@ -28,26 +30,52 @@ namespace ChalmersBookExchange.Controllers
             _userController = userController;
         }
 
-        public JsonResult ConversationWithContact(Guid contact, Guid loggedInUser)
+        [HttpGet]
+        public JsonResult ConversationWithContact([FromRoute]string contact)
         {
-
+            var userName = _userManager.GetUserName(_httpContextAccessor.HttpContext.User);
+            var loggedInUser = _userController.RetrieveID(userName);
             var currentUser = _context.User.SingleOrDefault(x => x.ID == loggedInUser);
-
-            var conversations = new List<Conversation>();
+            var contactID = new Guid(contact);
+            
 
             
-            conversations = _context.Conversation.
+            var conversations = _context.Conversation.
                     Where(c => (c.Receiver == currentUser.ID
-                                && c.Sender == contact) || 
-                               (c.Receiver == contact 
-                                && c.Sender == currentUser.ID))
-                    .OrderBy(c => DateTime.Parse(c.TimeStamp))
-                    .ToList();
-            
+                                && c.Sender == contactID) || 
+                               (c.Receiver == contactID 
+                                && c.Sender == currentUser.ID)).ToList();
+            conversations.OrderByDescending(x => DateTime.Parse(x.Timestamp)).ToList();
 
             return new JsonResult(
                 new { status = "success", data = conversations }
             );
+        }
+        [HttpGet]
+        public JsonResult SendMessage([FromRoute]string message, [FromRoute]string contact) 
+        {
+            var userName = _userManager.GetUserName(_httpContextAccessor.HttpContext.User);
+            var loggedInUser = _userController.RetrieveID(userName);
+            var currentUser = _context.User.SingleOrDefault(x => x.ID == loggedInUser);
+
+            Conversation convo = new Conversation
+            {
+                Sender = currentUser.ID,
+                Message = message,
+                Receiver = new Guid(contact),
+                ID = System.Guid.NewGuid(),
+                Timestamp = DateTime.Now.ToString()
+            };
+
+            
+                _context.Conversation.Add(convo);
+                _context.SaveChanges();
+            
+
+            
+                return new JsonResult(
+                    new { status = "success" }
+                );
         }
     }
 }

@@ -56,7 +56,7 @@ namespace ChalmersBookExchange.Controllers
         public IActionResult MyPosts()
         {
             ViewBag.Title = "My posts";
-            return View("MyPosts");
+            return View("Post");
         }
 
         public IActionResult Chat()

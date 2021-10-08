@@ -35,6 +35,7 @@ namespace ChalmersBookExchange
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<IUserController, UserController>();
             services.AddTransient<IPostController, PostController>();
+            services.AddTransient<IChatController, ChatController>();
             
             services.AddTransient<MyDbContext>();
 
@@ -69,6 +70,12 @@ namespace ChalmersBookExchange
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "GetContactConversations",
+                    pattern: "{controller=Chat}/{action=ConversationWithContact}/{contact}");
+                endpoints.MapControllerRoute(
+                    name: "SendMessage",
+                    pattern: "{controller=Chat}/{action=SendMessage}/{message}/{contact}");
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
