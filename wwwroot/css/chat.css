@@ -8472,6 +8472,10 @@ button.close {
     margin-bottom: 0px;
 }
 
+.scroll{
+    Overflow-x:scroll;
+}
+
 .chat__body .chat__type__body .chat__type {
     background-color: #e6e6e6;
     width: 100%;
@@ -8513,3 +8517,4 @@ button.close {
     font-size: 12px;
     color: #999999;
 }
+
