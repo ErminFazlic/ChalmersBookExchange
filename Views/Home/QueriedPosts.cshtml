@@ -62,6 +62,7 @@
                 <td>@post.Location</td>
                 <td>@post.Shippable</td>
                 <td>@post.Meetup</td>
+                <td> <a asp-action="GoToPost" asp-route-id="@post.ID">Go to Post</a></td>
             </tr>
         }
         </tbody>

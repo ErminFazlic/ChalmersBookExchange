@@ -109,7 +109,8 @@ namespace ChalmersBookExchange.Controllers
                 Meetup = meet
             };
             var created = _postController.CreatePost(post);
-            return View("OnePost");
+            ViewBag.Message = post.ID.ToString();
+            return View("Post");
 
         }
         [HttpPost]
@@ -169,7 +170,14 @@ namespace ChalmersBookExchange.Controllers
         public IActionResult AddContact(Guid contactToAdd, Guid loggedInUser)
         {
             _userController.CreateContact(loggedInUser, contactToAdd);
-            return View("Posts");
+            return View("Chat");
+        }
+
+        public IActionResult GoToPost(Guid? id)
+        {
+            if (id is null) return View("Posts");
+            ViewBag.Message = id.ToString();
+            return View("Post");
         }
     }
 }

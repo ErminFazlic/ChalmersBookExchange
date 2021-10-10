@@ -37,7 +37,7 @@
 }
 
 <div>
-    <p>This book is sold by @post.Poster.ToString()</p>
+    <p>This book is sold by @_userController.RetrieveNameById(@post.Poster)</p>
     <a asp-action="AddContact" asp-route-contactToAdd="@post.Poster" asp-route-loggedInUser="@_userController.RetrieveID(@User.Identity.Name)">Message the seller</a>
 </div>
 

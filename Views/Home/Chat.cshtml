@@ -50,10 +50,10 @@ let currentContact = null; // Holds current contact
             }});
         
     }
-    //fix this method
+    //remove the current chat bubbles
     function removeChat(){
-        $('.chat__main').find('.__chat__').remove('from__chat');
-        $('.chat__main').find('.__chat__').remove('receive__chat');
+        $('.from__chat').remove();
+        $('.receive__chat').remove();
     } 
 
     //load chat data into view
@@ -90,6 +90,7 @@ let currentContact = null; // Holds current contact
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (response) {
+                $('#msg_box').val('');
                  removeChat();
                  getChat(currentContact.id);
             }});    
@@ -115,7 +116,6 @@ let currentContact = null; // Holds current contact
                                         <a class="user__item contact-@user.ID" href="#" data-contact-id="@user.ID" data-contact-name="@user.Name" onclick="selectContact(this)">
                                             <li>
                                                 <span>@user.Name</span>
-                                                <div class="status-bar"></div>
                                             </li>
                                         </a>
                                     }
@@ -126,9 +126,9 @@ let currentContact = null; // Holds current contact
                 </div>
             </aside>
         </div>
-        <div class="col-xs-12 col-md-9 chat__body scroll">
+        <div class="col-xs-12 col-md-9 chat__body ">
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-xs-12 chat__body scroll">
                     <ul class="list-group chat__main">
 
                     </ul>
@@ -138,9 +138,6 @@ let currentContact = null; // Holds current contact
                         <textarea id="msg_box" placeholder="Type your message"></textarea>
                         <button class="btn btn-primary" onclick = "sendMessage(this)" id="sendMessage">Send</button>
                     </div>
-                </div>
-                <div class="chat__typing">
-                    <span id="typerDisplay"></span>
                 </div>
             </div>
         </div>
