@@ -79,6 +79,18 @@ namespace ChalmersBookExchange.Controllers
         {
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
+        
+        /// <summary>
+        /// This method gets called when submitting the create post form and uses the values to create a post then uses post controller to save it to DB.
+        /// </summary>
+        /// <param name="BookName"></param>
+        /// <param name="CourseCode"></param>
+        /// <param name="Description"></param>
+        /// <param name="Price"></param>
+        /// <param name="Location"></param>
+        /// <param name="Shippable"></param>
+        /// <param name="Meetup"></param>
+        /// <returns>Redirection to the page for the post</returns>
         [HttpPost]
         public ActionResult CreatePostForm(string BookName, string CourseCode, string Description, int Price, string Location, string Shippable, string Meetup)
         {
@@ -126,7 +138,11 @@ namespace ChalmersBookExchange.Controllers
             ViewBag.Title = "Results";
             return View("QueriedPosts");
         }
-        
+        /// <summary>
+        /// This gets called when selecting a sorting method from the dropdown menu while browsing posts. Switch based on the value from dropdown
+        /// </summary>
+        /// <param name="Sort"></param>
+        /// <returns>Sorts the posts and reloads the page</returns>
         [HttpPost]
         public ActionResult Sort(string Sort)
         {
@@ -153,26 +169,22 @@ namespace ChalmersBookExchange.Controllers
             ViewBag.Message = _postController.GetAllPosts();
             return View("Posts");
         }
-
-        [HttpPost]
-        public IActionResult deleteButton(Guid id)
-        {
-            return View("Index");
-        }
-        
-        [HttpPost]
-        public JsonResult DeletePost(Guid id)
-        {
-            _postController.DeletePost(id);
-            return Json("ok");
-        }
-        
+        /// <summary>
+        /// This gets called when pressing the button to contact seller on a post page. Adds the two to eachother's contacts
+        /// </summary>
+        /// <param name="contactToAdd"></param>
+        /// <param name="loggedInUser"></param>
+        /// <returns>Redirection to chat page</returns>
         public IActionResult AddContact(Guid contactToAdd, Guid loggedInUser)
         {
             _userController.CreateContact(loggedInUser, contactToAdd);
             return View("Chat");
         }
-
+        /// <summary>
+        /// This gets called when pressing to go to a post when browsing posts.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Redirection to the selected post's page</returns>
         public IActionResult GoToPost(Guid? id)
         {
             if (id is null) return View("Posts");

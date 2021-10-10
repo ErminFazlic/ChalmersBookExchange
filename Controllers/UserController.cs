@@ -17,7 +17,11 @@ namespace ChalmersBookExchange.Controllers
             _context = context;
         }
 
-
+        /// <summary>
+        /// This gets called when registering a user.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns>True if successful, otherwise false</returns>
         public async Task<bool> CreateUserAsync(User user)
         {
             var exists = _context.User.FirstOrDefault(x => x.Email == user.Email);
@@ -30,19 +34,41 @@ namespace ChalmersBookExchange.Controllers
 
             return false;
         }
-
+        /// <summary>
+        /// Retrieves the name based on the email for a user
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>The users name</returns>
         public string RetrieveName(string email)
         {
             var user = _context.User.FirstOrDefault(x => x.Email == email);
             return user.Name;
         }
-
+        /// <summary>
+        /// Retrieves the name based on the id for a user
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>The users name</returns>
+        public string RetrieveNameById(Guid id)
+        {
+            var user = _context.User.FirstOrDefault(x => x.ID == id);
+            return user.Name;
+        }
+        /// <summary>
+        /// Retrieves the id based on the email for a user
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>The users id</returns>
         public Guid RetrieveID(string email)
         {
             var user = _context.User.FirstOrDefault(x => x.Email == email);
             return user.ID;
         }
-
+        /// <summary>
+        /// Adds two users to eachother's contact lists
+        /// </summary>
+        /// <param name="loggedInUser"></param>
+        /// <param name="userToAdd"></param>
         public void CreateContact(Guid loggedInUser, Guid userToAdd)
         {
             var userLoggedIn = _context.User.FirstOrDefault(x => x.ID == loggedInUser);
@@ -81,7 +107,11 @@ namespace ChalmersBookExchange.Controllers
             _context.User.Update(otherUser);
             _context.SaveChanges();
         }
-
+        /// <summary>
+        /// Retrieves a list of users from a user's contact list based on the user's email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>Array of Users</returns>
         public User[] GetContacts(string email)
         {
             var user = _context.User.SingleOrDefault(x => x.Email == email);

@@ -23,7 +23,11 @@ namespace ChalmersBookExchange.Controllers
             _userManager = userManager;
             _httpContextAccessor = httpContextAccessor;
         }
-
+        /// <summary>
+        /// Creates a post in the DB from a Post instance
+        /// </summary>
+        /// <param name="post"></param>
+        /// <returns>bool based on success</returns>
         public bool CreatePost(Post post)
         {
             var exists =  _context.Post.FirstOrDefault(x => x.ID == post.ID);
@@ -37,12 +41,20 @@ namespace ChalmersBookExchange.Controllers
 
             return false;
         }
-
+        /// <summary>
+        /// Retrieves the post based on the id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>The post</returns>
         public Post GetPostById(Guid id)
         {
            return _context.Post.FirstOrDefault(x => x.ID == id);
         }
-
+        /// <summary>
+        /// Creates a post asynchronously in the DB from a Post instance
+        /// </summary>
+        /// <param name="post"></param>
+        /// <returns>bool based on success</returns>
         public async Task<bool> CreatePostAsync(Post post)
         {
             var exists = await _context.Post.FirstOrDefaultAsync(x => x.ID == post.ID);
@@ -56,21 +68,20 @@ namespace ChalmersBookExchange.Controllers
 
             return false;
         }
-
-        public Post[] GetAllPostsByUserId(Guid id)
-        {
-            var posts = _context.Post.Where(x => x.Poster == id).ToArray();
-            posts = ReversePosts(posts);
-            return posts;
-        }
-
+        /// <summary>
+        /// Retrieves all posts from the DB
+        /// </summary>
+        /// <returns>Array of Posts</returns>
         public Post[] GetAllPosts()
         {
             var posts = _context.Post.ToArray();
             posts = ReversePosts(posts);
             return posts;
         }
-
+        /// <summary>
+        /// Retrieves all posts from the DB in alphabetical order
+        /// </summary>
+        /// <returns>Array of Posts</returns>
         public Post[] GetAllPostsAlphabetical()
         {
             
@@ -78,7 +89,10 @@ namespace ChalmersBookExchange.Controllers
             
             return posts;
         }
-
+        /// <summary>
+        /// Retrieves all posts from the DB in order by price ascending
+        /// </summary>
+        /// <returns>Array of Posts</returns>
         public Post[] GetAllPostsPriceAsc()
         {
             
@@ -86,7 +100,10 @@ namespace ChalmersBookExchange.Controllers
             
             return posts;
         }
-
+        /// <summary>
+        /// Retrieves all posts from the DB in order by price descending
+        /// </summary>
+        /// <returns>Array of Posts</returns>
         public Post[] GetAllPostsPriceDesc()
         {
             
@@ -94,13 +111,20 @@ namespace ChalmersBookExchange.Controllers
             
             return posts;
         } 
-        
+        /// <summary>
+        /// Retrieves all posts from the DB in order of oldest first
+        /// </summary>
+        /// <returns>Array of Posts</returns>       
         public Post[] GetAllPostsOldest()
         {
             var posts = _context.Post.ToArray();
             return posts;
         }
-
+        /// <summary>
+        /// Helper method that reverses an array of posts
+        /// </summary>
+        /// <param name="posts"></param>
+        /// <returns>Array of Posts</returns>
         private Post[] ReversePosts(Post[] posts)
         {
             Post[] reversedPosts = new Post[posts.Length];
@@ -137,10 +161,5 @@ namespace ChalmersBookExchange.Controllers
             return posts;
         }
         
-        public void DeletePost(Guid id)
-        {
-            var post = _context.Post.SingleOrDefault(x => x.ID == id);
-            _context.Post.Remove(post);
-        }
     }
 }
