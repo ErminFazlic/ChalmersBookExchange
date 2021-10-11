@@ -216,19 +216,38 @@ namespace ChalmersBookExchange.Controllers
             }
             
         }
-        
+        /// <summary>
+        /// In this method we add favorite posts to the database
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="id"></param>
+        /// <param name="email"></param>
+        /// <returns> redirect to the posts view</returns> 
         public IActionResult AddFavorite(Guid id, string email)
         {
             _postController.AddFavoriteToDb(id, email);
           
              return RedirectToAction("Posts");
         }
-
+        /// <summary>
+        /// This method remove the favorite post from the database
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="id"></param>
+        /// <param name="email"></param>
+        /// <returns> redirect to the posts view</returns>
         public ActionResult RemoveFavorite(Guid id, string email)
         {
             _postController.RemoveFavoriteFromDb(id, email);
             return RedirectToAction("Posts");
         }
+        /// <summary>
+        /// this method remove favorite posts from favorite page
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="id"></param>
+        /// <param name="email"></param>
+        /// <returns> Redirect to the favorites view</returns>
         public ActionResult RemoveFavoriteFromFavorite(Guid id, string email)
         {
             _postController.RemoveFavoriteFromDb(id, email);

@@ -88,6 +88,7 @@ namespace ChalmersBookExchange.Controllers
             }
             return reversedPosts;
         }
+        
         /// <summary>
         /// This method finds all posts which have the same course code or book name as it's applied
         /// </summary>
@@ -114,7 +115,13 @@ namespace ChalmersBookExchange.Controllers
             posts = ReversePosts(posts);
             return posts;
         }
-
+        
+        /// <summary>
+        /// This method finds the favorite posts belong to specific user given the user's email
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="email"></param>
+        /// <returns> post array contains the favorite posts</returns>
         public Post[] GetFavorites(string email)
         {
             var user = _context.User.SingleOrDefault(u => u.Email == email);
@@ -122,7 +129,15 @@ namespace ChalmersBookExchange.Controllers
 
             return posts;
         }
-
+        
+        /// <summary>
+        /// This method checks if the post (given its ID and the user it belongs to)
+        /// is a favorite post or not
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="id"></param>
+        /// <param name="email"></param>
+        /// <returns> True if the post is favorite otherwise false</returns>
         public bool IsAFavorite(Guid id, string email)
         {
             var thisPost = _context.Post.FirstOrDefault(p => p.ID == id);
@@ -145,8 +160,14 @@ namespace ChalmersBookExchange.Controllers
                 }
             return false;
         }
-
-
+        
+        /// <summary>
+        /// This method add the favorite post to the database
+        /// Checks for duplicate and if the post belongs to this user
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="id"></param>
+        /// <param name="email"></param>
         public void AddFavoriteToDb(Guid id, string email)
         {
             var thisPost = _context.Post.FirstOrDefault(p => p.ID == id);
@@ -161,7 +182,7 @@ namespace ChalmersBookExchange.Controllers
                     thisUser.Favorites = newArr;
                     _context.SaveChanges();
             }
-            else if(!thisPost.Poster.Equals(thisUser.ID))        // Can't add you own post to favorite
+            else if(!thisPost.Poster.Equals(thisUser.ID))        // Can't add your own post to favorite
             {
                 var guidlist = new ArrayList(thisUser.Favorites);
                 if (!guidlist.Contains(thisPost.ID))              // Don't add duplicates
@@ -177,7 +198,14 @@ namespace ChalmersBookExchange.Controllers
                 _context.SaveChanges();
             }
         }
-
+        
+        /// <summary>
+        /// This method remove the favorite post from the database
+        /// It checks that the post and the user is not null
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="id"></param>
+        /// <param name="email"></param>
         public void RemoveFavoriteFromDb(Guid id, string email)
         {
             var thisPost = _context.Post.FirstOrDefault(p => p.ID == id);
