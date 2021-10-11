@@ -8892,29 +8892,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sven9\\.nuget\\packages\\": {}
+    "C:\\Users\\arian\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Program\\JetBrains\\JetBrains Rider 2021.2.1\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj",
+      "projectUniqueName": "C:\\Users\\arian\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj",
       "projectName": "ChalmersBookExchange",
-      "projectPath": "E:\\Program\\JetBrains\\JetBrains Rider 2021.2.1\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj",
-      "packagesPath": "C:\\Users\\sven9\\.nuget\\packages\\",
-      "outputPath": "E:\\Program\\JetBrains\\JetBrains Rider 2021.2.1\\RiderProjects\\ChalmersBookExchange\\obj\\",
+      "projectPath": "C:\\Users\\arian\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj",
+      "packagesPath": "C:\\Users\\arian\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\arian\\RiderProjects\\ChalmersBookExchange\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\sven9\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\arian\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nuget.org/": {},
-        "https://nugetpackages.codeplex.com/": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net5.0": {

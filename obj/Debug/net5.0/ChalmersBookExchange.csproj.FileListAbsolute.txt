@@ -1180,3 +1180,11 @@ E:\Program\JetBrains\JetBrains Rider 2021.2.1\RiderProjects\ChalmersBookExchange
 E:\Program\JetBrains\JetBrains Rider 2021.2.1\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\PostsOldest.cshtml.g.cs
 E:\Program\JetBrains\JetBrains Rider 2021.2.1\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\PostsPriceAsc.cshtml.g.cs
 E:\Program\JetBrains\JetBrains Rider 2021.2.1\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\PostsPriceDesc.cshtml.g.cs
+C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\Chat.cshtml.g.cs
+C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\Post.cshtml.g.cs
+C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\PostsAlphabetical.cshtml.g.cs
+C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\PostsOldest.cshtml.g.cs
+C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\PostsPriceAsc.cshtml.g.cs
+C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\PostsPriceDesc.cshtml.g.cs
+C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\QueriedPosts.cshtml.g.cs
+C:\Users\arian\RiderProjects\ChalmersBookExchange\obj\Debug\net5.0\Razor\Views\Home\Search.cshtml.g.cs

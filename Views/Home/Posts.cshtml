@@ -20,14 +20,14 @@
 <div>
     <table class="table table-striped">
         <thead>
-            <tr>
-                <th>Book Name</th>
-                <th>Course Code</th>
-                <th>Price</th>
-                <th>Location</th>
-                <th>Shippable</th>
-                <th>Meetup</th>
-            </tr>
+        <tr>
+            <th>Book Name</th>
+            <th>Course Code</th>
+            <th>Price</th>
+            <th>Location</th>
+            <th>Shippable</th>
+            <th>Meetup</th>
+        </tr>
         </thead>
         <tbody>
         @foreach (var post in _postController.GetAllPosts())
@@ -39,12 +39,18 @@
                 <td>@post.Location</td>
                 <td>@post.Shippable</td>
                 <td>@post.Meetup</td>
+                <td> <a asp-action="GoToPost" asp-route-id="@post.ID">Go to Post</a></td>
             </tr>
         }
         </tbody>
-</table>
+    </table>
 
 </div>
+<script>
+function GoToPost(ctl){
+    alert($(ctl).val());    
+}
+</script>
 
 
 @section Scripts {
