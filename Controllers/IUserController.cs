@@ -11,5 +11,6 @@ namespace ChalmersBookExchange.Controllers
         Guid RetrieveID(string email);
         void CreateContact(Guid loggedInUser, Guid userToAdd);
         User[] GetContacts(string email);
+        string RetrieveNameById(Guid id);
     }
 }
