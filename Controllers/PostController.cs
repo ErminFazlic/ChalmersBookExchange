@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.ComponentModel.Design;
 using System.Linq;
 using System.Net;
@@ -122,45 +123,78 @@ namespace ChalmersBookExchange.Controllers
             return posts;
         }
 
-        public bool AddFavorites(Post post, User user)
+        public bool IsAFavorite(Guid id, string email)
         {
-            var thisPost = _context.Post.FirstOrDefault(x => x.ID == post.ID);
-            var thisUser = _context.User.SingleOrDefault(u => u.Email == user.Email);
-            
-            if (thisPost is not null)
-            {
-               
-                    thisUser.Favorites[(thisUser.Favorites.Length) - 1] = thisPost.ID;
-                
-                var created = _context.SaveChanges();
-                return created > 0;
-            }
-
+            var thisPost = _context.Post.FirstOrDefault(p => p.ID == id);
+            var thisUser = _context.User.SingleOrDefault(u => u.Email == email);
+            if (thisPost is not null || thisUser is not null)
+                if (thisUser?.Favorites == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    foreach (var favorite in thisUser.Favorites)
+                    {
+                        if (favorite.Equals(thisPost?.ID))
+                        {
+                                return true;
+                        }
+                        
+                    }
+                }
             return false;
         }
-        
-        public void AddFavoriteInDb(Post post, User user)
+
+
+        public void AddFavoriteToDb(Guid id, string email)
         {
-            var thisPost = _context.Post.FirstOrDefault(x => x.ID == post.ID);
-            var thisUser = _context.User.SingleOrDefault(u => u.Email == user.Email);
+            var thisPost = _context.Post.FirstOrDefault(p => p.ID == id);
+            var thisUser = _context.User.SingleOrDefault(u => u.Email == email);
             
-            if (thisPost is not null && user is not null)
+            if (thisPost is null || thisUser is null) return;
+            
+            if (thisUser.Favorites == null && !thisPost.Poster.Equals(thisUser.ID))
             {
-                var newGuidArr = new Guid?[thisUser.Favorites.Length + 1];
-                
-                for (int i = 0; i < thisUser.Favorites.Length; i++)
-                {
-                    newGuidArr[i] = thisUser.Favorites[i];
-                }
-                
-                newGuidArr[Index.End] = thisPost.ID;
-                thisUser.Favorites = newGuidArr;
-                _context.SaveChanges();
-                
+                    var newArr = new Guid?[1];
+                    newArr[0] = thisPost.ID;
+                    thisUser.Favorites = newArr;
+                    _context.SaveChanges();
             }
-            
+            else if(!thisPost.Poster.Equals(thisUser.ID))        // Can't add you own post to favorite
+            {
+                var guidlist = new ArrayList(thisUser.Favorites);
+                if (!guidlist.Contains(thisPost.ID))              // Don't add duplicates
+                {
+                    guidlist.Add(thisPost.ID);
+                    var newGuidArray = new Guid?[guidlist.Count];
+                    for (int i = 0; i < newGuidArray.Length; i++)
+                    {
+                        newGuidArray[i] = (Guid?) guidlist[i];
+                    }
+                    thisUser.Favorites = newGuidArray;
+                }
+                _context.SaveChanges();
+            }
         }
 
+        public void RemoveFavoriteFromDb(Guid id, string email)
+        {
+            var thisPost = _context.Post.FirstOrDefault(p => p.ID == id);
+            var thisUser = _context.User.SingleOrDefault(u => u.Email == email);
+            
+            if (thisPost is null || thisUser is null) return;
+            
+            var guidlist = new ArrayList(thisUser.Favorites);
+                guidlist.Remove(thisPost.ID);
+                var newGuidArray = new Guid?[guidlist.Count];
+                for (int i = 0; i < newGuidArray.Length; i++)
+                {
+                    newGuidArray[i] = (Guid?) guidlist[i];
+                }
+                thisUser.Favorites = newGuidArray;
+                _context.SaveChanges();
+        }
     }
 }
 

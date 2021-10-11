@@ -35,11 +35,18 @@ namespace ChalmersBookExchange.Controllers
             var user = _context.User.FirstOrDefault(x => x.Email == email);
             return user.Name;
         }
+        
+        public string RetrieveName(Guid id)
+        {
+            var user = _context.User.FirstOrDefault(x => x.ID == id);
+            return user.Name;
+        }
 
         public Guid RetrieveID(string email)
         {
             var user = _context.User.FirstOrDefault(x => x.Email == email);
             return user.ID;
+            
         }
         
     }

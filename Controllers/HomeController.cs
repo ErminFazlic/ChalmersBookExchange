@@ -51,6 +51,7 @@ namespace ChalmersBookExchange.Controllers
         public IActionResult Posts()
         {
             ViewBag.Title = "Browse Posts";
+            ViewBag.ThisUser = User.Identity.Name;
             var model = new CreatePostModel(_postController);
             return View(model);
         }
@@ -68,6 +69,7 @@ namespace ChalmersBookExchange.Controllers
         public IActionResult Favorites()
         {
             ViewBag.Title = "Favorites";
+            ViewBag.ThisUser = User.Identity.Name;
 
           return View();
         }
@@ -215,11 +217,22 @@ namespace ChalmersBookExchange.Controllers
             
         }
         
-        public IActionResult AddFavorite(Post post, User user)
+        public IActionResult AddFavorite(Guid id, string email)
         {
-            _postController.AddFavoriteInDb(post, user);
+            _postController.AddFavoriteToDb(id, email);
+          
+             return RedirectToAction("Posts");
+        }
 
+        public ActionResult RemoveFavorite(Guid id, string email)
+        {
+            _postController.RemoveFavoriteFromDb(id, email);
             return RedirectToAction("Posts");
+        }
+        public ActionResult RemoveFavoriteFromFavorite(Guid id, string email)
+        {
+            _postController.RemoveFavoriteFromDb(id, email);
+            return RedirectToAction("Favorites");
         }
         
         

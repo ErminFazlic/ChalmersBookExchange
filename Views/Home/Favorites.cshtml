@@ -1,6 +1,84 @@
-﻿@{
-    ViewData["Title"] = "Favorites";
-}
-<h1>@ViewData["Title"]</h1>
+﻿@page
+@model ChalmersBookExchange.Domain.Post
+@using ChalmersBookExchange.Views.Home
+@using ChalmersBookExchange.Controllers
+@using ChalmersBookExchange.Domain
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Identity
 
-<p>Your favorites will be displayed here.</p>
+@inject IUserController _userController
+@inject IPostController _postController
+
+@inject UserManager<IdentityUser> UserManager
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+
+#removeFavoriteButton{
+text-align: center !important;
+background-color: #d95430;
+border-radius: 100px;
+-webkit-box-shadow: 0 3px 0 0 #b13f21;
+-moz-box-shadow: 0 3px 0 0 #b13f21;
+box-shadow: 0 3px 0 0 #b13f21;
+position: relative;
+-webkit-transition: .1s background-color linear;
+-moz-transition: .1s background-color linear;
+-o-transition: .1s background-color linear;
+transition: .1s background-color linear;
+padding: 10px 10px;
+color: #fff;
+border-color: #d34b27;
+font-size: 10px;
+text-transform: uppercase;
+letter-spacing: 1px;
+font-weight: 600;
+font-style: normal;
+width: 150px;
+}
+
+</style>
+<h1>@ViewBag.Title</h1>
+<div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Book Name</th>
+            <th>Course Code</th>
+            <th>Price</th>
+            <th>Location</th>
+            <th>Shippable</th>
+            <th>Meetup</th>
+            <th>Poster</th>
+        </tr>
+        </thead>
+        <tbody>
+         
+
+        @foreach (var post in _postController.GetFavorites((@User.Identity.Name)))
+        {
+            <tr>
+                <td>@post.BookName</td>
+                <td>@post.CourseCode</td>
+                <td>@post.Price:-</td>
+                <td>@post.Location</td>
+                <td>@post.Shippable</td>
+                <td>@post.Meetup</td>
+                <td>@_userController.RetrieveName(post.Poster)</td>
+                <td><a asp-action="RemoveFavoriteFromFavorite" asp-route-id ="@post.ID" asp-route-email="@ViewBag.ThisUser" > <button class="btn" id="removeFavoriteButton"> Remove Favorite</button></a></td>
+
+            </tr>
+             
+        }  
+      
+        </tbody>
+    </table>
+
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+     
+}
