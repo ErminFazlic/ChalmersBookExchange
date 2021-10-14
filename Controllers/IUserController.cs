@@ -9,5 +9,8 @@ namespace ChalmersBookExchange.Controllers
         Task<bool> CreateUserAsync(User user);
         string RetrieveName(string email);
         Guid RetrieveID(string email);
+        void CreateContact(Guid loggedInUser, Guid userToAdd);
+        User[] GetContacts(string email);
+        string RetrieveNameById(Guid id);
     }
 }

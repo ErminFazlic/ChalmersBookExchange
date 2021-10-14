@@ -1,0 +1,11 @@
+Individual reflection for week 1
+
+On the first week we just assembled the team and starting learning about each other. In addition to that, 
+we discussed the level of knowledge and experience among the group members regarding doing a whole project.  
+Furthermore, we discussed what kind of project we want to work on and brainstormed.
+ 
+My learning objective will be to deepen my knowledge regarding the agile concept and learn how to work in 
+this manner so I can contribute in an efficient manner. In order to do this, I need to learn more about the 
+Scrum framework because we will be using it in this course. It will be a great opportunity for me to learn 
+about this because all the big tech companies seem to use this framework to build something of value and 
+solve complex problems as a team. Therefore, it seems like a good idea to have this in my arsenal as a developer. 
