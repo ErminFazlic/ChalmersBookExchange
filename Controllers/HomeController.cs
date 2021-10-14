@@ -14,6 +14,7 @@ using ChalmersBookExchange.Views.Home;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChalmersBookExchange.Controllers
 {
@@ -51,19 +52,6 @@ namespace ChalmersBookExchange.Controllers
             ViewBag.Title = "Browse Posts";
             return View("Posts");
         }
-        
-        public IActionResult Post()
-        {
-            ViewBag.Title = "Browse Posts";
-            ViewBag.Message = "0485ac66-a33a-4441-bb43-f288ee329951";
-            return View("Post");
-        }
-
-        public IActionResult MyPosts()
-        {
-            ViewBag.Title = "My posts";
-            return View("Post");
-        }
 
         public IActionResult Chat()
         {
@@ -72,7 +60,6 @@ namespace ChalmersBookExchange.Controllers
         public IActionResult Search()
         {
             ViewBag.Title = "Search";
-            //var model = new CreatePostModel(_postController);
             return View();
         }
         public IActionResult MyPosts()
@@ -226,8 +213,7 @@ namespace ChalmersBookExchange.Controllers
             }
             if (ModelState.IsValid)
             {
-                var oldPost = await _context.Post
-                    .FirstOrDefaultAsync(p => p.ID == id);
+                var oldPost = await _context.Post.FirstOrDefaultAsync(p => p.ID == id);
 
                 oldPost.BookName = post.BookName;
                 oldPost.CourseCode = post.CourseCode;
