@@ -10,17 +10,17 @@ namespace ChalmersBookExchange.Controllers
         Task<bool> CreatePostAsync(Post post);
         Post[] GetAllPosts();
         bool CreatePost(Post post);
-        Post[] GetQueriedPosts(string courseCode, string bookName);
         Post[] GetMyPosts(Guid userid);
-
         Post[] GetFavorites(string email);
-
-        public void AddFavoriteToDb(Guid id, string email);
+        void AddFavoriteToDb(Guid id, string email);
+        void RemoveFavoriteFromDb(Guid id, string email);
+        bool IsAFavorite(Guid id, string email);
+        Post[] GetQueriedPosts(string courseCode, string bookName, int minPrice, int maxPrice, bool shippable, bool meetUp);
+        Post GetPostById(Guid id);
+        Post[] GetAllPostsAlphabetical();
+        Post[] GetAllPostsPriceAsc();
+        Post[] GetAllPostsPriceDesc();
+        Post[] GetAllPostsOldest();
         
-        public void RemoveFavoriteFromDb(Guid id, string email);
-
-        public bool IsAFavorite(Guid id, string email);
-
-
     }
 }

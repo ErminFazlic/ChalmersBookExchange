@@ -1,0 +1,53 @@
+@page
+@using ChalmersBookExchange.Views.Home
+@using ChalmersBookExchange.Controllers
+@inject IPostController _postController
+
+
+<h1>@ViewBag.Title</h1>
+
+<label for="sort">Sort by:</label>
+<form action="Sort" method="post">
+    <select name="Sort" id="sort" onchange="this.form.submit()">
+        <option value="newest">Newest</option>
+        <option value="oldest" selected>Oldest</option>
+        <option value="alphabetical">Alphabetical order</option>
+        <option value="priceAsc">Price ascending</option>
+        <option value="priceDesc">Price descending</option>
+    </select>
+</form>
+
+<div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Book Name</th>
+            <th>Course Code</th>
+            <th>Price</th>
+            <th>Location</th>
+            <th>Shippable</th>
+            <th>Meetup</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var post in _postController.GetAllPostsOldest())
+        {
+            <tr>
+                <td>@post.BookName</td>
+                <td>@post.CourseCode</td>
+                <td>@post.Price:-</td>
+                <td>@post.Location</td>
+                <td>@post.Shippable</td>
+                <td>@post.Meetup</td>
+                <td> <a asp-action="GoToPost" asp-route-id="@post.ID">Go to Post</a></td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

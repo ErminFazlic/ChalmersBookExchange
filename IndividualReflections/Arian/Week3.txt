@@ -1,0 +1,18 @@
+Individual reflection for week 3
+
+For this week we worked on our Trello board and wrote some epics and user stories. After we 
+were satisfied with our Trello board, we used the effort poker for the different user stories 
+in order to estimate the level of difficulty on each user story. After that we ranked each 
+user story based on the functionality priority, meaning what user story is the most important 
+for this website being able to be useful with the top ones, like being able to create an 
+account, being the most important and so on.
+
+I got some help from my team members to set up and install the basics for the projects in 
+order to get started with the project. We decided to use Rider as IDE and use PostgreSQL for 
+our database management. 
+
+Our objective for next week will be to setup the page and connect it to the database so we 
+something to work on. 
+
+My focus this week will be to keep learning about C#, ASP.Net as well as learning to use 
+GitHub and learning more about  branches, commit, push and pull requests.  

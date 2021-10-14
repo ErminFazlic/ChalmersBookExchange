@@ -1,0 +1,13 @@
+Individual reflection for week 2
+
+For this week we kept discussing what kind of project we want to do. I suggested to make a website 
+for Chalmers students where they can sell their used books to other Chalmers students. The majority 
+of the group members seemed to like this idea, therefore we chose this and started discussing how the 
+page would look like and what kind of functionality we want this page to have. I used photoshop to make 
+some quick mockups so we can have a visual idea of how we want the end product to look like. We decided 
+as a group that we want to this project in C# and use asp.net as a framework. Our objective as a group will
+be to create a Trello board and fill it with userstories.
+ 
+In order for me to a be a valuable asset to my team I need to learn more about C# and asp.net and this 
+will be my learning objective for the week. My method to reach this goal will be to watch YouTube tutorials, 
+read on online ressources avaliable and try to code a little bit on my own. 

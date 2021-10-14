@@ -1,0 +1,224 @@
+@page
+@using ChalmersBookExchange.Views.Home
+@using ChalmersBookExchange.Controllers
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
+@inject IPostController _postController
+@inject IUserController _userController
+@inject IChatController _chatController
+
+@{
+    var contactList = _userController.GetContacts(@User.Identity.Name);
+}
+<script></script>
+<link rel="stylesheet" href="@Url.Content("~/css/chat.css")">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script src="@Url.Content("~/js/chat.js")"></script>
+<script>
+let currentContact = null; // Holds current contact
+    let newMessageTpl = 
+    `<div>
+        <div id="msg-{{id}}" class="row __chat__par__">
+          <div class="__chat__">
+            <p>{{body}}</p>
+            <p class="delivery-status">Delivered</p>
+          </div>
+        </div>
+     </div>`;
+
+    function selectContact(ctl){
+        currentContact = {
+                    id: $(ctl).data('contact-id'),
+                    name: $(ctl).data('contact-name'),
+                };
+            $('#contacts').find('li').removeClass('active');
+            $(ctl).find('li').addClass('active');
+            $('.__no__chat__').hide();
+            removeChat();
+            getChat(currentContact.id);
+        }
+    // get chat data   , Fix scroll wheel when too many messages     
+    function getChat( contact_id ) {
+        $.ajax({
+            type: "GET",
+            url: "/Chat/ConversationWithContact/" + contact_id.toString(),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                loadChat(response.data );
+            }});
+        
+    }
+    //remove the current chat bubbles
+    function removeChat(){
+        $('.from__chat').remove();
+        $('.receive__chat').remove();
+    } 
+
+    //load chat data into view
+    function loadChat( chat_data ) {
+        chat_data.forEach( function(data) {
+            displayMessage(data);
+        });
+        $('.chat__body').show();   
+    }
+     function displayMessage( message_obj ) {
+            const msg_id = message_obj.ID;
+            const msg_body = message_obj.message;
+    
+            let template = $(newMessageTpl).html();
+    
+            template = template.replace("{{id}}", msg_id);
+            template = template.replace("{{body}}", msg_body);
+    
+            template = $(template);
+    
+            if ( message_obj.sender === currentContact.id) {
+                template.find('.__chat__').addClass('from__chat');
+            } else {
+                template.find('.__chat__').addClass('receive__chat');
+            }
+    
+            $('.chat__main').append(template);
+        }
+     function sendMessage(ctl){
+        
+        $.ajax({
+            type: "GET",
+            url: "/Chat/SendMessage/"+ $("#msg_box").val() + "/" + currentContact.id.toString(),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                $('#msg_box').val('');
+                 removeChat();
+                 getChat(currentContact.id);
+            }});    
+    }
+</script>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-3">
+            <aside class="main visible-md visible-lg">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="panel panel-default users__bar">
+                            <div class="panel-heading users__heading">
+                                Contacts (@contactList.Length)
+                            </div>
+                            <div class="__no__chat__">
+                                <p>Select a contact to chat with</p>
+                            </div>
+                            <div class="panel-body users__body">
+                                <ul id="contacts" class="list-group">
+                                    @foreach( var user in contactList ) {
+                                        <a class="user__item contact-@user.ID" href="#" data-contact-id="@user.ID" data-contact-name="@user.Name" onclick="selectContact(this)">
+                                            <li>
+                                                <span>@user.Name</span>
+                                            </li>
+                                        </a>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+        <div class="col-xs-12 col-md-9 chat__body ">
+            <div class="row">
+                <div class="col-xs-12 chat__body scroll">
+                    <ul class="list-group chat__main">
+
+                    </ul>
+                </div>
+                <div class="chat__type__body">
+                    <div class="chat__type">
+                        <textarea id="msg_box" placeholder="Type your message"></textarea>
+                        <button class="btn btn-primary" onclick = "sendMessage(this)" id="sendMessage">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/js/chat.js")"></script>
+<script>
+    let currentContact = null; // Holds current contact
+    let newMessageTpl = 
+    `<div>
+        <div id="msg-{{id}}" class="row __chat__par__">
+          <div class="__chat__">
+            <p>{{body}}</p>
+            <p class="delivery-status">Delivered</p>
+          </div>
+        </div>
+     </div>`;
+    // select contact to chat with
+    $(".users__item").click( function(e) {
+        alert("hhh");
+        e.preventDefault();
+
+        currentContact = {
+            id: $(this).data('contact-id'),
+            name: $(this).data('contact-name'),
+        };
+
+        $('#contacts').find('li').removeClass('active');
+
+        $('#contacts .contact-' + currentContact.id).find('li').addClass('active');
+        getChat(currentContact.id);
+    });
+
+
+    // get chat data        
+    function getChat( contact_id ) {
+        $.get("/contact/conversations/" + contact_id )
+         .done( function(resp) {         
+            var chat_data = resp.data || [];
+            loadChat( chat_data );         
+         });
+    }
+
+    //load chat data into view
+    function loadChat( chat_data ) {
+
+        chat_data.forEach( function(data) {
+            displayMessage(data);
+        });
+
+        $('.chat__body').show();
+        $('.__no__chat__').hide();
+    }
+
+    function displayMessage( message_obj ) {
+        alert("hejsansvejsan");
+        const msg_id = message_obj.id;
+        const msg_body = message_obj.message;
+
+        let template = $(newMessageTpl).html();
+
+        template = template.replace("{{id}}", msg_id);
+        template = template.replace("{{body}}", msg_body);
+
+        template = $(template);
+
+        if ( message_obj.sender_id == @_userController.RetrieveID(@User.Identity.Name)) {
+            template.find('.__chat__').addClass('from__chat');
+        } else {
+            template.find('.__chat__').addClass('receive__chat');
+        }
+
+        if ( message_obj.status == 1 ) {
+            template.find('.delivery-status').show();
+        }
+
+        $('.chat__main').append(template);
+    }
+</script>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

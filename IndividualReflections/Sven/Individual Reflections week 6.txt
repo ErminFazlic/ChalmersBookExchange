@@ -1,0 +1,37 @@
+Individual Reflections week 6.
+
+At the start of this week's meeting, we briefed about the last weeks progress. In contrast to the other weeks
+we did encounter some problems among the tasks that some of the team members had. Some userstories were not finished
+at the end of the sprint, so we had to come up with some ideas among the team to prevent further similiar 
+problems in our projects. We agreed on a very simple yet quite effective way, which was to have so called
+emergency meetings. Thanks to the already existing and eminent communication in our group, the execution for this
+way of approaching the problem, was easily done. It would help the ease the mind of our team members in further 
+developing our project.
+Another way of dealing with the previously mentioned problem was to change the user story, that was currently in progress, 
+to another one.This would in term help the team to not get stuck with the development and switch focus to another task in order to
+progress in the project. This would of course have to be in line with the current user story, actually could be 
+delayed and not prohibiting further development. Yet again, an emergency meeting would likely intercept possible
+problems that would had to be taken care of first, in order to switch user stories. 
+This could be boiled down to updating and chaing our social contract.
+
+The user stories that I assigned myself up to was the stories that had not yet been completed. With some collective knowledge
+from tutorials that I took previous week, I believed to have some of the tools needed in order to resolve the problems that my 
+other team members had encountered. During the week we manage to finish the edit and delete function together and I shared 
+some of my knowledge from the prevoius tutorials how to solve similar problems. This a effective way inhow to contribute
+noth to my team and my team’s deliveries.
+
+With this completed user stories the team started to comment our code as we saw it as the next necessary step. (This could
+be an updating criteria in our DoD that the code need to be completely and correctly commented.)
+Me and my team planned to further take us on a new user story since we were able to finish the previous task  pretty quickly. 
+The user story was to be able to add favorite post to the user, and planned to work on the code on thursday after the usually
+scheduled meeting on thursdays.
+
+So the situation right now were I want to be is to be able to finish this user story before the end of this week's sprint. 
+To get there is to use the same approach as last time, watching tutorials and test out some ideas in the code. This while 
+simultaneously sharing my current progress, interacting and code together with my team members in order to complete the task at hand.  
+Would an exigency occur, we now have better tools to handle it.
+
+
+
+
+

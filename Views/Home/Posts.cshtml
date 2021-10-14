@@ -1,5 +1,4 @@
-﻿
-
+﻿@page
 @using ChalmersBookExchange.Views.Home
 @using ChalmersBookExchange.Controllers
 
@@ -149,6 +148,18 @@ function popupText() {
 
 
       </script>
+
+<label for="sort">Sort by:</label>
+<form action="Sort" method="post">
+    <select name="Sort" id="sort" onchange="this.form.submit()">
+        <option value="newest" selected>Newest</option>
+        <option value="oldest">Oldest</option>
+        <option value="alphabetical">Alphabetical order</option>
+        <option value="priceAsc">Price ascending</option>
+        <option value="priceDesc">Price descending</option>
+    </select>
+</form>
+
 <div>
     <table class="table table-striped">
         <thead>
@@ -163,7 +174,6 @@ function popupText() {
             </tr>
         </thead>
         <tbody>
-         
         @foreach (var post in _postController.GetAllPosts())
         {
             <tr>
@@ -173,6 +183,7 @@ function popupText() {
                 <td>@post.Location</td>
                 <td>@post.Shippable</td>
                 <td>@post.Meetup</td>
+                <td> <a asp-action="GoToPost" asp-route-id="@post.ID">Go to Post</a></td>
                 <td>@_userController.RetrieveName(post.Poster)</td>
                 <!--<td><a asp-action="AddFavorite" asp-route-id="@post.ID" asp-route-email="@ViewBag.ThisUser"><button class="btn"> <div class="popup" onclick="myFunction()"><i class="fa fa-heart"></i>
                       <span class="popuptext" id="myPopup">Added to favorite!</span>
@@ -209,9 +220,9 @@ function popupText() {
         </tbody>
 </table>
 
-  
-    
 </div>
+
+
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

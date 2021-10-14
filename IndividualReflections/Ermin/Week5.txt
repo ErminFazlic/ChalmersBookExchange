@@ -1,0 +1,16 @@
+For this week we wanted to finish our user stories that we set up for this sprint.
+
+I contributed towards this goal by reaching the individual KPI of 2 hours worked and also
+helping the others when needed if the time was available. I did pair programming this week
+aswell with one of the team members to finish. By doing this we managed to finish the user
+story to be able to sort posts. We however did not complete the team KPI of 2 user stories per
+sprint. Since the other group got stuck on an issue and we did not have enough time to help
+them.
+
+For the next week we want to keep doing user stories. We've decided on finishing the user
+stories the other group did not have time to finish aswell as implementing the chat functionality
+for the next sprint.
+
+For my learning objective next week is to try and learn more about different approaches to 
+solving these kinds of issues that can arise when one part of the team gets stuck. This will
+hopefully make sure we don't get in those situations where a lot of man-hours are wasted. 

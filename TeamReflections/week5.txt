@@ -1,0 +1,91 @@
+THE CURRENT SITUATION (A):
+Last week we intented to be done with the communication functionality and the saving post functionality, however 
+we changed our mind and decided to work on the sorting of the posts functionality and being able to edit and delete
+posts. 
+
+We have completed 1 of the 3 user stories we wanted to be done with. The other 2 user stotries are almost done aswell.
+We not have the posibility to sort posts on diffrent cirteria. We improved the search function aswell. 
+The code which handels the sorting functionality remains to be reviwed. The code that handels the deleting and editing of the 
+posts are still in progress. 
+One thing that we need to improve is code documentation so it is easier to understand how everything works.
+
+
+
+
+B:
+
+At the end of the next week we want to have better code documentation. We also want to get the unfinished 
+user stories for week 4 done. Furthermore we want to get 2 additional user stories done. These will be user story
+"As a student I want to contact other students" and "As a student I want to save my posts". 
+
+A->B:
+
+To reach this goal we will try to finish our user stories under the to-do list on the trello
+board. This includes the user stories: 
+1. As a student I want to be shown recent postings and my favorites on the landing page after logging 
+in so I can easily browse posts
+2. As a student I want to contact other students for planning the purchase to be able to more easily buy the book
+
+
+
+
+Customer Value and scope:
+To succeed in this goal we will focus on teamwork and split up the tasks on the user stories
+explicitly. To do this in a good way, we've split all user stories in to tasks and made effort
+estimations for them through planning poker. This helped us decide how many team members are
+needed for each user story.
+
+Before mergeing any code we have decided that the code will be reviewed and tested by someone
+other than the team members working on that user story.
+
+The KPI we will use to monitor the team members individual progress will be hours worked.
+We will also use a KPI to monitor the team's progress. This is gonna be number of user stories
+done per sprint.
+
+
+Social contract and effort:
+We aim for the individual KPI of two hours worked per sprint per individual. We aim for the team 
+KPI of two user stories done per sprint.
+
+This week was more challenging than last. We were unable to get all the user stories done due bugs and errors in the
+code that we didn't know how to solve. We tried to help each other but to due lack of time we couldn't. 
+
+Our solution to this problem:
+1. Do another user story instead when stuck
+2. Have an emergency appointment 
+
+During the supervision session with Pontus we discussed that maybe our KPI is not sufficient. He meant that
+maybe someone can get a user story done in 1 hour but another person in the group needs 4 hours to 
+get the same user story done. He suggested that we should update our KPI to take this into consideration. 
+However, when we discussed this in the group we are satisfied with our KPI regarding the minimum of 2 hours per
+person and we trust each other that everyone follow that rule. We always work toghether as a group so we can hold 
+each other accountable to put in the minimum effort required. 
+
+
+
+Design decisions and product structure:
+We've chosen to do this project in C# with the framework ASP.NET Core. We chose this as we 
+felt it's a good framework to easily start working with where a lot of the tedious ground-work
+is done. This allows us to earlier start working on the functionality for the end-users and
+thus providing more value for the time spent.
+
+We've also decided on a SQL database, this is because a lot of the data is relational, for 
+example a user has favorite posts. 
+
+Furthermore, we've decided on the MVC design pattern to effectively separate concerns in the
+application. This will help us work in a module way. In addition to this we've created use
+cases and interaction diagrams to further streamline the work experience.
+
+
+
+Application of Scrum:
+The following roles we've used are: Scrum master, Product owner, a meeting organizer.
+These roles allowed us to have someone take charge in the meetings and sprint reviews and
+making sure that we move forward in those (Scrum master). The product owner (PO) role allows us
+to deliver something of value each sprint. We have no external PO so we have on of the team
+members act as one. The sprint review with the PO resulted in a re-prioritasion of the user
+stories as well as some additional ones.
+
+For our IDE we used Jetbrains Rider for all group members, Github for version control and 
+Trello for a scrum board. To learn these tools we consult eachother first. If there is still
+something that can't be done after that, we turn to online resources.  

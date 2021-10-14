@@ -51,9 +51,12 @@ namespace ChalmersBookExchange.Controllers
         public IActionResult Posts()
         {
             ViewBag.Title = "Browse Posts";
-            ViewBag.ThisUser = User.Identity.Name;
-            var model = new CreatePostModel(_postController);
-            return View(model);
+            return View("Posts");
+        }
+
+        public IActionResult Chat()
+        {
+            return View("Chat");
         }
         public IActionResult Search()
         {
@@ -79,6 +82,18 @@ namespace ChalmersBookExchange.Controllers
         {
             return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
         }
+        
+        /// <summary>
+        /// This method gets called when submitting the create post form and uses the values to create a post then uses post controller to save it to DB.
+        /// </summary>
+        /// <param name="BookName"></param>
+        /// <param name="CourseCode"></param>
+        /// <param name="Description"></param>
+        /// <param name="Price"></param>
+        /// <param name="Location"></param>
+        /// <param name="Shippable"></param>
+        /// <param name="Meetup"></param>
+        /// <returns>Redirection to the page for the post</returns>
         [HttpPost]
         public ActionResult CreatePostForm(string BookName, string CourseCode, string Description, int Price, string Location, string Shippable, string Meetup)
         {
@@ -86,11 +101,11 @@ namespace ChalmersBookExchange.Controllers
             var ship = true;
             var meet = true;
             byte[] images = null; 
-            if (Shippable is null)
+            if (Shippable is null && Meetup is not null)
             {
                 ship = false;
             }
-            if (Meetup is null)
+            if (Meetup is null && Shippable is not null)
             {
                 meet = false;
             }
@@ -109,7 +124,8 @@ namespace ChalmersBookExchange.Controllers
                 Meetup = meet
             };
             var created = _postController.CreatePost(post);
-            return View("OnePost");
+            ViewBag.Message = post.ID.ToString();
+            return View("Post");
 
         }
         /// <summary>
@@ -121,9 +137,14 @@ namespace ChalmersBookExchange.Controllers
         /// <param name="CourseCode"></param>
         /// <returns>the generated view with the desired posts</returns>
         [HttpPost]
-        public ActionResult SearchPost(String BookName, String CourseCode)
+        public ActionResult SearchPost(string BookName, string CourseCode, int MinPrice, int MaxPrice, string Shippable, string Meetup)
         {
-            var searchedList = _postController.GetQueriedPosts(CourseCode, BookName);
+            var ship = true;
+            var meet = true;
+            if (Shippable is null) ship = false;
+            if (Meetup is null) meet = false;
+            
+            var searchedList = _postController.GetQueriedPosts(CourseCode, BookName, MinPrice, MaxPrice, ship, meet);
             ViewBag.Message = searchedList;
             ViewBag.Title = "Results";
             return View("QueriedPosts");
@@ -255,5 +276,58 @@ namespace ChalmersBookExchange.Controllers
         }
         
         
+        /// <summary>
+        /// This gets called when selecting a sorting method from the dropdown menu while browsing posts. Switch based on the value from dropdown
+        /// </summary>
+        /// <param name="Sort"></param>
+        /// <returns>Sorts the posts and reloads the page</returns>
+        [HttpPost]
+        public ActionResult Sort(string Sort)
+        {
+            switch (Sort)
+            {
+                case "alphabetical":
+                    ViewBag.Title = "Browse Posts";
+                    return View("PostsAlphabetical"); 
+                case "newest":
+                    ViewBag.Title = "Browse Posts";
+                    return View("Posts");
+                case "priceAsc":
+                    ViewBag.Title = "Browse Posts";
+                    return View("PostsPriceAsc");
+                case "priceDesc":
+                    ViewBag.Title = "Browse Posts";
+                    return View("PostsPriceDesc");
+                case "oldest":
+                    ViewBag.Title = "Browse Posts";
+                    return View("PostsOldest");
+            }
+
+            ViewBag.Title = "Default";
+            ViewBag.Message = _postController.GetAllPosts();
+            return View("Posts");
+        }
+        /// <summary>
+        /// This gets called when pressing the button to contact seller on a post page. Adds the two to eachother's contacts
+        /// </summary>
+        /// <param name="contactToAdd"></param>
+        /// <param name="loggedInUser"></param>
+        /// <returns>Redirection to chat page</returns>
+        public IActionResult AddContact(Guid contactToAdd, Guid loggedInUser)
+        {
+            _userController.CreateContact(loggedInUser, contactToAdd);
+            return View("Chat");
+        }
+        /// <summary>
+        /// This gets called when pressing to go to a post when browsing posts.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Redirection to the selected post's page</returns>
+        public IActionResult GoToPost(Guid? id)
+        {
+            if (id is null) return View("Posts");
+            ViewBag.Message = id.ToString();
+            return View("Post");
+        }
     }
 }

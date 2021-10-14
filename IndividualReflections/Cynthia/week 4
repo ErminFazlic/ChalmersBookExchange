@@ -1,0 +1,23 @@
+In this week we are done with four user stories
+
+In the meeting with the supervisor, he wanted us to add some task in some user stories 
+and fix some missed EE in two user stories. We had a meeting exactly after the meeting 
+with the supervisor where we fixed everything we had to and also divided the user 
+stories between all the members. Me and three others fixed the search function so the users 
+can search for a specific book by using book name or course code. It was a little bit 
+challenging for us all to begin coding because it was new for the all four of us. 
+We could fortunaly write the most of the code but after 6 hours of trying to connect
+the search button with the new page we needed some help from other team members. 
+With the help we got, we finally finished the task. The code has been tested and reviewed
+from other member who were not part of writing this code.
+
+
+The code for this task was written in my computer where I was screen sharing with 
+rest of the group and getting help from them. I commited and pushed the code to github 
+and made a pull request to review the code for other members I have even reviewed a code from the 
+group in the team and merged their code to mine to get all the updates. 
+
+For next week we will continue coding and divide other user stories to the team 
+members. I think we will implement the post sorting and image post user sotries. 
+
+I want to learn more about how to use data from the database, and frontend HTML 
