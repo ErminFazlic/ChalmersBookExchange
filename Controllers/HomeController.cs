@@ -14,6 +14,7 @@ using ChalmersBookExchange.Views.Home;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.V4.Pages.Internal.Account;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChalmersBookExchange.Controllers
@@ -70,7 +71,10 @@ namespace ChalmersBookExchange.Controllers
         
         public IActionResult Favorites()
         {
-            return View();
+            ViewBag.Title = "Favorites";
+            ViewBag.ThisUser = User.Identity.Name;
+
+          return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
@@ -213,7 +217,8 @@ namespace ChalmersBookExchange.Controllers
             }
             if (ModelState.IsValid)
             {
-                var oldPost = await _context.Post.FirstOrDefaultAsync(p => p.ID == id);
+                var oldPost = await _context.Post
+                    .FirstOrDefaultAsync(p => p.ID == id);
 
                 oldPost.BookName = post.BookName;
                 oldPost.CourseCode = post.CourseCode;
@@ -232,6 +237,44 @@ namespace ChalmersBookExchange.Controllers
             }
             
         }
+        /// <summary>
+        /// In this method we add favorite posts to the database
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="id"></param>
+        /// <param name="email"></param>
+        /// <returns> redirect to the posts view</returns> 
+        public IActionResult AddFavorite(Guid id, string email)
+        {
+            _postController.AddFavoriteToDb(id, email);
+          
+             return RedirectToAction("Posts");
+        }
+        /// <summary>
+        /// This method remove the favorite post from the database
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="id"></param>
+        /// <param name="email"></param>
+        /// <returns> redirect to the posts view</returns>
+        public ActionResult RemoveFavorite(Guid id, string email)
+        {
+            _postController.RemoveFavoriteFromDb(id, email);
+            return RedirectToAction("Posts");
+        }
+        /// <summary>
+        /// this method remove favorite posts from favorite page
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="id"></param>
+        /// <param name="email"></param>
+        /// <returns> Redirect to the favorites view</returns>
+        public ActionResult RemoveFavoriteFromFavorite(Guid id, string email)
+        {
+            _postController.RemoveFavoriteFromDb(id, email);
+            return RedirectToAction("Favorites");
+        }
+        
         
         /// <summary>
         /// This gets called when selecting a sorting method from the dropdown menu while browsing posts. Switch based on the value from dropdown

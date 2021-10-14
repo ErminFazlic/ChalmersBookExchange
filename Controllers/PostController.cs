@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.ComponentModel.Design;
 using System.Linq;
 using System.Net;
@@ -152,6 +153,7 @@ namespace ChalmersBookExchange.Controllers
             }
             return reversedPosts;
         }
+        
         /// <summary>
         /// This method finds all posts which have the same course code or book name as it's applied
         /// </summary>
@@ -195,5 +197,112 @@ namespace ChalmersBookExchange.Controllers
             return posts;
         }
         
+        /// <summary>
+        /// This method finds the favorite posts belong to specific user given the user's email
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="email"></param>
+        /// <returns> post array contains the favorite posts</returns>
+        public Post[] GetFavorites(string email)
+        {
+            var user = _context.User.SingleOrDefault(u => u.Email == email);
+            var posts = _context.Post.Where(p => user.Favorites.Contains(p.ID)).ToArray();
+
+            return posts;
+        }
+        
+        /// <summary>
+        /// This method checks if the post (given its ID and the user it belongs to)
+        /// is a favorite post or not
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="id"></param>
+        /// <param name="email"></param>
+        /// <returns> True if the post is favorite otherwise false</returns>
+        public bool IsAFavorite(Guid id, string email)
+        {
+            var thisPost = _context.Post.FirstOrDefault(p => p.ID == id);
+            var thisUser = _context.User.SingleOrDefault(u => u.Email == email);
+            if (thisPost is not null || thisUser is not null)
+                if (thisUser?.Favorites == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    foreach (var favorite in thisUser.Favorites)
+                    {
+                        if (favorite.Equals(thisPost?.ID))
+                        {
+                                return true;
+                        }
+                        
+                    }
+                }
+            return false;
+        }
+        
+        /// <summary>
+        /// This method add the favorite post to the database
+        /// Checks for duplicate and if the post belongs to this user
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="id"></param>
+        /// <param name="email"></param>
+        public void AddFavoriteToDb(Guid id, string email)
+        {
+            var thisPost = _context.Post.FirstOrDefault(p => p.ID == id);
+            var thisUser = _context.User.SingleOrDefault(u => u.Email == email);
+            
+            if (thisPost is null || thisUser is null) return;
+            
+            if (thisUser.Favorites == null && !thisPost.Poster.Equals(thisUser.ID))
+            {
+                    var newArr = new Guid?[1];
+                    newArr[0] = thisPost.ID;
+                    thisUser.Favorites = newArr;
+                    _context.SaveChanges();
+            }
+            else if(!thisPost.Poster.Equals(thisUser.ID))        // Can't add your own post to favorite
+            {
+                var guidlist = new ArrayList(thisUser.Favorites);
+                if (!guidlist.Contains(thisPost.ID))              // Don't add duplicates
+                {
+                    guidlist.Add(thisPost.ID);
+                    var newGuidArray = new Guid?[guidlist.Count];
+                    for (int i = 0; i < newGuidArray.Length; i++)
+                    {
+                        newGuidArray[i] = (Guid?) guidlist[i];
+                    }
+                    thisUser.Favorites = newGuidArray;
+                }
+                _context.SaveChanges();
+            }
+        }
+        
+        /// <summary>
+        /// This method remove the favorite post from the database
+        /// It checks that the post and the user is not null
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="id"></param>
+        /// <param name="email"></param>
+        public void RemoveFavoriteFromDb(Guid id, string email)
+        {
+            var thisPost = _context.Post.FirstOrDefault(p => p.ID == id);
+            var thisUser = _context.User.SingleOrDefault(u => u.Email == email);
+            
+            if (thisPost is null || thisUser is null) return;
+            
+            var guidlist = new ArrayList(thisUser.Favorites);
+                guidlist.Remove(thisPost.ID);
+                var newGuidArray = new Guid?[guidlist.Count];
+                for (int i = 0; i < newGuidArray.Length; i++)
+                {
+                    newGuidArray[i] = (Guid?) guidlist[i];
+                }
+                thisUser.Favorites = newGuidArray;
+                _context.SaveChanges();
+        }
     }
 }

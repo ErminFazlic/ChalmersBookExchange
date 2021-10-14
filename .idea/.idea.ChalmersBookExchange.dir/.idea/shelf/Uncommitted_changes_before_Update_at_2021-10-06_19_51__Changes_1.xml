@@ -1,0 +1,59 @@
+﻿<changelist name="Uncommitted_changes_before_Update_at_2021-10-06_19_51_[Changes]1" date="1633542750146" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/.idea.ChalmersBookExchange.dir/.idea/shelf/Uncommitted_changes_before_Update_at_2021-10-06_19_51_[Changes]1/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2021-10-06 19:51 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="bin/Debug/net5.0/ChalmersBookExchange.dll" />
+    <option name="AFTER_PATH" value="bin/Debug/net5.0/ChalmersBookExchange.dll" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.ChalmersBookExchange.dir/.idea/shelf/Uncommitted_changes_before_Update_at_2021-10-06_19_51_[Changes]1/ChalmersBookExchange.dll" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="obj/Debug/net5.0/ChalmersBookExchange.Views.dll" />
+    <option name="AFTER_PATH" value="obj/Debug/net5.0/ChalmersBookExchange.Views.dll" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.ChalmersBookExchange.dir/.idea/shelf/Uncommitted_changes_before_Update_at_2021-10-06_19_51_[Changes]1/ChalmersBookExchange.Views.dll" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="bin/Debug/net5.0/ChalmersBookExchange.Views.pdb" />
+    <option name="AFTER_PATH" value="bin/Debug/net5.0/ChalmersBookExchange.Views.pdb" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.ChalmersBookExchange.dir/.idea/shelf/Uncommitted_changes_before_Update_at_2021-10-06_19_51_[Changes]1/ChalmersBookExchange.Views.pdb" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="obj/Debug/net5.0/ChalmersBookExchange.pdb" />
+    <option name="AFTER_PATH" value="obj/Debug/net5.0/ChalmersBookExchange.pdb" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.ChalmersBookExchange.dir/.idea/shelf/Uncommitted_changes_before_Update_at_2021-10-06_19_51_[Changes]1/ChalmersBookExchange.pdb" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="obj/Debug/net5.0/staticwebassets/ChalmersBookExchange.StaticWebAssets.Manifest.cache" />
+    <option name="AFTER_PATH" value="obj/Debug/net5.0/staticwebassets/ChalmersBookExchange.StaticWebAssets.Manifest.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.ChalmersBookExchange.dir/.idea/shelf/Uncommitted_changes_before_Update_at_2021-10-06_19_51_[Changes]1/ChalmersBookExchange.StaticWebAssets.Manifest.cache" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="obj/Debug/net5.0/ChalmersBookExchange.assets.cache" />
+    <option name="AFTER_PATH" value="obj/Debug/net5.0/ChalmersBookExchange.assets.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.ChalmersBookExchange.dir/.idea/shelf/Uncommitted_changes_before_Update_at_2021-10-06_19_51_[Changes]1/ChalmersBookExchange.assets.cache" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="obj/Debug/net5.0/ChalmersBookExchange.csproj.CoreCompileInputs.cache" />
+    <option name="AFTER_PATH" value="obj/Debug/net5.0/ChalmersBookExchange.csproj.CoreCompileInputs.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.ChalmersBookExchange.dir/.idea/shelf/Uncommitted_changes_before_Update_at_2021-10-06_19_51_[Changes]1/ChalmersBookExchange.csproj.CoreCompileInputs.cache" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="obj/Debug/net5.0/ChalmersBookExchange.genruntimeconfig.cache" />
+    <option name="AFTER_PATH" value="obj/Debug/net5.0/ChalmersBookExchange.genruntimeconfig.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.ChalmersBookExchange.dir/.idea/shelf/Uncommitted_changes_before_Update_at_2021-10-06_19_51_[Changes]1/ChalmersBookExchange.genruntimeconfig.cache" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="obj/Debug/net5.0/ChalmersBookExchange.csproj.AssemblyReference.cache" />
+    <option name="AFTER_PATH" value="obj/Debug/net5.0/ChalmersBookExchange.csproj.AssemblyReference.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.ChalmersBookExchange.dir/.idea/shelf/Uncommitted_changes_before_Update_at_2021-10-06_19_51_[Changes]1/ChalmersBookExchange.csproj.AssemblyReference.cache" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="obj/Debug/net5.0/ChalmersBookExchange.RazorCoreGenerate.cache" />
+    <option name="AFTER_PATH" value="obj/Debug/net5.0/ChalmersBookExchange.RazorCoreGenerate.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.ChalmersBookExchange.dir/.idea/shelf/Uncommitted_changes_before_Update_at_2021-10-06_19_51_[Changes]1/ChalmersBookExchange.RazorCoreGenerate.cache" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="obj/project.nuget.cache" />
+    <option name="AFTER_PATH" value="obj/project.nuget.cache" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/.idea.ChalmersBookExchange.dir/.idea/shelf/Uncommitted_changes_before_Update_at_2021-10-06_19_51_[Changes]1/project.nuget.cache" />
+  </binary>
+</changelist>

@@ -44,6 +44,13 @@ namespace ChalmersBookExchange.Controllers
             var user = _context.User.FirstOrDefault(x => x.Email == email);
             return user.Name;
         }
+        
+        public string RetrieveName(Guid id)
+        {
+            var user = _context.User.FirstOrDefault(x => x.ID == id);
+            return user.Name;
+        }
+
         /// <summary>
         /// Retrieves the name based on the id for a user
         /// </summary>
