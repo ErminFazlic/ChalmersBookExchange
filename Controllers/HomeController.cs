@@ -2,14 +2,19 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using ChalmersBookExchange.Data;
 using ChalmersBookExchange.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ChalmersBookExchange.Models;
 using ChalmersBookExchange.Views.Home;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChalmersBookExchange.Controllers
 {
@@ -20,14 +25,16 @@ namespace ChalmersBookExchange.Controllers
         private readonly IUserController _userController;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly MyDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger, IPostController postController, UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor, IUserController userController)
+        public HomeController(ILogger<HomeController> logger, IPostController postController, UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor, IUserController userController, MyDbContext context)
         {
             _logger = logger;
             _postController = postController;
             _userManager = userManager;
             _httpContextAccessor = httpContextAccessor;
             _userController = userController;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -45,19 +52,6 @@ namespace ChalmersBookExchange.Controllers
             ViewBag.Title = "Browse Posts";
             return View("Posts");
         }
-        
-        public IActionResult Post()
-        {
-            ViewBag.Title = "Browse Posts";
-            ViewBag.Message = "0485ac66-a33a-4441-bb43-f288ee329951";
-            return View("Post");
-        }
-
-        public IActionResult MyPosts()
-        {
-            ViewBag.Title = "My posts";
-            return View("Post");
-        }
 
         public IActionResult Chat()
         {
@@ -66,9 +60,14 @@ namespace ChalmersBookExchange.Controllers
         public IActionResult Search()
         {
             ViewBag.Title = "Search";
-            //var model = new CreatePostModel(_postController);
             return View();
         }
+        public IActionResult MyPosts()
+        {
+            ViewBag.Title = "MyPosts";
+            return View("MyPosts");
+        }
+        
         public IActionResult Favorites()
         {
             return View();
@@ -125,6 +124,14 @@ namespace ChalmersBookExchange.Controllers
             return View("Post");
 
         }
+        /// <summary>
+        /// this is the search action method which activates by search button.
+        /// it calls GetQueriedPosts method to find the desired posts 
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="BookName"></param>
+        /// <param name="CourseCode"></param>
+        /// <returns>the generated view with the desired posts</returns>
         [HttpPost]
         public ActionResult SearchPost(string BookName, string CourseCode, int MinPrice, int MaxPrice, string Shippable, string Meetup)
         {
@@ -138,6 +145,94 @@ namespace ChalmersBookExchange.Controllers
             ViewBag.Title = "Results";
             return View("QueriedPosts");
         }
+        
+        /// <summary>
+        /// This method check if the given id is not null in purpose to be able to
+        /// find it in the database
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="id"></param>
+        /// <returns>the generated view with the specific post</returns>
+        public async Task<IActionResult>Delete (Guid? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var post = await _context.Post.FindAsync(id);
+            
+            return View(post);
+        }
+        /// <summary>
+        /// This is an action delete method which delete a post given it's id.
+        /// It find the post given it's id, removes it and finally saves the changes
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="id"></param>
+        /// <returns>Redirection to My post page</returns>
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        {
+            var post = await _context.Post.FindAsync(id);
+            _context.Post.Remove(post);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("MyPosts");
+        }
+        /// <summary>
+        /// It's an Http Get request.
+        /// This method check if the given id is not null in purpose to be able to
+        /// find it in the database
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="id"></param>
+        /// <returns>the generated view with the specific post</returns>
+        [HttpGet]
+        public async Task <IActionResult>EditPost(Guid id)
+        {
+            var post = await _context.Post.FindAsync(id);
+           
+            return View(post);
+        }
+        /// <summary>
+        /// This is an edit action method, which saves the old post's values in a post variable
+        /// to be able to replace the old values with the new ones. 
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="id"></param>
+        /// <param name="post"></param>
+        /// <returns>NotFound if the given id and the post id doesn't match,
+        /// otherwise a redirection to my posts page with the edited post</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditPost(Guid id, Post post)
+        {
+            
+            if (id != post.ID)
+            {
+                return NotFound();
+            }
+            if (ModelState.IsValid)
+            {
+                var oldPost = await _context.Post.FirstOrDefaultAsync(p => p.ID == id);
+
+                oldPost.BookName = post.BookName;
+                oldPost.CourseCode = post.CourseCode;
+                oldPost.Price = post.Price;
+                oldPost.Location = post.Location;
+                oldPost.Shippable = post.Shippable;
+                oldPost.Meetup = post.Meetup;
+               //  _context.Post.Update(oldPost);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("MyPosts");
+            }
+            else
+            {
+                return NotFound();
+            }
+            
+        }
+        
         /// <summary>
         /// This gets called when selecting a sorting method from the dropdown menu while browsing posts. Switch based on the value from dropdown
         /// </summary>

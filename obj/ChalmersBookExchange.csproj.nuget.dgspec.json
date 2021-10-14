@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\arian\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj": {}
+    "C:\\Users\\Cynthia\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj": {}
   },
   "projects": {
-    "C:\\Users\\arian\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj": {
+    "C:\\Users\\Cynthia\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arian\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj",
+        "projectUniqueName": "C:\\Users\\Cynthia\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj",
         "projectName": "ChalmersBookExchange",
-        "projectPath": "C:\\Users\\arian\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj",
-        "packagesPath": "C:\\Users\\arian\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arian\\RiderProjects\\ChalmersBookExchange\\obj\\",
+        "projectPath": "C:\\Users\\Cynthia\\RiderProjects\\ChalmersBookExchange\\ChalmersBookExchange.csproj",
+        "packagesPath": "C:\\Users\\Cynthia\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Cynthia\\RiderProjects\\ChalmersBookExchange\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\arian\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Cynthia\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"

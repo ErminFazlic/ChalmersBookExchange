@@ -1,13 +1,25 @@
 using System;
+using System.ComponentModel.Design;
 using System.Linq;
+using System.Net;
+using System.Security.Claims;
+
 using System.Threading.Tasks;
 using ChalmersBookExchange.Data;
 using ChalmersBookExchange.Domain;
+using ChalmersBookExchange.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters.Xml;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.EntityFrameworkCore.Internal;
+using Npgsql.Replication;
+using Index = System.Index;
+
 
 namespace ChalmersBookExchange.Controllers
 {
@@ -16,8 +28,11 @@ namespace ChalmersBookExchange.Controllers
         private readonly MyDbContext _context;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        
-        public PostController(MyDbContext context, UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor)
+
+
+
+        public PostController(MyDbContext context, UserManager<IdentityUser> userManager,
+            IHttpContextAccessor httpContextAccessor)
         {
             _context = context;
             _userManager = userManager;
@@ -30,7 +45,7 @@ namespace ChalmersBookExchange.Controllers
         /// <returns>bool based on success</returns>
         public bool CreatePost(Post post)
         {
-            var exists =  _context.Post.FirstOrDefault(x => x.ID == post.ID);
+            var exists = _context.Post.FirstOrDefault(x => x.ID == post.ID);
 
             if (exists is null)
             {
@@ -41,6 +56,7 @@ namespace ChalmersBookExchange.Controllers
 
             return false;
         }
+
         /// <summary>
         /// Retrieves the post based on the id
         /// </summary>
@@ -134,10 +150,15 @@ namespace ChalmersBookExchange.Controllers
                 reversedPosts[i] = posts[j];
                 j++;
             }
-
             return reversedPosts;
         }
-
+        /// <summary>
+        /// This method finds all posts which have the same course code or book name as it's applied
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="courseCode"></param>
+        /// <param name="bookName"></param>
+        /// <returns>an array with requested posts</returns>
         public Post[] GetQueriedPosts(string courseCode, string bookName, int minPrice, int maxPrice, bool shippable, bool meetUp)
         {
             bookName ??= "afksnjasndfjasnfjkdankdfj";
@@ -157,6 +178,19 @@ namespace ChalmersBookExchange.Controllers
             postsList.RemoveAll(x => x.Price > MaxPrice);
             postsList.RemoveAll(x => x.Shippable != Shippable && x.Meetup != MeetUp);
             var posts = postsList.ToArray();
+            posts = ReversePosts(posts);
+            return posts;
+        }
+
+        /// <summary>
+        /// This method finds all posts created by a user with a specific id 
+        /// </summary>
+        /// <authors> Cynthia, Negin, Petra, Sven</authors>
+        /// <param name="userid"></param>
+        /// <returns>posts created by a user with a specific id</returns>
+        public Post[] GetMyPosts(Guid userid)
+        {
+            var posts = _context.Post.Where(x => x.Poster == userid).ToArray();
             posts = ReversePosts(posts);
             return posts;
         }

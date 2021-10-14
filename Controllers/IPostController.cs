@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using ChalmersBookExchange.Domain;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ChalmersBookExchange.Controllers
 {
@@ -8,12 +9,14 @@ namespace ChalmersBookExchange.Controllers
     {
         Task<bool> CreatePostAsync(Post post);
         Post[] GetAllPosts();
+        bool CreatePost(Post post);
+        Post[] GetMyPosts(Guid userid); 
+        Post[] GetQueriedPosts(string courseCode, string bookName, int minPrice, int maxPrice, bool shippable, bool meetUp);
+        Post GetPostById(Guid id);
         Post[] GetAllPostsAlphabetical();
         Post[] GetAllPostsPriceAsc();
         Post[] GetAllPostsPriceDesc();
         Post[] GetAllPostsOldest();
-        bool CreatePost(Post post);
-        Post GetPostById(Guid id);
-        Post[] GetQueriedPosts(string courseCode, string bookName, int minPrice, int maxPrice, bool shippable, bool meetUp);
+        
     }
 }
