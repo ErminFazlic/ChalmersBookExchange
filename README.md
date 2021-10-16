@@ -44,7 +44,7 @@ The applications backend is made with C# while the frontend consists of a mixtur
 
 #### Dependencies
 The project uses the following NuGet packages:
-- EntityFrame
+- EntityFramework
 - Npgsql
 - AspNetCore.Identity
 
