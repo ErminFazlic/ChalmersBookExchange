@@ -1,25 +1,10 @@
 using System;
 using System.Collections;
-using System.ComponentModel.Design;
 using System.Linq;
-using System.Net;
-using System.Security.Claims;
-
 using System.Threading.Tasks;
 using ChalmersBookExchange.Data;
 using ChalmersBookExchange.Domain;
-using ChalmersBookExchange.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Formatters.Xml;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
-using Microsoft.EntityFrameworkCore.Internal;
-using Npgsql.Replication;
-using Index = System.Index;
 
 
 namespace ChalmersBookExchange.Controllers
@@ -27,17 +12,10 @@ namespace ChalmersBookExchange.Controllers
     public class PostController : IPostController
     {
         private readonly MyDbContext _context;
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly IHttpContextAccessor _httpContextAccessor;
 
-
-
-        public PostController(MyDbContext context, UserManager<IdentityUser> userManager,
-            IHttpContextAccessor httpContextAccessor)
+        public PostController(MyDbContext context)
         {
             _context = context;
-            _userManager = userManager;
-            _httpContextAccessor = httpContextAccessor;
         }
         /// <summary>
         /// Creates a post in the DB from a Post instance

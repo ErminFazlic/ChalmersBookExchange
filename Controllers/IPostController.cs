@@ -1,7 +1,6 @@
 using System;
 using System.Threading.Tasks;
 using ChalmersBookExchange.Domain;
-using Microsoft.AspNetCore.Mvc;
 
 namespace ChalmersBookExchange.Controllers
 {

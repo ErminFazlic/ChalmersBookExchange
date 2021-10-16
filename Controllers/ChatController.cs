@@ -1,17 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Security.Claims;
-using System.Threading.Tasks;
 using ChalmersBookExchange.Data;
 using ChalmersBookExchange.Domain;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace ChalmersBookExchange.Controllers
 {
@@ -30,6 +23,11 @@ namespace ChalmersBookExchange.Controllers
             _userController = userController;
         }
 
+        /// <summary>
+        /// Retrieves the previous messages between the logged in user and the user with same id as contact
+        /// </summary>
+        /// <param name="contact"></param>
+        /// <returns>JsonResult with the messages</returns>
         [HttpGet]
         [Route("Chat/ConversationWithContact/{contact}")]
         public JsonResult ConversationWithContact([FromRoute]string contact)
@@ -52,6 +50,12 @@ namespace ChalmersBookExchange.Controllers
                 new { status = "success", data = conversations }
             );
         }
+        /// <summary>
+        /// Stores the message between the logged in user and the contact
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="contact"></param>
+        /// <returns>JsonResult</returns>
         [HttpGet]
         [Route("Chat/SendMessage/{message}/{contact}")]
         public JsonResult SendMessage([FromRoute]string message, [FromRoute]string contact) 

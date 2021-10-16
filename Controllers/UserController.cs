@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using ChalmersBookExchange.Data;
 using ChalmersBookExchange.Domain;
-using Microsoft.EntityFrameworkCore;
 
 namespace ChalmersBookExchange.Controllers
 {
@@ -44,7 +43,11 @@ namespace ChalmersBookExchange.Controllers
             var user = _context.User.FirstOrDefault(x => x.Email == email);
             return user.Name;
         }
-        
+        /// <summary>
+        /// Retrieves the name based on the id for a user
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>The users name</returns>
         public string RetrieveName(Guid id)
         {
             var user = _context.User.FirstOrDefault(x => x.ID == id);

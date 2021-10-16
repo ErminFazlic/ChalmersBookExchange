@@ -1,36 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using ChalmersBookExchange.Data;
 using ChalmersBookExchange.Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ChalmersBookExchange.Models;
-using ChalmersBookExchange.Views.Home;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.V4.Pages.Internal.Account;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChalmersBookExchange.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly IPostController _postController;
         private readonly IUserController _userController;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly MyDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger, IPostController postController, UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor, IUserController userController, MyDbContext context)
+        public HomeController(IPostController postController, UserManager<IdentityUser> userManager, IHttpContextAccessor httpContextAccessor, IUserController userController, MyDbContext context)
         {
-            _logger = logger;
             _postController = postController;
             _userManager = userManager;
             _httpContextAccessor = httpContextAccessor;
@@ -45,8 +36,7 @@ namespace ChalmersBookExchange.Controllers
         public IActionResult CreatePost()
         {
             ViewBag.Title = "Create a new post";
-            var model = new CreatePostModel(_postController);
-            return View(model);
+            return View();
         }
         public IActionResult Posts()
         {
