@@ -1,5 +1,5 @@
 # ChalmersBookExchange
-## Made for course DAT257/DIT257 Agile Software Projec Management
+## Made for course DAT257/DIT257 Agile Software Project Management
 ## [Trello Board](https://trello.com/b/dV6g5Xvv/cello)
 ## Group Cello
 
