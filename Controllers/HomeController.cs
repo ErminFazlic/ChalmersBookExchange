@@ -51,6 +51,7 @@ namespace ChalmersBookExchange.Controllers
         public IActionResult Posts()
         {
             ViewBag.Title = "Browse Posts";
+            ViewBag.ThisUser = User.Identity.Name;
             return View("Posts");
         }
 
@@ -147,6 +148,7 @@ namespace ChalmersBookExchange.Controllers
             var searchedList = _postController.GetQueriedPosts(CourseCode, BookName, MinPrice, MaxPrice, ship, meet);
             ViewBag.Message = searchedList;
             ViewBag.Title = "Results";
+            ViewBag.ThisUser = User.Identity.Name;
             return View("QueriedPosts");
         }
         
@@ -284,26 +286,21 @@ namespace ChalmersBookExchange.Controllers
         [HttpPost]
         public ActionResult Sort(string Sort)
         {
+            ViewBag.ThisUser = User.Identity.Name;
+            ViewBag.Title = "Browse Posts";
             switch (Sort)
             {
                 case "alphabetical":
-                    ViewBag.Title = "Browse Posts";
                     return View("PostsAlphabetical"); 
                 case "newest":
-                    ViewBag.Title = "Browse Posts";
                     return View("Posts");
                 case "priceAsc":
-                    ViewBag.Title = "Browse Posts";
                     return View("PostsPriceAsc");
                 case "priceDesc":
-                    ViewBag.Title = "Browse Posts";
                     return View("PostsPriceDesc");
                 case "oldest":
-                    ViewBag.Title = "Browse Posts";
                     return View("PostsOldest");
             }
-
-            ViewBag.Title = "Default";
             ViewBag.Message = _postController.GetAllPosts();
             return View("Posts");
         }

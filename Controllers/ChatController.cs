@@ -31,6 +31,7 @@ namespace ChalmersBookExchange.Controllers
         }
 
         [HttpGet]
+        [Route("Chat/ConversationWithContact/{contact}")]
         public JsonResult ConversationWithContact([FromRoute]string contact)
         {
             var userName = _userManager.GetUserName(_httpContextAccessor.HttpContext.User);
@@ -52,6 +53,7 @@ namespace ChalmersBookExchange.Controllers
             );
         }
         [HttpGet]
+        [Route("Chat/SendMessage/{message}/{contact}")]
         public JsonResult SendMessage([FromRoute]string message, [FromRoute]string contact) 
         {
             var userName = _userManager.GetUserName(_httpContextAccessor.HttpContext.User);
