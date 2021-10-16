@@ -1,8 +1,42 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿
+<h1>Welcome</h1>
+<style>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>WIP</p>
+    h1 {text-align: center;}
+    p {text-align: center;}
+    div {text-align: center;}
+    .center {
+  margin-left: auto;
+  margin-right: auto;
+}
+html, body {
+     min-height: 100%;
+}
+</style>
+<div style="background-image: url('https://www.gu.se/sites/default/files/styles/100_10_4_xlarge_1x/public/2020-06/lindholmen-vy_0.jpg?h=5bb25a1b&itok=2O0kxhyO');   background-size: 700px 700px;
+">
+
+<p>Search for your book using the book name or the course code</p>
+
+
+   @using (Html.BeginForm("SearchPost", "Home", FormMethod.Post))
+   {
+       <table class="center">
+
+           <tr>
+               <td>Book Name: </td>
+               <td><input type="text" name="BookName"/></td>
+           </tr>
+           <tr>
+               <td>Course code: </td>
+               <td><input type="text" name="CourseCode"/></td>
+           </tr>
+       </table>
+       <tr>
+           <td colspan="2"><input type="submit" value="search index"/></td>
+       </tr>
+   }   
 </div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}<
