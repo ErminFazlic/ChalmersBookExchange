@@ -7,47 +7,61 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="~/css/site.css"/>
 </head>
+<style>
+    .wrapper {
+        height: 87.5vh;
+        display: flex;
+        background-image: url('https://www.gu.se/sites/default/files/styles/100_10_4_xlarge_1x/public/2020-06/lindholmen-vy_0.jpg?h=5bb25a1b&itok=2O0kxhyO');
+        background-size:cover;
+    }
+</style>
 <body>
-<div  style="position:fixed;padding:0;margin:0;top:0;left:0;width: 100%;height: 100%;">
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Chalmers Book Exchange</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Posts">Browse Posts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Search">Search</a>
-                    </li>
+<div>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Chalmers Book Exchange</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Posts">Browse Posts</a>
+                        </li>
 
-                </ul>
-                <partial name="_LoginPartial"/>
+                    </ul>
+                    <partial name="_LoginPartial"/>
+                </div>
             </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
+    <div class="wrapper">
+        <main role="main" class="pb-3 container" style="padding: 10px;">
+            <div style="background: white; padding: 15px; border-radius: 5px; border-color: black">
+                @RenderBody()
+            </div>
 
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
+        </main>
+    </div>
+
+
 
 </div>
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2021 - ChalmersBookExchange
-
-    </div>
+<div>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - ChalmersBookExchange
     
-</footer>
+        </div>
+        
+    </footer>
+</div>
+
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
