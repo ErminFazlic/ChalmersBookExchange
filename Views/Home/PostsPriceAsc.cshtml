@@ -4,20 +4,26 @@
 @inject IUserController _userController
 
 
-<h1>@ViewBag.Title</h1>
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 <link rel="stylesheet" href="@Url.Content("~/css/favorite.css")">
 
-<label for="sort">Sort by:</label>
-<form action="Sort" method="post">
-    <select name="Sort" id="sort" onchange="this.form.submit()">
-        <option value="newest">Newest</option>
-        <option value="oldest">Oldest</option>
-        <option value="alphabetical">Alphabetical order</option>
-        <option value="priceAsc" selected>Price ascending</option>
-        <option value="priceDesc">Price descending</option>
-    </select>
-</form>
+<div style="display: flex;
+              justify-content: space-between;" >
+    <h1 align="left">@ViewBag.Title</h1>
+    <div class="form-group form-inline">
+    <label for="sort">Sort by: </label>
+        <form action="Sort" method="post">
+            <select name="Sort" id="sort" onchange="this.form.submit()">
+                <option value="newest" >Newest</option>
+                <option value="oldest">Oldest</option>
+                <option value="alphabetical">Alphabetical order</option>
+                <option value="priceAsc" selected>Price ascending</option>
+                <option value="priceDesc">Price descending</option>
+            </select>
+        </form>
+        </div>
+</div>
 
 <div>
     <table class="table table-striped">
