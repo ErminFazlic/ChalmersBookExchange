@@ -30,6 +30,8 @@
                     <th>Shippable</th>
                     <th>Meetup</th>
                     <th>Poster</th>
+                    <th></th>
+                    <th></th>                    
                 </tr>
             </thead>
             <tbody>
@@ -40,8 +42,22 @@
                     <td>@post.CourseCode</td>
                     <td>@post.Price:-</td>
                     <td>@post.Location</td>
-                    <td>@post.Shippable</td>
-                    <td>@post.Meetup</td>
+                @if (post.Shippable)
+                {
+                    <td align = "center"> &#x2714</td>
+                }
+                else
+                {
+                    <td align = "center"> &#10008</td>
+                }
+                @if (post.Meetup)
+                {
+                    <td align = "center"> &#x2714</td>
+                }
+                else
+                {
+                    <td align = "center"> &#10008</td>
+                }
                     <td>@_userController.RetrieveName(post.Poster)</td>
                     <td> <a asp-action="GoToPost" asp-route-id="@post.ID">Go to Post</a></td>
                     <!--<td><a asp-action="AddFavorite" asp-route-id="@post.ID" asp-route-email="@ViewBag.ThisUser"><button class="btn"> <div class="popup" onclick="myFunction()"><i class="fa fa-heart"></i>

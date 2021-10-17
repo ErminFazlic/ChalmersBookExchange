@@ -19,6 +19,8 @@
             <th>Location</th>
             <th>Shippable</th>
             <th>Meetup</th>
+            <th></th>
+            <th></th>            
         </tr>
         </thead>
         <tbody>
@@ -31,8 +33,22 @@
                      <td>@post.CourseCode</td>
                      <td>@post.Price:-</td>
                      <td>@post.Location</td>
-                     <td>@post.Shippable</td>
-                     <td>@post.Meetup</td>
+                @if (post.Shippable)
+                {
+                    <td align = "center"> &#x2714</td>
+                }
+                else
+                {
+                    <td align = "center"> &#10008</td>
+                }
+                @if (post.Meetup)
+                {
+                    <td align = "center"> &#x2714</td>
+                }
+                else
+                {
+                    <td align = "center"> &#10008</td>
+                }
                      <td> <a asp-action="Delete" asp-route-id="@post.ID">Delete</a></td>
                       <td> <a asp-action="EditPost" asp-route-id="@post.ID">Edit</a></td>
 
