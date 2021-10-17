@@ -8,6 +8,9 @@
 
 @inject UserManager<IdentityUser> UserManager
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="@Url.Content("~/css/favorite.css")">
+
 <h1>My Posts</h1>
 <div>
     <table class="table table-striped">
@@ -49,8 +52,14 @@
                 {
                     <td align = "center"> &#10008</td>
                 }
-                     <td> <a asp-action="Delete" asp-route-id="@post.ID">Delete</a></td>
-                      <td> <a asp-action="EditPost" asp-route-id="@post.ID">Edit</a></td>
+                <td> <a asp-action="Delete" asp-route-id="@post.ID">
+                    <button class="btn" id="removeButton"> Remove Post</button>
+                </a></td>
+                <td> <a asp-action="EditPost" asp-route-id="@post.ID">
+                    <button class="btn" id="EditButton" onclick="popupText()">
+                        <i class="fa fa-edit"></i>
+                    </button>   
+                </a></td>
 
                  </tr>
              
