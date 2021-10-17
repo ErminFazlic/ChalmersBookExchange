@@ -8,7 +8,7 @@
 
 @inject UserManager<IdentityUser> UserManager
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
 <link rel="stylesheet" href="@Url.Content("~/css/favorite.css")">
 
 <h1>My Posts</h1>
@@ -38,27 +38,27 @@
                      <td>@post.Location</td>
                 @if (post.Shippable)
                 {
-                    <td align = "center"> &#x2714</td>
+                    <td align = "center"><i class="fa fa-check"></i></td>
                 }
                 else
                 {
-                    <td align = "center"> &#10008</td>
+                    <td align = "center"><i class="fa fa-times"></i></td>
                 }
                 @if (post.Meetup)
                 {
-                    <td align = "center"> &#x2714</td>
+                    <td align = "center"><i class="fa fa-check"></i></td>
                 }
                 else
                 {
-                    <td align = "center"> &#10008</td>
+                    <td align = "center"><i class="fa fa-times"></i></td>
                 }
-                <td> <a asp-action="Delete" asp-route-id="@post.ID">
-                    <button class="btn" id="removeButton"> Remove Post</button>
-                </a></td>
                 <td> <a asp-action="EditPost" asp-route-id="@post.ID">
                     <button class="btn" id="EditButton" onclick="popupText()">
                         <i class="fa fa-edit"></i>
                     </button>   
+                </a></td>
+                <td> <a asp-action="Delete" asp-route-id="@post.ID">
+                    <button class="btn" id="removeButton"> Remove Post</button>
                 </a></td>
 
                  </tr>
