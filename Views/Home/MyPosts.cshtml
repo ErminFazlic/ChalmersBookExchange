@@ -2,13 +2,12 @@
 @model ChalmersBookExchange.Domain.Post
 @using ChalmersBookExchange.Controllers
 @using Microsoft.AspNetCore.Identity
-
 @inject IUserController _userController
 @inject IPostController _postController
 
 @inject UserManager<IdentityUser> UserManager
 
-<h1>My Posts</h1>
+<h1>@ViewBag.Title</h1>
 <div>
     <table class="table table-striped">
         <thead>
@@ -22,10 +21,11 @@
         </tr>
         </thead>
         <tbody>
-         
+        
 
              @foreach (var post in _postController.GetMyPosts(_userController.RetrieveID(@User.Identity.Name)))
              {
+                
                  <tr>
                      <td>@post.BookName</td>
                      <td>@post.CourseCode</td>
@@ -34,7 +34,9 @@
                      <td>@post.Shippable</td>
                      <td>@post.Meetup</td>
                      <td> <a asp-action="Delete" asp-route-id="@post.ID">Delete</a></td>
-                      <td> <a asp-action="EditPost" asp-route-id="@post.ID">Edit</a></td>
+                     <td> <a asp-action="EditPost" asp-route-id="@post.ID">Edit</a></td>
+                      <td> <img width="auto" height="64" src="@_postController.RetrieveImage(post.ID)" alt="@post.BookName"/> </td>
+
 
                  </tr>
              
@@ -42,14 +44,12 @@
       
         </tbody>
 </table>
-
 </div>
-
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
      
-}
+} 
 
 
    

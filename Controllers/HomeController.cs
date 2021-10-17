@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 using ChalmersBookExchange.Data;
 using ChalmersBookExchange.Domain;
@@ -35,9 +37,29 @@ namespace ChalmersBookExchange.Controllers
         }
         public IActionResult CreatePost()
         {
-            ViewBag.Title = "Create a new post";
             return View();
         }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreatePost([Bind("BookName,CourseCode,Description,Price,Location,Shipment,Meetup")] Post post, List<IFormFile> Images)
+        {
+            if (ModelState.IsValid)
+            {
+                _postController.ByteArrayToImage(Images, post);
+                
+                post.Timestamp = DateTime.Now.ToString();
+                post.ID = System.Guid.NewGuid();
+                var userID = _userController.RetrieveID(User.Identity.Name);
+                post.Poster = userID;
+                _context.Add(post);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("MyPosts");
+            }
+            ViewBag.Message = post.ID.ToString();
+            return View("MyPosts");
+        }
+        
         public IActionResult Posts()
         {
             ViewBag.Title = "Browse Posts";
@@ -200,27 +222,46 @@ namespace ChalmersBookExchange.Controllers
         /// otherwise a redirection to my posts page with the edited post</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditPost(Guid id, Post post)
+        public async Task<IActionResult> EditPost(Guid id, Post post, List<IFormFile> Images)
         {
+            foreach (var item in Images)
+            {
+                if (item.Length > 0)
+                {
+                    using (var stream = new MemoryStream())
+                    {
+                        await item.CopyToAsync(stream);
+                        post.Images = stream.ToArray();
+                        
+                    }
+                }
+            }
             
             if (id != post.ID)
             {
                 return NotFound();
             }
+            
             if (ModelState.IsValid)
             {
                 var oldPost = await _context.Post
                     .FirstOrDefaultAsync(p => p.ID == id);
 
+                if (oldPost.Images != null)
+                {
+                    post.Images = oldPost.Images;
+                }
+
                 oldPost.BookName = post.BookName;
                 oldPost.CourseCode = post.CourseCode;
+                oldPost.Description = post.Description;
                 oldPost.Price = post.Price;
                 oldPost.Location = post.Location;
+                oldPost.Images = post.Images;
                 oldPost.Shippable = post.Shippable;
                 oldPost.Meetup = post.Meetup;
-               //  _context.Post.Update(oldPost);
+                //  _context.Post.Update(oldPost);
                 await _context.SaveChangesAsync();
-
                 return RedirectToAction("MyPosts");
             }
             else
@@ -229,6 +270,7 @@ namespace ChalmersBookExchange.Controllers
             }
             
         }
+
         /// <summary>
         /// In this method we add favorite posts to the database
         /// </summary>
@@ -315,6 +357,11 @@ namespace ChalmersBookExchange.Controllers
             if (id is null) return View("Posts");
             ViewBag.Message = id.ToString();
             return View("Post");
+        }
+        public ActionResult DeleteImg(Guid id)
+        {
+            _postController.DeleteImage(id);
+            return RedirectToAction("MyPosts");
         }
     }
 }

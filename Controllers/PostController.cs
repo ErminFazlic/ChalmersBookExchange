@@ -1,9 +1,13 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using ChalmersBookExchange.Data;
 using ChalmersBookExchange.Domain;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -282,5 +286,47 @@ namespace ChalmersBookExchange.Controllers
                 thisUser.Favorites = newGuidArray;
                 _context.SaveChanges();
         }
+        public void DeleteImage(Guid? guid)
+        {
+            if (guid is null) return;
+            var post = _context.Post.FirstOrDefault(p => p.ID.Equals(guid));
+            if (post is null) return;
+            
+            post.Images = null;
+            _context.SaveChanges();
+      
+        }
+        public String RetrieveImage(Guid guid)
+        {
+            var post = _context.Post.SingleOrDefault(p => p.ID.Equals(guid));
+            byte[] img = post.Images;
+            String imageDataURL = String.Empty;
+            
+            if (img != null)
+            {
+                string imageBase64Data = Convert.ToBase64String(img);
+                imageDataURL = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
+               
+            }
+
+            return imageDataURL;
+        }
+        public async void ByteArrayToImage(List<IFormFile> Images, Post post)
+        {
+            foreach (var item in Images)
+            {
+                if (item.Length > 0)
+                {
+                    using (var stream = new MemoryStream())
+                    {
+                        await item.CopyToAsync(stream);
+                        post.Images = stream.ToArray();
+                        
+                    }
+                }
+            }
+
+        }
+        
     }
 }
