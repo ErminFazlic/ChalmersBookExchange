@@ -76,13 +76,13 @@ function popupText() {
                 {
                     <td align = "center"><i class="fa fa-times"></i></td>
                 }
+                    <td>@_userController.RetrieveName(post.Poster)</td>
                     <td> <a asp-action="GoToPost" asp-route-id="@post.ID">
                         <button class="btn" id="EditButton" onclick="popupText()">
                             <i class="fa fa-external-link-alt"></i>
                         </button>
                         </a></td>
-                    <td>@_userController.RetrieveName(post.Poster)</td>
-                    <!--<td><a asp-action="AddFavorite" asp-route-id="@post.ID" asp-route-email="@ViewBag.ThisUser"><button class="btn"> <div class="popup" onclick="myFunction()"><i class="fa fa-heart"></i>
+                <!--<td><a asp-action="AddFavorite" asp-route-id="@post.ID" asp-route-email="@ViewBag.ThisUser"><button class="btn"> <div class="popup" onclick="myFunction()"><i class="fa fa-heart"></i>
                         <span class="popuptext" id="myPopup">Added to favorite!</span>
                     </div></button></a></td> -->
                     <!-- <td> @Html.ActionLink("Add Fav", "AddFavorite", "Home", new { id=post.ID, email = ViewBag.ThisUser}, null)</td> -->
