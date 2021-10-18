@@ -31,7 +31,7 @@ the domain for the application.
 The general flow is:
 > View -> HomeController -> OtherController -> HomeController -> View
 
-For example, If one were to create a post by pressing the submit button on the Create Post page it would send an action to the HomeController which then delegates the to the appropriate controller, in this case the PostController, for doing the interaction with the database. Upon receiving a response the HomeController then redirects the user to an appropriate View.
+For example, If one were to create a post by pressing the submit button on the Create Post page it would send an HTTPPost action to the HomeController which then delegates it to the appropriate controller, in this case the PostController, for doing the interaction with the database. Upon receiving a response the HomeController then redirects the user to an appropriate View.
 
 #### Database Schema
 The schema for the relational database can be described with the following two images:
@@ -47,5 +47,8 @@ The project uses the following NuGet packages:
 - EntityFramework
 - Npgsql
 - AspNetCore.Identity
+
+### How to run
+Coming soon
 
 
