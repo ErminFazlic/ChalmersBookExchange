@@ -1,0 +1,9 @@
+individual reflection week 6
+This week we managed to finish our user stories as a group. 
+I managed to reach the individual KPI of minimum of 2 hours. Me and my group member worked on the landing page. At first we were suposed to make
+the landing page in a way that shows the recent postings and the user's favorites. However we felt it's redundant and told the group about it.
+We decied to have a standup meeting to discuss this and after the meeting we decided to move the search functionality to the landing page. 
+We impelemnted this and when we showed this to the group they liked it very much. We managed to get this user story done through pair programming in zoom. 
+
+As meantioned in the team reflection we are done with our website, there are some styling concerns about some pages, which we will be focusing on during
+this week but otherwise the website is fully functioning as intended. 
