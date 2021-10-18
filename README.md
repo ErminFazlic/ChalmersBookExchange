@@ -48,4 +48,7 @@ The project uses the following NuGet packages:
 - Npgsql
 - AspNetCore.Identity
 
+### How to run
+Coming soon
+
 
