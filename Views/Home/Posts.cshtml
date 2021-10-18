@@ -36,8 +36,9 @@ function popupText() {
 </div>
 
 <div>
-    <table class="table table-striped">
-        <thead>
+    <div style="overflow: scroll; max-height: 710px;">
+        <table class="table table-striped">
+            <thead>
             <tr>
                 <th>Book Name</th>
                 <th>Course Code</th>
@@ -49,15 +50,16 @@ function popupText() {
                 <th></th>
                 <th></th>
             </tr>
-        </thead>
-        <tbody>
-        @foreach (var post in _postController.GetAllPosts())
-        {
-            <tr>
-                <td>@post.BookName</td>
-                <td>@post.CourseCode</td>
-                <td>@post.Price:-</td>
-                <td>@post.Location</td>
+            </thead>
+            <tbody>
+         
+            @foreach (var post in _postController.GetAllPosts())
+            {
+                <tr>
+                    <td>@post.BookName</td>
+                    <td>@post.CourseCode</td>
+                    <td>@post.Price:-</td>
+                    <td>@post.Location</td>
                 @if (post.Shippable)
                 {
                     <td align = "center"><i class="fa fa-check"></i></td>
@@ -74,52 +76,56 @@ function popupText() {
                 {
                     <td align = "center"><i class="fa fa-times"></i></td>
                 }
-                <td>@_userController.RetrieveName(post.Poster)</td>
-                <td> <a asp-action="GoToPost" asp-route-id="@post.ID">
-                    <button class="btn" id="EditButton" onclick="popupText()">
-                        <i class="fa fa-external-link-alt"></i>
-                    </button>
-                </a></td>
+                    <td>@_userController.RetrieveName(post.Poster)</td>
+                    <td> <a asp-action="GoToPost" asp-route-id="@post.ID">
+                        <button class="btn" id="EditButton" onclick="popupText()">
+                            <i class="fa fa-external-link-alt"></i>
+                        </button>
+                        </a></td>
                 <!--<td><a asp-action="AddFavorite" asp-route-id="@post.ID" asp-route-email="@ViewBag.ThisUser"><button class="btn"> <div class="popup" onclick="myFunction()"><i class="fa fa-heart"></i>
-                      <span class="popuptext" id="myPopup">Added to favorite!</span>
+                        <span class="popuptext" id="myPopup">Added to favorite!</span>
                     </div></button></a></td> -->
-                <!-- <td> @Html.ActionLink("Add Fav", "AddFavorite", "Home", new { id=post.ID, email = ViewBag.ThisUser}, null)</td> -->
-                <td>
-                    @if (ViewBag.ThisUser != null && _postController.IsAFavorite(post.ID, ViewBag.ThisUser))
-                    {
-                        <a asp-action="RemoveFavorite" asp-route-id="@post.ID" asp-route-email="@ViewBag.ThisUser">
-                            <button class="btn" id="isFavorite" onclick="popupText()">
-                                <i class="fa fa-heart"></i>
-                            </button></a>
-                    }
-                    else if(ViewBag.ThisUser != null && (_postController!.IsAFavorite(post.ID, ViewBag.ThisUser) || !post.Poster.Equals(_userController.RetrieveID(ViewBag.ThisUser))))
-                    {
-                        <a asp-action="AddFavorite" asp-route-id="@post.ID" asp-route-email="@ViewBag.ThisUser">
-                            <button class="btn" id="isNotFavorite" onclick="popupText()">
-                                <i class="fa fa-heart"></i>
-                            </button></a>
-                    }
-                    else if (ViewBag.ThisUser == null)
-                    {
-                        <a  asp-area="Identity" asp-page="/Account/Login"> <button class="button" id="notSignedIn"><span>Sign in to add favorite </span> </button></a>
-                    }
-                    else
-                    {
-                        <a asp-action="EditPost" asp-route-id="@post.ID">
-                            <button class="btn" id="EditButton" onclick="popupText()">
-                                <i class="fa fa-edit"></i>
-                            </button>
-                        </a>
-                    }
+                    <!-- <td> @Html.ActionLink("Add Fav", "AddFavorite", "Home", new { id=post.ID, email = ViewBag.ThisUser}, null)</td> -->
+                    <td>
+                        @if (ViewBag.ThisUser != null && _postController.IsAFavorite(post.ID, ViewBag.ThisUser))
+                        {
+                            <a asp-action="RemoveFavorite" asp-route-id="@post.ID" asp-route-email="@ViewBag.ThisUser">
+                                <button class="btn" id="isFavorite" onclick="popupText()">
+                                    <i class="fa fa-heart"></i>
+                                </button></a>
+                        }
+                        else if(ViewBag.ThisUser != null && (_postController!.IsAFavorite(post.ID, ViewBag.ThisUser) || !post.Poster.Equals(_userController.RetrieveID(ViewBag.ThisUser))))
+                        {
+                            <a asp-action="AddFavorite" asp-route-id="@post.ID" asp-route-email="@ViewBag.ThisUser">
+                                <button class="btn" id="isNotFavorite" onclick="popupText()">
+                                    <i class="fa fa-heart"></i>
+                                </button></a>
+                        }
+                        else if (ViewBag.ThisUser == null)
+                        {
+                            <a  asp-area="Identity" asp-page="/Account/Login"> <button class="button" id="notSignedIn"><span>Sign in to add favorite </span> </button></a>
+                        }
+                        else
+                        {
+                            <a asp-action="EditPost" asp-route-id="@post.ID">
+                                <button class="btn" id="EditButton" onclick="popupText()">
+                                    <i class="fa fa-edit"></i>
+                                </button>
+                                </a>
+                        }
 
 
-                </td>
-            </tr>
-        }
-        </tbody>
-</table>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
 
+  
+    
+    </div>
 </div>
+
 
 
 @section Scripts {
