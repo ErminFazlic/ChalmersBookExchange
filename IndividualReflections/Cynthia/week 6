@@ -1,0 +1,20 @@
+In this week we were suppoed to be done with the chat and delete & edit user stories, It went perfectly fine and we have even 
+started with another user story "favorite posts"
+
+The week started as usually with a meeting with the suoervisior, where we discussed how we should solve the problems we faced 
+last week about not finding a solution for errors in the code and not getting help from others in the group. In the group 
+meeting we had after the meeting with the supervisior, we suggested a solution for the problem which was an emergency meeting 
+for emergency help or start with another user story until you get the help you need. 
+
+Me, Petra, Negin and Sven continued to fix Delete and Edit user story, and it went great so we were finished with this task early 
+in the sprint so we decided to start with the favorite user story. With help from Sven we were even done with this user story before
+the sprint end. We didn't need any emergency meeting this week but it felt safe to have this option while working with the code. 
+We started with the documentation of the code, and add it to definition of done which means that a user story will be defined as 
+done if it's functioning and documented. 
+
+For my part I watched some tutorials in youtube and google to get an idea about how to do favorite page, I also learned more about 
+documenting code in C# aspnet core. 
+
+For next week, we will be implementing the landing page and the user story where a student 
+should be able to upload images as a post (if we have time) and also clean the repository in github. 
+I will be watching more tutorials and attending in the lecture to know more about the presentation

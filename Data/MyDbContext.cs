@@ -9,8 +9,8 @@ namespace ChalmersBookExchange.Data
         {
         }
         
-        public Microsoft.EntityFrameworkCore.DbSet<User> User { get; set; }
-        public Microsoft.EntityFrameworkCore.DbSet<Post> Post { get; set; }
-        public Microsoft.EntityFrameworkCore.DbSet<Conversation> Conversation { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<Post> Post { get; set; }
+        public DbSet<Conversation> Conversation { get; set; }
     }
 }

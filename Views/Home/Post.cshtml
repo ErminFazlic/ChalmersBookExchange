@@ -1,0 +1,47 @@
+@page
+@using ChalmersBookExchange.Controllers
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<IdentityUser> UserManager
+@inject IPostController _postController
+@inject IUserController _userController
+
+
+
+
+@{
+    var post = _postController.GetPostById(new Guid(ViewBag.Message));
+}
+<div>
+    <div>
+        <h1>@post.BookName </h1>
+        <h2>@post.CourseCode</h2>
+    </div>
+        
+    <div>
+        <p>Image placeholder</p>
+    </div>
+    <div>
+        <h2>@post.Price.ToString() kr</h2>
+        <p>Description: <br>@post.Description</p>
+    </div>
+</div>
+@if (post.Shippable)
+{
+    <p>The seller can ship this book</p>
+}
+@if (post.Meetup)
+{
+    <p>The seller can meet up to sell this book</p>
+    <p>The seller is located in @post.Location</p>
+}
+
+<div>
+    <p>This book is sold by @_userController.RetrieveNameById(@post.Poster)</p>
+    <a asp-action="AddContact" asp-route-contactToAdd="@post.Poster" asp-route-loggedInUser="@_userController.RetrieveID(@User.Identity.Name)">Message the seller</a>
+</div>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

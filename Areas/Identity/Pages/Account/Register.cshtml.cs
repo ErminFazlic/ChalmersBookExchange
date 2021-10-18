@@ -82,7 +82,7 @@ namespace ChalmersBookExchange.Areas.Identity.Pages.Account
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email, EmailConfirmed = true};
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 var ourUser = new User {ID = System.Guid.NewGuid(), Name = Input.Name, Email = Input.Email, Contacts = null, Favorites = null};
                 var ourResult = await _userController.CreateUserAsync(ourUser);
@@ -103,7 +103,7 @@ namespace ChalmersBookExchange.Areas.Identity.Pages.Account
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
+                        return RedirectToPage("Login");
                     }
                     else
                     {

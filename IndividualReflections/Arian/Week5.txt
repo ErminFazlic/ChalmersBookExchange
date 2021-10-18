@@ -1,0 +1,18 @@
+Individual reflection week 5
+
+This week we did the same thing as the last week, we split up our team in two different groups and each group picked a user story to work 
+on so we can reach our KPI of 2 user stories per sprint more efficiently. 
+I pair programmed with two other team members and reached the KPI of minimum of 2 hours worked. We managed to get our user story done, 
+however the other group got stuck on an error and were unable to finish their user story in time. We tried helping them but there was not 
+enough time to fix the issue. We discussed this later with the TA on our supervision meeting and he suggested that we should discuss this 
+later in our group meeting and come up with potential solutions in order to avoid this happening again in the future. We did as the TA 
+suggested and our solution to this problem was to: 
+1. Start on another user story if you are stuck and you can not get any help from other team members. 
+2. Have an emergency meeting at the end of the week if the problem is not fixed.  
+The TA also suggested that we should do a better job of documenting the code in order for the code being easier to understand if somebody 
+else wants to jump in and help. He was suggesting that maybe we should update our Definition of Done. 
+
+For next week we want to finish the user story that we didn’t manage to get done as well as implementing the chat functionality. 
+We also want to comment our code and provide better documentation for better code readability. 
+
+My learning objective for next week will be to learn how to deal with such events in future, as well as better time manegment. 

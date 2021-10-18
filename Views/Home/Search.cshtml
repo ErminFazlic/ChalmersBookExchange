@@ -1,9 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Search";
 }
-<h1>@ViewData["Search"]</h1>
+<h1>Search</h1>
 
-<p>Search for your book using the book name or the course code</p>
 <form action="SearchPost" method="post">
    
     <table>
@@ -15,9 +14,25 @@
             <td>Course code: </td>
             <td><input type="text" name="CourseCode"/></td>
         </tr>
+        <tr>
+            <td>Minimum price: </td>
+            <td><input type="number" name="minPrice"/></td>
+        </tr>
+        <tr>
+            <td>Maximum price: </td>
+            <td><input type="number" name="maxPrice"/></td>
+        </tr>
+        <tr>
+            <td>Do you want the seller to be able to ship the book? </td>
+            <td><input type="checkbox" name="Shippable"/></td>
+        </tr>
+        <tr>
+            <td>Do you want the seller to be able to meet up to sell the book? </td>
+            <td><input type="checkbox" name="Meetup"/></td>
+        </tr>
     </table>
         <tr>
-            <td colspan="2"><input type="submit" value="search"/></td>
+            <td colspan="2"><input type="submit" value="Search"/></td>
         </tr>
         
 </form>

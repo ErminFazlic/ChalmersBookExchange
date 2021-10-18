@@ -1,0 +1,15 @@
+For this week we wanted to finish our user stories that we set up for this sprint.
+
+I contributed towards this goal by reaching the individual KPI of 2 hours worked. Me and my
+group member worked on the chat functionality using pair programming this week aswell. Where 
+we sit together and one person writes code and the other helps and then rotate those roles
+periodically. We also managed to reach the team KPI of 2 user stories done so it was a good
+sprint.
+
+For the next week we want to do the finishing user stories aswell as cleaning up the repository
+and code. These user stories are making a landing page after logging in and the ability to 
+save posts as favorites for logged in users.
+
+I don't have a specific learning objective for next week since it, at this moment, is not
+entirely clear to me what I can focus on learning to help improve the team's performance.
+For this reason I will keep an open mind to changing the learning objective.

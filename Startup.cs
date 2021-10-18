@@ -1,13 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ChalmersBookExchange.Controllers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using ChalmersBookExchange.Data;
 using Microsoft.Extensions.Configuration;
@@ -35,6 +29,7 @@ namespace ChalmersBookExchange
             services.AddDatabaseDeveloperPageExceptionFilter();
             services.AddSingleton<IUserController, UserController>();
             services.AddTransient<IPostController, PostController>();
+            services.AddTransient<IChatController, ChatController>();
             
             services.AddTransient<MyDbContext>();
 
@@ -72,6 +67,12 @@ namespace ChalmersBookExchange
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "GetContactConversations",
+                    pattern: "{controller=Chat}/{action=ConversationWithContact}/{contact}");
+                endpoints.MapControllerRoute(
+                    name: "SendMessage",
+                    pattern: "{controller=Chat}/{action=SendMessage}/{message}/{contact}");
                 endpoints.MapRazorPages();
             });
         }

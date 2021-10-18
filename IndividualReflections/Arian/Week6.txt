@@ -1,0 +1,8 @@
+individual reflection week 6
+This week we managed to finish our user stories as a group. 
+I managed to reach the individual KPI of minimum of 2 hours. Me and my group member worked on the chat functionality. 
+We managed to get this user story done through pair programming. We as a group managed to do 2 user story as well which is what was agreed upon. 
+
+For the next week we want to get the remaining user stories done as well as cleaning the repository.
+
+My leaning objective for this week will be to try to work individually on a single user story . 
