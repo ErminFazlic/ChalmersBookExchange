@@ -1,0 +1,75 @@
+THE CURRENT SITUATION (A):
+
+We are finished with our product. The website is full functioning at the moment without any problems. We have some branches that need to be merged. 
+
+
+B:
+
+Our goal for the coming week is to merge the branches and fix some styling. 
+
+
+
+A->B:
+In order to reach our goald we have to:
+
+1. Merge the branches and fix potential merging conflicts. 
+2. Use CSS to style the website. 
+
+Reflection:
+We as a group are satisfied with last week. We managed to get everything done that was planned. We are also satisfied with our 
+performance as a team. When we started with our user story regarding the landing page we were supposed to make two boxes
+one of them containing the recent posts and the other one contaning a user's favorite posts. However after implementing this we 
+realized that it's a bit redundant and we decided to have a standup meeting in order to discuss this. After the meeting we decided
+to move the search functionality to the landing page and remove the search page. 
+
+
+
+
+
+Customer Value and scope:
+To succeed in this goal we will focus on teamwork and split up the tasks on the user stories
+explicitly. To do this in a good way, we've split all user stories in to tasks and made effort
+estimations for them through planning poker. This helped us decide how many team members are
+needed for each user story.
+
+Before mergeing any code we have decided that the code will be reviewed and tested by someone
+other than the team members working on that user story.
+
+The KPI we will use to monitor the team members individual progress will be hours worked.
+We will also use a KPI to monitor the team's progress. This is gonna be number of user stories
+done per sprint.
+
+
+Social contract and effort:
+We aim for the individual KPI of two hours worked per sprint per individual. We aim for the team 
+KPI of two user stories done per sprint.
+Definition of done: We added that before a user story is done, the code has to be commented. 
+
+
+
+Design decisions and product structure:
+We've chosen to do this project in C# with the framework ASP.NET Core. We chose this as we 
+felt it's a good framework to easily start working with where a lot of the tedious ground-work
+is done. This allows us to earlier start working on the functionality for the end-users and
+thus providing more value for the time spent.
+
+We've also decided on a SQL database, this is because a lot of the data is relational, for 
+example a user has favorite posts. 
+
+Furthermore, we've decided on the MVC design pattern to effectively separate concerns in the
+application. This will help us work in a module way. In addition to this we've created use
+cases and interaction diagrams to further streamline the work experience.
+
+
+
+Application of Scrum:
+The following roles we've used are: Scrum master, Product owner, a meeting organizer.
+These roles allowed us to have someone take charge in the meetings and sprint reviews and
+making sure that we move forward in those (Scrum master). The product owner (PO) role allows us
+to deliver something of value each sprint. We have no external PO so we have on of the team
+members act as one. The sprint review with the PO resulted in a re-prioritasion of the user
+stories as well as some additional ones.
+
+For our IDE we used Jetbrains Rider for all group members, Github for version control and 
+Trello for a scrum board. To learn these tools we consult eachother first. If there is still
+something that can't be done after that, we turn to online resources.  
