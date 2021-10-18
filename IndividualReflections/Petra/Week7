@@ -1,0 +1,18 @@
+This week we started to round off the project. We merged the different branches and some merging conflicts occurred, 
+but we solved it. Although it causes some problem with the delete/edit and the chat function, but we made it work in the end. 
+We also started to do more CSS so that the website would have a look and cleaned our repository in github. 
+
+We divided us into two smaller groups this week too since this is a good way for us to work, also to reach our KPI of minimum 
+2 hours. Me and my group choose to work with the landing page and to do some CSS. The user story that was written in our trello 
+was to have recent posts and favorite post on the landing page. After we have implemented these, we discovered that the landing 
+page were a repeated side of two other pages. Therefore, me and my group decided to have a meeting in the middle of the week to 
+discuss this with the other team members. Everyone agreed with us, so we decided to remove the search page and have the search 
+function on the landing page. As usual we do pair programming, but we always ends up writing the code on one computer to make it 
+easier when we push the code on github etc. 
+
+Next week we don’t have too much to do since the website and its functionality are done. We will do some more CSS to make the website 
+to look more like a book exchange for Chalmers and make some fix here and there. Finally, we will merge everything. 
+
+Our goal for the next week is to start with the final report and the presentation. Also, to fix some little details to fit into our 
+Definition of Done. For my learning part, since we are almost done there is nothing to learn more about otherwise than the structure 
+for the report etc. 
