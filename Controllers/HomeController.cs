@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using ChalmersBookExchange.Data;
 using ChalmersBookExchange.Domain;
@@ -39,14 +40,21 @@ namespace ChalmersBookExchange.Controllers
         {
             return View();
         }
-        
+        /// <summary>
+        /// Creates a new post and adds it to the database.
+        /// The form that is posted binds the attribute of the params included.
+        /// </summary>
+        ///  <authors> Everybody</authors>
+        /// <param name="post"></param>
+        /// <param name="Images"></param>
+        /// <returns>A view of MyPosts</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreatePost([Bind("BookName,CourseCode,Description,Price,Location,Shipment,Meetup")] Post post, List<IFormFile> Images)
         {
             if (ModelState.IsValid)
             {
-                _postController.ByteArrayToImage(Images, post);
+                _postController.ImageToByteArray(Images, post);
                 
                 post.Timestamp = DateTime.Now.ToString();
                 post.ID = System.Guid.NewGuid();
@@ -224,40 +232,28 @@ namespace ChalmersBookExchange.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditPost(Guid id, Post post, List<IFormFile> Images)
         {
-            foreach (var item in Images)
-            {
-                if (item.Length > 0)
-                {
-                    using (var stream = new MemoryStream())
-                    {
-                        await item.CopyToAsync(stream);
-                        post.Images = stream.ToArray();
-                        
-                    }
-                }
-            }
             
+            _postController.ImageToByteArray(Images, post);
+          
             if (id != post.ID)
             {
                 return NotFound();
             }
-            
+
             if (ModelState.IsValid)
             {
                 var oldPost = await _context.Post
                     .FirstOrDefaultAsync(p => p.ID == id);
 
-                if (oldPost.Images != null)
+                if (Images.Count != 0)            // If no new image provided, it won't overwrite the existing one
                 {
-                    post.Images = oldPost.Images;
+                    oldPost.Images = post.Images;
                 }
-
                 oldPost.BookName = post.BookName;
                 oldPost.CourseCode = post.CourseCode;
                 oldPost.Description = post.Description;
                 oldPost.Price = post.Price;
                 oldPost.Location = post.Location;
-                oldPost.Images = post.Images;
                 oldPost.Shippable = post.Shippable;
                 oldPost.Meetup = post.Meetup;
                 //  _context.Post.Update(oldPost);
@@ -268,7 +264,7 @@ namespace ChalmersBookExchange.Controllers
             {
                 return NotFound();
             }
-            
+
         }
 
         /// <summary>
@@ -358,6 +354,12 @@ namespace ChalmersBookExchange.Controllers
             ViewBag.Message = id.ToString();
             return View("Post");
         }
+        /// <summary>
+        /// Delete the image from the database
+        /// </summary>
+        /// <authors> Negin, Sven</authors>
+        /// <param name="id"></param>
+        /// <returns>Redirection to MyPosts</returns>
         public ActionResult DeleteImg(Guid id)
         {
             _postController.DeleteImage(id);
