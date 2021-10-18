@@ -26,7 +26,7 @@ namespace ChalmersBookExchange.Controllers
         Post[] GetAllPostsOldest();
         public void DeleteImage(Guid? guid);
         public String RetrieveImage(Guid guid);
-        public void ByteArrayToImage(List<IFormFile> Images, Post post);
-
+        public void ImageToByteArray(List<IFormFile> Images, Post post);
+        
     }
 }
