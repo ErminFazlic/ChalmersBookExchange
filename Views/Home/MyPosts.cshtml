@@ -7,36 +7,61 @@
 
 @inject UserManager<IdentityUser> UserManager
 
-<h1>@ViewBag.Title</h1>
-<div>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>Book Name</th>
-            <th>Course Code</th>
-            <th>Price</th>
-            <th>Location</th>
-            <th>Shippable</th>
-            <th>Meetup</th>
-        </tr>
-        </thead>
-        <tbody>
-        
 
-             @foreach (var post in _postController.GetMyPosts(_userController.RetrieveID(@User.Identity.Name)))
-             {
-                
-                 <tr>
-                     <td>@post.BookName</td>
-                     <td>@post.CourseCode</td>
-                     <td>@post.Price:-</td>
-                     <td>@post.Location</td>
-                     <td>@post.Shippable</td>
-                     <td>@post.Meetup</td>
-                     <td> <a asp-action="Delete" asp-route-id="@post.ID">Delete</a></td>
-                     <td> <a asp-action="EditPost" asp-route-id="@post.ID">Edit</a></td>
-                      <td> <img width="auto" height="64" src="@_postController.RetrieveImage(post.ID)" alt="@post.BookName"/> </td>
+<div style="overflow: scroll; max-height: 710px;">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+    <link rel="stylesheet" href="@Url.Content("~/css/button.css")">
 
+    <h1>My Posts</h1>
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Book Name</th>
+                <th>Course Code</th>
+                <th>Price</th>
+                <th>Location</th>
+                <th>Shippable</th>
+                <th>Meetup</th>
+                <th></th>
+                <th></th>      
+            </tr>
+            </thead>
+            <tbody>
+         
+
+            @foreach (var post in _postController.GetMyPosts(_userController.RetrieveID(@User.Identity.Name)))
+            {
+                <tr>
+                    <td> <img width="auto" height="64" src="@_postController.RetrieveImage(post.ID)" alt="@post.BookName"/> </td>
+                    <td>@post.BookName</td>
+                    <td>@post.CourseCode</td>
+                    <td>@post.Price:-</td>
+                    <td>@post.Location</td>
+                    @if (post.Shippable)
+                    {
+                        <td align = "center"><i class="fa fa-check"></i></td>
+                    }
+                    else
+                    {
+                        <td align = "center"><i class="fa fa-times"></i></td>
+                    }
+                    @if (post.Meetup)
+                    {
+                        <td align = "center"><i class="fa fa-check"></i></td>
+                    }
+                    else
+                    {
+                        <td align = "center"><i class="fa fa-times"></i></td>
+                    }
+                    <td> <a asp-action="EditPost" asp-route-id="@post.ID">
+                        <button class="btn" id="EditButton" onclick="popupText()">
+                            <i class="fa fa-edit"></i>
+                        </button>   
+                    </a></td>
+                    <td> <a asp-action="Delete" asp-route-id="@post.ID">
+                        <button class="btn" id="removeButton"> Remove Post</button>
+                    </a></td>
 
                  </tr>
              
@@ -44,12 +69,14 @@
       
         </tbody>
 </table>
+
 </div>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
      
-} 
+}
 
 
    

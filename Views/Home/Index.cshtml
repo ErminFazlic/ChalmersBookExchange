@@ -1,8 +1,41 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿
+<h1>Welcome</h1>
+<style>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>WIP</p>
+    h1 {text-align: center;}
+    p {text-align: center;}
+    div {text-align: center;}
+    .center {
+  margin-left: auto;
+  margin-right: auto;
+}
+html, body {
+     min-height: 100%;
+}
+</style>
+<div>
+
+<p>Search for your book using the book name or the course code</p>
+
+
+   @using (Html.BeginForm("SearchPost", "Home", FormMethod.Post))
+   {
+       <table class="center">
+
+           <tr>
+               <td>Book Name: </td>
+               <td><input type="text" name="BookName"/></td>
+           </tr>
+           <tr>
+               <td>Course code: </td>
+               <td><input type="text" name="CourseCode"/></td>
+           </tr>
+       </table>
+       <tr>
+           <td colspan="2"><input type="submit" value="Search"/></td>
+       </tr>
+   }   
 </div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

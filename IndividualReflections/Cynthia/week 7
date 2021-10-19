@@ -1,0 +1,20 @@
+The goals for this week was to be done with landing page, upload images user stories and also fix merging conflicts.
+The goal was fully achieved without any problems.
+
+We started the week with the short supervision meeting, the supervisor had not much to say except for excellent work to the team.
+We had our weekly meeting right after that meeting where we dicussed the upcoming goal for the week and as usually divided 
+the user stories between us. 
+
+For my part I joined the landing page story together with Arian and Petra, we started implementing the page which should display
+all posts and the user's favorite ones right beside each other in each box. For me it felt like just repeating unnecessary code
+and making bad design, so I suggested that we implement the search field here and remove the Search page. We had a standup meeting 
+with the whole group to get an approval for the suggestion, and fortunally everyone agreed. I copied the code from the search page 
+to the landing page where I faced a problem with the routing, it couldn't find the getQueried page where we get when we hit the 
+search button. After some researches I fixed the problem while Petra and Arian worked on design and CSS problems. 
+I've learned this week much more about routing and css which I really wanted to learn about. 
+
+For next week we will be continue fixing the design of the whole website focusing on Create Post page and merging to main. But 
+in general we are almost done with the implementing part, and hopefully start to write the last report and doing the presentaton
+
+The course in general was one of my funniest, most instructive and creative courses. I've learned much more than what I excepted and it 
+gave me a fine pictures how real life programming look like. 

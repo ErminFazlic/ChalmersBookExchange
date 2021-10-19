@@ -1,0 +1,12 @@
+For this week we wanted to finish ou user stories that we set up for this sprint.
+
+I contributed towards this goal by reaching the individual KPI of 2 hours worked. I fixed some
+merging issues and cleaned up the repository aswell as adding a readme file. In addition to
+this I also did some styling for buttons and made it be the same throughout the project for
+visual consistency.
+
+For the next week we want to merge the final branches together and maybe fix some styling
+depending on what we agree on.
+
+Since we are pretty much finished with the project I don't haver any specific learning
+objectives.

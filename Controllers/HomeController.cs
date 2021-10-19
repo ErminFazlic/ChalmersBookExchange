@@ -86,7 +86,7 @@ namespace ChalmersBookExchange.Controllers
         }
         public IActionResult MyPosts()
         {
-            ViewBag.Title = "MyPosts";
+            ViewBag.Title = "My Posts";
             return View("MyPosts");
         }
         

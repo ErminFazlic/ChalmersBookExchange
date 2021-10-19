@@ -1,0 +1,45 @@
+Individual Reflections week 7
+
+For this week we did the usually meeting of briefing the team of the completed tasks. 
+Though we mainly use the trello board to get a good overview of the team's gathered effort, 
+it suerly contributes to the team's spirit when discussing.
+The chat function was completed which had good impact on the value of our project. 
+The user story for the add favorites-features was also completed.
+Ermin informed us that he did some clean up in the code, bevause he had very good
+overview of our project. Some of us did the same for the methods that we hade created in the project.
+We had also commented the code as we saw it fit as an criteria in our updated DoD.
+
+The user story for todays sprint was distributed among the team members, the landing page and
+the ability to upload images to the post was planned to be completed this sprint.
+
+Negin and me took on the upload user story and planned a meeting on tuesday to work on the code.
+We had both whatched some tutorials on how to complete the task, though we ran into some problems
+regarding the functionality that would cause fragility in our code base. Regarding the 
+agile aspect of it, we could in a resonable amount of time deliver the expected functionality,
+though it would cause us some technical dept. This was a nice experience in how we discuss
+the different outcomes and how it could give value to the project. 
+We stated that, we should try a pretty basic approach on the problem so as we could
+deliver some functionality though we would gather more information about the topic along the sprint.
+
+On our meeting on thursday we discussed about the final presenation and how we would devide the
+tasks among the group. Some would do work on the presentation and some would work on the 
+final team report. We would later looked on the final work together to see if anyone 
+would like to add something.
+The other thing we discussed was that we ran into some problems regarding the merge of the
+branches for the chat function and the favorite funcion. Ermin briefed us on what different functionality 
+of the website that didn't work anymore. To start debugging, the team members responsible for their
+respective user story group up in order to effectively find the source of the bug. 
+
+After the meeting, the girls and I assembled to find out the bug. We manage eventually to find the source 
+of the problem; it was cause by a collision in the code when the chat function was implemented. 
+We would later have to inform the rest of the team in order to fix this as best as possible with
+the agile apect of it. This because we want to deliver as much value to the customer as possible.
+
+Later this Sunday, Negin and I manage to finish the code for making users be able to upload images
+to their posts. What remains to be done is to write the documentation of the code.
+
+For next week, starting monday, Negin and I will finsih the documentation after our scheduled meeting. 
+Further more the team will start working on some improvement of the code to make it more manageble. Later
+on we will start looking on the final representtion and what is needed to be done. For my part I
+will try to contribute as much as possbile to my team with suggestions and ideas I have gathered along this
+weeks sprint that will help us make a good delivery for our final reprentation.
