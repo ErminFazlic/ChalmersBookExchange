@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using ChalmersBookExchange.Data;
 using ChalmersBookExchange.Domain;
@@ -35,9 +38,36 @@ namespace ChalmersBookExchange.Controllers
         }
         public IActionResult CreatePost()
         {
-            ViewBag.Title = "Create a new post";
             return View();
         }
+        /// <summary>
+        /// Creates a new post and adds it to the database.
+        /// The form that is posted binds the attribute of the params included.
+        /// </summary>
+        ///  <authors> Everybody</authors>
+        /// <param name="post"></param>
+        /// <param name="Images"></param>
+        /// <returns>A view of MyPosts</returns>
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreatePost([Bind("BookName,CourseCode,Description,Price,Location,Shipment,Meetup")] Post post, List<IFormFile> Images)
+        {
+            if (ModelState.IsValid)
+            {
+                _postController.ImageToByteArray(Images, post);
+                
+                post.Timestamp = DateTime.Now.ToString();
+                post.ID = System.Guid.NewGuid();
+                var userID = _userController.RetrieveID(User.Identity.Name);
+                post.Poster = userID;
+                _context.Add(post);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("MyPosts");
+            }
+            ViewBag.Message = post.ID.ToString();
+            return View("MyPosts");
+        }
+        
         public IActionResult Posts()
         {
             ViewBag.Title = "Browse Posts";
@@ -200,35 +230,43 @@ namespace ChalmersBookExchange.Controllers
         /// otherwise a redirection to my posts page with the edited post</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditPost(Guid id, Post post)
+        public async Task<IActionResult> EditPost(Guid id, Post post, List<IFormFile> Images)
         {
             
+            _postController.ImageToByteArray(Images, post);
+          
             if (id != post.ID)
             {
                 return NotFound();
             }
+
             if (ModelState.IsValid)
             {
                 var oldPost = await _context.Post
                     .FirstOrDefaultAsync(p => p.ID == id);
 
+                if (Images.Count != 0)            // If no new image provided, it won't overwrite the existing one
+                {
+                    oldPost.Images = post.Images;
+                }
                 oldPost.BookName = post.BookName;
                 oldPost.CourseCode = post.CourseCode;
+                oldPost.Description = post.Description;
                 oldPost.Price = post.Price;
                 oldPost.Location = post.Location;
                 oldPost.Shippable = post.Shippable;
                 oldPost.Meetup = post.Meetup;
-               //  _context.Post.Update(oldPost);
+                //  _context.Post.Update(oldPost);
                 await _context.SaveChangesAsync();
-
                 return RedirectToAction("MyPosts");
             }
             else
             {
                 return NotFound();
             }
-            
+
         }
+
         /// <summary>
         /// In this method we add favorite posts to the database
         /// </summary>
@@ -315,6 +353,17 @@ namespace ChalmersBookExchange.Controllers
             if (id is null) return View("Posts");
             ViewBag.Message = id.ToString();
             return View("Post");
+        }
+        /// <summary>
+        /// Delete the image from the database
+        /// </summary>
+        /// <authors> Negin, Sven</authors>
+        /// <param name="id"></param>
+        /// <returns>Redirection to MyPosts</returns>
+        public ActionResult DeleteImg(Guid id)
+        {
+            _postController.DeleteImage(id);
+            return RedirectToAction("MyPosts");
         }
     }
 }

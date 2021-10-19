@@ -1,9 +1,14 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using ChalmersBookExchange.Data;
 using ChalmersBookExchange.Domain;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -221,8 +226,8 @@ namespace ChalmersBookExchange.Controllers
         }
         
         /// <summary>
-        /// This method add the favorite post to the database
-        /// Checks for duplicate and if the post belongs to this user
+        /// This method add the favorite post to the database.
+        /// Checks for duplicate and if the post belongs to this user.
         /// </summary>
         /// <authors> Cynthia, Negin, Petra, Sven</authors>
         /// <param name="id"></param>
@@ -259,12 +264,13 @@ namespace ChalmersBookExchange.Controllers
         }
         
         /// <summary>
-        /// This method remove the favorite post from the database
-        /// It checks that the post and the user is not null
+        /// This method remove the favorite post from the database.
+        /// It checks that the post and the user is not null.
         /// </summary>
         /// <authors> Cynthia, Negin, Petra, Sven</authors>
         /// <param name="id"></param>
         /// <param name="email"></param>
+        
         public void RemoveFavoriteFromDb(Guid id, string email)
         {
             var thisPost = _context.Post.FirstOrDefault(p => p.ID == id);
@@ -282,5 +288,67 @@ namespace ChalmersBookExchange.Controllers
                 thisUser.Favorites = newGuidArray;
                 _context.SaveChanges();
         }
+        /// <summary>
+        /// This method will remove the current image from the post, from the database.
+        /// It checks that the post and the user is not null
+        /// </summary>
+        /// <authors> Negin, Sven</authors>
+        /// <param name="guid"></param>
+        public void DeleteImage(Guid? guid)
+        {
+            if (guid is null) return;
+            var post = _context.Post.FirstOrDefault(p => p.ID.Equals(guid));
+            if (post is null) return;
+            
+            post.Images = null;
+            _context.SaveChanges();
+      
+        }
+        /// <summary>
+        /// Retrieves the bytearray from the database and converts it into an image.
+        /// It checks that the image is not null.
+        /// </summary>
+        /// <authors> Negin, Sven</authors>
+        /// <param name="guid"></param>
+        /// <returns>Returns a string that represent the image</returns>
+        public String RetrieveImage(Guid guid)
+        {
+            var post = _context.Post.SingleOrDefault(p => p.ID.Equals(guid));
+            byte[] img = post.Images;
+            String imageDataURL = String.Empty;
+            
+            if (img != null)
+            {
+                string imageBase64Data = Convert.ToBase64String(img);
+                imageDataURL = string.Format("data:image/jpg;base64,{0}", imageBase64Data);
+               
+            }
+
+            return imageDataURL;
+        }
+        /// <summary>
+        /// Converts an image file to a bytearray and saves it to database.
+        /// Checks if the bytearray is not null ny checking the length of the bytearray.
+        /// </summary>
+        /// <authors> Negin, Sven</authors>
+        /// <param name="Images"></param>
+        /// <param name="post"></param>
+        public async void ImageToByteArray(List<IFormFile> Images, Post post)
+        {
+            foreach (var item in Images)
+            {
+                if (item.Length > 0)
+                {
+                    using (var stream = new MemoryStream())
+                    {
+                        await item.CopyToAsync(stream);
+                        post.Images = stream.ToArray();
+                        
+                    }
+                }
+            }
+
+        }
+        
     }
 }

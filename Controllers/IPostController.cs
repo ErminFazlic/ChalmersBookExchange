@@ -1,6 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using ChalmersBookExchange.Domain;
+using Microsoft.AspNetCore.Http;
 
 namespace ChalmersBookExchange.Controllers
 {
@@ -20,6 +24,9 @@ namespace ChalmersBookExchange.Controllers
         Post[] GetAllPostsPriceAsc();
         Post[] GetAllPostsPriceDesc();
         Post[] GetAllPostsOldest();
+        public void DeleteImage(Guid? guid);
+        public String RetrieveImage(Guid guid);
+        public void ImageToByteArray(List<IFormFile> Images, Post post);
         
     }
 }
