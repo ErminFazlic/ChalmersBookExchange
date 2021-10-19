@@ -17,7 +17,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th></th>
+                <th>Image</th>
                 <th>Book Name</th>
                 <th>Course Code</th>
                 <th>Price</th>
@@ -34,37 +34,46 @@
             @foreach (var post in _postController.GetMyPosts(_userController.RetrieveID(@User.Identity.Name)))
             {
                 <tr>
-                    <td> <img width="auto" height="64" src="@_postController.RetrieveImage(post.ID)" alt="@post.BookName"/> </td>
+                    @if (post.Images is not null)
+                    {
+                        <td> <img width="auto" height="64" src="@_postController.RetrieveImage(post.ID)" alt="@post.BookName"/> </td>
+                    }
+                    else
+                    {
+                        <td><i class="fa fa-question"></i></td>
+                    }
                     <td>@post.BookName</td>
                     <td>@post.CourseCode</td>
                     <td>@post.Price:-</td>
                     <td>@post.Location</td>
                     @if (post.Shippable)
                     {
-                        <td align = "center"><i class="fa fa-check"></i></td>
+                        <td align="center"><i class="fa fa-check"></i></td>
                     }
                     else
                     {
-                        <td align = "center"><i class="fa fa-times"></i></td>
+                        <td align="center"><i class="fa fa-times"></i></td>
                     }
                     @if (post.Meetup)
                     {
-                        <td align = "center"><i class="fa fa-check"></i></td>
+                        <td align="center"><i class="fa fa-check"></i></td>
                     }
                     else
                     {
-                        <td align = "center"><i class="fa fa-times"></i></td>
+                        <td align="center"><i class="fa fa-times"></i></td>
                     }
-                    <td> <a asp-action="EditPost" asp-route-id="@post.ID">
-                        <button class="btn" id="EditButton" onclick="popupText()">
-                            <i class="fa fa-edit"></i>
-                        </button>   
-                    </a></td>
-                    <td> <a asp-action="Delete" asp-route-id="@post.ID">
-                        <button class="btn" id="removeButton"> Remove Post</button>
-                    </a></td>
+                    <td>
+                        <a asp-action="EditPost" asp-route-id="@post.ID">
+                            <button class="btn" id="EditButton" onclick="popupText()">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                        </a></td>
+                    <td>
+                        <a asp-action="Delete" asp-route-id="@post.ID">
+                            <button class="btn" id="removeButton"> Remove Post</button>
+                        </a></td>
 
-                 </tr>
+                </tr>
              
              }  
       
