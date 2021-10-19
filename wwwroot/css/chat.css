@@ -3703,6 +3703,7 @@ tbody.collapse.in {
     position: relative;
     background-color: #f2f2f2;
     height: 600px;
+    width: 800px;
 }
 
 .chat__body .chat__main .__chat__ {
@@ -3753,6 +3754,7 @@ tbody.collapse.in {
 .chat__body .chat__type__body .chat__type {
     background-color: #e6e6e6;
     width: 100%;
+    margin-top: 25px;
 }
 
 .chat__body .chat__type__body .chat__type textarea {

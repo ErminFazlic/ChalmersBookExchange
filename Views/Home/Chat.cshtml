@@ -95,7 +95,8 @@ let currentContact = null; // Holds current contact
             }});    
     }
 </script>
-<div style="overflow: scroll; max-height: 710px;">
+
+<div style="height: 700px;">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-md-3">
@@ -125,7 +126,7 @@ let currentContact = null; // Holds current contact
                     </div>
                 </aside>
             </div>
-            <div class="col-xs-12 col-md-9 chat__body ">
+            <div class="chat__body" style="width:800px">
                 <div class="row">
                     <div class="col-xs-12 chat__body scroll">
                         <ul class="list-group chat__main">
@@ -133,7 +134,7 @@ let currentContact = null; // Holds current contact
                         </ul>
                     </div>
                     <div class="chat__type__body">
-                        <div class="chat__type">
+                        <div class="chat__type" style="margin-top: 25px;">
                             <textarea id="msg_box" placeholder="Type your message"></textarea>
                             <button class="btn btn-primary" onclick = "sendMessage(this)" id="sendMessage">Send</button>
                         </div>
