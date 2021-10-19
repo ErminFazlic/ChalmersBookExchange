@@ -16,6 +16,7 @@
     <table class="table table-striped">
         <thead>
         <tr>
+            <th>Image</th>
             <th>Book Name</th>
             <th>Course Code</th>
             <th>Price</th>
@@ -24,7 +25,7 @@
             <th>Meetup</th>
             <th>Poster</th>
             <th></th>
-            <th></th>            
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -33,6 +34,14 @@
         @foreach (var post in _postController.GetFavorites((@User.Identity.Name)))
         {
             <tr>
+                @if (post.Images is not null)
+                {
+                    <td> <img width="auto" height="64" src="@_postController.RetrieveImage(post.ID)" alt="@post.BookName"/> </td>
+                }
+                else
+                {
+                    <td><i class="fa fa-question"></i></td>
+                }   
                 <td>@post.BookName</td>
                 <td>@post.CourseCode</td>
                 <td>@post.Price:-</td>

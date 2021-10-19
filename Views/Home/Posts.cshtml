@@ -40,6 +40,7 @@ function popupText() {
         <table class="table table-striped">
             <thead>
             <tr>
+                <th>Image</th>
                 <th>Book Name</th>
                 <th>Course Code</th>
                 <th>Price</th>
@@ -56,36 +57,45 @@ function popupText() {
             @foreach (var post in _postController.GetAllPosts())
             {
                 <tr>
+                     @if (post.Images is not null)
+                     {
+                         <td> <img width="auto" height="64" src="@_postController.RetrieveImage(post.ID)" alt="@post.BookName"/> </td>
+                     }
+                     else
+                     {
+                         <td><i class="fa fa-question"></i></td>
+                     }                   
                     <td>@post.BookName</td>
                     <td>@post.CourseCode</td>
                     <td>@post.Price:-</td>
                     <td>@post.Location</td>
-                @if (post.Shippable)
-                {
-                    <td align = "center"><i class="fa fa-check"></i></td>
-                }
-                else
-                {
-                    <td align = "center"><i class="fa fa-times"></i></td>
-                }
-                @if (post.Meetup)
-                {
-                    <td align = "center"><i class="fa fa-check"></i></td>
-                }
-                else
-                {
-                    <td align = "center"><i class="fa fa-times"></i></td>
-                }
+                    @if (post.Shippable)
+                    {
+                        <td align="center"><i class="fa fa-check"></i></td>
+                    }
+                    else
+                    {
+                        <td align="center"><i class="fa fa-times"></i></td>
+                    }
+                    @if (post.Meetup)
+                    {
+                        <td align="center"><i class="fa fa-check"></i></td>
+                    }
+                    else
+                    {
+                        <td align="center"><i class="fa fa-times"></i></td>
+                    }
                     <td>@_userController.RetrieveName(post.Poster)</td>
-                    <td> <a asp-action="GoToPost" asp-route-id="@post.ID">
-                        <button class="btn" id="EditButton" onclick="popupText()">
-                            <i class="fa fa-external-link-alt"></i>
-                        </button>
+                    <td>
+                        <a asp-action="GoToPost" asp-route-id="@post.ID">
+                            <button class="btn" id="EditButton" onclick="popupText()">
+                                <i class="fa fa-external-link-alt"></i>
+                            </button>
                         </a></td>
-                <!--<td><a asp-action="AddFavorite" asp-route-id="@post.ID" asp-route-email="@ViewBag.ThisUser"><button class="btn"> <div class="popup" onclick="myFunction()"><i class="fa fa-heart"></i>
+                    <!--<td><a asp-action="AddFavorite" asp-route-id="@post.ID" asp-route-email="@ViewBag.ThisUser"><button class="btn"> <div class="popup" onclick="myFunction()"><i class="fa fa-heart"></i>
                         <span class="popuptext" id="myPopup">Added to favorite!</span>
                     </div></button></a></td> -->
-                    <!-- <td> @Html.ActionLink("Add Fav", "AddFavorite", "Home", new { id=post.ID, email = ViewBag.ThisUser}, null)</td> -->
+                    <!-- <td> @Html.ActionLink("Add Fav", "AddFavorite", "Home", new {id = post.ID, email = ViewBag.ThisUser}, null)</td> -->
                     <td>
                         @if (ViewBag.ThisUser != null && _postController.IsAFavorite(post.ID, ViewBag.ThisUser))
                         {
@@ -94,7 +104,7 @@ function popupText() {
                                     <i class="fa fa-heart"></i>
                                 </button></a>
                         }
-                        else if(ViewBag.ThisUser != null && (_postController!.IsAFavorite(post.ID, ViewBag.ThisUser) || !post.Poster.Equals(_userController.RetrieveID(ViewBag.ThisUser))))
+                        else if (ViewBag.ThisUser != null && (_postController!.IsAFavorite(post.ID, ViewBag.ThisUser) || !post.Poster.Equals(_userController.RetrieveID(ViewBag.ThisUser))))
                         {
                             <a asp-action="AddFavorite" asp-route-id="@post.ID" asp-route-email="@ViewBag.ThisUser">
                                 <button class="btn" id="isNotFavorite" onclick="popupText()">
@@ -103,7 +113,7 @@ function popupText() {
                         }
                         else if (ViewBag.ThisUser == null)
                         {
-                            <a  asp-area="Identity" asp-page="/Account/Login"> <button class="button" id="notSignedIn"><span>Sign in to add favorite </span> </button></a>
+                            <a asp-area="Identity" asp-page="/Account/Login"> <button class="button" id="notSignedIn"><span>Sign in to add favorite </span> </button></a>
                         }
                         else
                         {
@@ -111,7 +121,7 @@ function popupText() {
                                 <button class="btn" id="EditButton" onclick="popupText()">
                                     <i class="fa fa-edit"></i>
                                 </button>
-                                </a>
+                            </a>
                         }
 
 
