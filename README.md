@@ -50,6 +50,17 @@ The project uses the following NuGet packages:
 - AspNetCore.Identity
 
 ### How to run
-Coming soon
+#### Alternative 1
+1. Download publish.zip from release.
+2. Make sure there is a Postgres server running on the machine.
+3. It can then be deployed on a server or local IIS https://docs.microsoft.com/en-us/aspnet/web-forms/overview/deployment/visual-studio-web-deployment/deploying-to-iis
+
+#### Alternative 2
+1. Download Jetbrains Rider or Visual Studio.
+2. Download source code from release.
+3. Install the dependencies needed.
+4. Make sure there is a Postgres server running on the machine.
+5. Create a database in Postgres according to the schema, named "ChalmersBookExchange" with user "Admin" with password "123456789".
+6. Run the project from your IDE.
 
 
