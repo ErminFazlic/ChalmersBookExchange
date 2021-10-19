@@ -48,6 +48,7 @@ namespace ChalmersBookExchange.Controllers
         /// <param name="post"></param>
         /// <param name="Images"></param>
         /// <returns>A view of MyPosts</returns>
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreatePost([Bind("BookName,CourseCode,Description,Price,Location,Shipment,Meetup")] Post post, List<IFormFile> Images)
