@@ -26,7 +26,8 @@
 </div>
 
 <div>
-    <table class="table table-striped">
+    <div style="overflow: scroll; max-height: 710px;">
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th>Image</th>
@@ -45,14 +46,14 @@
             @foreach (var post in _postController.GetAllPostsAlphabetical())
             {
                 <tr>
-                      @if (post.Images is not null)
-                      {
-                          <td> <img width="auto" height="64" src="@_postController.RetrieveImage(post.ID)" alt="@post.BookName"/> </td>
-                      }
-                      else
-                      {
-                          <td><i class="fa fa-question"></i></td>
-                      }                      
+                    @if (post.Images is not null)
+                    {
+                        <td> <img width="auto" height="64" src="@_postController.RetrieveImage(post.ID)" alt="@post.BookName"/> </td>
+                    }
+                    else
+                    {
+                        <td><i class="fa fa-question"></i></td>
+                    }                      
                     <td>@post.BookName</td>
                     <td>@post.CourseCode</td>
                     <td>@post.Price:-</td>
@@ -117,8 +118,8 @@
                 </tr>
             }
             </tbody>
-    </table>
-
+        </table>
+    </div>
 </div>
 
 
