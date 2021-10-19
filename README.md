@@ -31,13 +31,14 @@ the domain for the application.
 The general flow is:
 > View -> HomeController -> OtherController -> HomeController -> View
 
-For example, If one were to create a post by pressing the submit button on the Create Post page it would send an HTTPPost action to the HomeController which then delegates it to the appropriate controller, in this case the PostController, for doing the interaction with the database. Upon receiving a response the HomeController then redirects the user to an appropriate View.
+For example, If one were to create a post by pressing the submit button on the Create Post page it would send an HTTPPost action to the HomeController which then delegates it to the appropriate controller, in this case the PostController, for doing the interaction with the database. Upon receiving a response the HomeController then redirects the user to an appropriate View. As seen in the image below:
+![image](https://user-images.githubusercontent.com/78600091/137877414-40931a13-ba2b-4254-8e0e-df9b01aeec40.png)
+
 
 #### Database Schema
-The schema for the relational database can be described with the following two images:
+The schema for the relational database can be described with the following image:
 
-![image](https://user-images.githubusercontent.com/78600091/137588519-dfed90e5-e9aa-4d4d-975d-edfaa116bf69.png)
-![image](https://user-images.githubusercontent.com/78600091/137588541-a02e9335-09d1-47f9-a59c-675b3bf85f51.png)
+![image](https://user-images.githubusercontent.com/78600091/137875520-e24ace74-cd38-471a-bb6b-76a6c3fc35f9.png)
 
 #### Languages
 The applications backend is made with C# while the frontend consists of a mixture of HTML, CSS and Javascript (With JQuery).
