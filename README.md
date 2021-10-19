@@ -38,7 +38,7 @@ For example, If one were to create a post by pressing the submit button on the C
 #### Database Schema
 The schema for the relational database can be described with the following image:
 
-![image](https://user-images.githubusercontent.com/78600091/137875520-e24ace74-cd38-471a-bb6b-76a6c3fc35f9.png)
+![image](https://user-images.githubusercontent.com/78600091/137909089-5ceb041a-c2f1-41d2-8957-49fa69672063.png)
 
 #### Languages
 The applications backend is made with C# while the frontend consists of a mixture of HTML, CSS and Javascript (With JQuery).
