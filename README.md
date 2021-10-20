@@ -11,6 +11,9 @@
 - Cynthia Kozma
 - Petra Nisan
 
+### Demonstration
+For a demo of the application, watch Demo.mp4
+
 ### Description
 A CRUD application for buying and selling used course books for Chalmer's students. The project was made with the ASP.NET framework and a Postgresql database.
 
