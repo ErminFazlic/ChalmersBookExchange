@@ -12,4 +12,4 @@ on our agile experience.
 
 As for me, I will try to get more comfortable at coding in C# and HTML to able to work more
 independently, maybe testing something that could improve the webpage. There will be a lot of hours 
-in front youtube tutorials and googling as well as “playing” around in the project.
+in front of youtube tutorials and googling as well as “playing” around in the project.
