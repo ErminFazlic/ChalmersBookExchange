@@ -1,22 +1,22 @@
 Individual Reflections week 5.
 
-For this week we started our meeting by sharing different experiences of the week before. We all had 
+For this week we started our meeting by sharing different experiences of the week before. We all had
 something important to share as well as new ideas and thoughts about the project. Thus we made some changes
-to the different user stories as we saw a more suitable approach some of the tasks/stories. We had everyone agree on the 
+to the different user stories as we saw a more suitable approach for some of the tasks/stories. We had everyone agree on the
 changes and started to distribute us among the new tasks. Some of choose different collaborators among the team
-which I thought as good learning opportunity for each and everyone, to get learn new experience from other members.
+which I thought was a good learning opportunity for each and everyone, to learn new experiences from other members.
 
-Before I started on my tasks I had still some tutorials some take on since I still hade much to
-learn so I could tarted coding. I found the microsoft documents particulary interesting for my choice 
-of new knowlede, on the internet. Thought it had me spend a lot of hours of actually making "new" 
-projects similar to what we already was achiving, it gave me some tools to work with in the future of our
-project. 
-We booked meetings where we asimilated to help each other with the code. We found some good information online
-where we could interpret it in our project, thought it was a challenge to actually intergrate in our code structure.
+Before I started on my tasks I had still some tutorials to take on since I still had much to
+learn before I could really start coding. I found the microsoft documents particularly interesting for my choice
+of new knowledge. Thought it had me spend a lot of hours of actually making "new"
+projects similar to what we already was achieving, it gave me some tools to work with in the future of our
+project.
+We booked meetings where we assimilated to help each other with the code. We found some good information online
+where we could interpret it in our project, though it proved to be a challenge to actually integrate it in our code structure.
 The next day we got help from Ermin to set us on the right path to finish what we had started. He left me some
-TODO lines which I finished working on and the tasks finally became completed! 
+TODO lines which I finished working on and the tasks finally were completed!
 
-For the next week I will continue to try expanding my knowledge in ASP Net core, as I previusly mentioned, the documentation
+For the next week I will continue to expanding my knowledge in ASP Net core, as I previously mentioned, the documentation
 from the microsoft site seemed very legit and comprehensive. There still a lot of youtube videos out there that
-I need to checkout. At the same time, I will try to understand Git a bit better as seems to be a vital tool 
-for every projectgroup.
+I need to check out. At the same time, I will try to understand Git a bit better as seems to be a vital tool
+for every project group.
